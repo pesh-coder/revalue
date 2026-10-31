@@ -1,0 +1,238 @@
+/*
+  Revalue design tokens for Tailwind v4 (CSS-first config).
+  Source: docs/design-brief.md section 3 and design-reference/screens/Main.dc.html.
+  Copy into app/globals.css. Fonts come from next/font/google and are exposed as
+  --font-newsreader and --font-source-sans (see the handoff, section 4).
+*/
+@import 'tailwindcss';
+
+@theme {
+  /* Turn off Tailwind's default palette so only Revalue colours exist */
+  --color-*: initial;
+
+  /* Ground */
+  --color-neutral: oklch(1 0 0); /* #FFFFFF page background */
+  --color-surface: oklch(1 0 0); /* #FFFFFF surface */
+  /* Ink */
+  --color-charcoal: oklch(0.323 0.021 155.8); /* #2B372F body text */
+  --color-deep: oklch(0.321 0.048 167.1); /* #173B2E headings, dark bands */
+  --color-muted: oklch(0.497 0.019 156.4); /* #5A665E metadata, helper text */
+  /* Action: buttons, links, focus only */
+  --color-forest: oklch(0.43 0.078 161.4); /* #1F5D42 */
+  --color-forest-hover: oklch(0.372 0.067 161.7); /* #184B35 */
+  --color-on-forest: oklch(1 0 0); /* #FFFFFF */
+  /* Label: status tags only */
+  --color-clay: oklch(0.598 0.113 51); /* #B46A3C mark only, never text */
+  --color-clay-text: oklch(0.494 0.102 49.5); /* #8F4E27 */
+  --color-clay-tint: oklch(0.928 0.023 61.2); /* #F3E4D8 */
+  /* Lines */
+  --color-border: oklch(0.92 0 0); /* subtle neutral boundaries */
+  --color-input-border: oklch(0.602 0.016 132.6); /* #7D8379 control boundaries */
+  /* Semantic */
+  --color-error: oklch(0.494 0.143 30.8); /* #A3392A */
+  --color-success: oklch(0.479 0.079 161.4); /* #2E6B4F */
+  --color-warning: oklch(0.509 0.103 70.8); /* #8A5A12 */
+  /* Photo-slot fallback while images load */
+  --color-photo: oklch(0.853 0.027 87.9); /* #D6CEBB */
+  --color-transparent: transparent;
+  --color-current: currentColor;
+
+  /* Fonts */
+  --font-serif: var(--font-newsreader), Georgia, 'Times New Roman', serif;
+  --font-sans: var(--font-source-sans), system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  /* Type scale (use as text-display-xl, text-headline-lg, ...) */
+  --text-display-xl: clamp(2.5rem, 5.6vw, 4.5rem); /* 40 to 72px */
+  --text-display-xl--line-height: 1.05;
+  --text-display-xl--letter-spacing: -0.02em;
+  --text-display-xl--font-weight: 600;
+  --text-headline-lg: clamp(1.875rem, 3.4vw, 2.75rem); /* 30 to 44px */
+  --text-headline-lg--line-height: 1.12;
+  --text-headline-lg--letter-spacing: -0.015em;
+  --text-headline-lg--font-weight: 600;
+  --text-headline-md: clamp(1.375rem, 2.2vw, 1.75rem); /* 22 to 28px */
+  --text-headline-md--line-height: 1.2;
+  --text-headline-md--letter-spacing: -0.01em;
+  --text-headline-md--font-weight: 600;
+  --text-headline-feature: clamp(1.75rem, 2.8vw, 2.25rem);
+  --text-headline-feature--line-height: 1.12;
+  --text-headline-feature--font-weight: 600;
+  --text-headline-sm: 1.125rem; /* 18px, sans 600 */
+  --text-headline-sm--line-height: 1.35;
+  --text-headline-sm--font-weight: 600;
+  --text-body-lg: 1.125rem; /* 18px articles */
+  --text-body-lg--line-height: 1.65;
+  --text-body-md: 1rem;
+  --text-body-md--line-height: 1.6;
+  --text-body-sm: 0.875rem; /* 14px metadata only */
+  --text-body-sm--line-height: 1.55;
+  --text-label-md: 0.875rem;
+  --text-label-md--line-height: 1.2;
+  --text-label-md--font-weight: 600;
+  --text-label-sm: 0.75rem; /* 12px tags, section labels */
+  --text-label-sm--line-height: 1.2;
+  --text-label-sm--letter-spacing: 0.04em;
+  --text-label-sm--font-weight: 600;
+
+  /* Radius */
+  --radius-control: 4px; /* buttons, inputs */
+  --radius-media: 8px; /* images, the few cards */
+  --radius-pill: 9999px; /* tags */
+
+  /* Shadow: resting cards have none */
+  --shadow-raised: 0 1px 3px rgb(0 0 0 / 0.06), 0 4px 12px rgb(0 0 0 / 0.05);
+  --shadow-overlay: 0 8px 30px rgb(0 0 0 / 0.12);
+
+  /* Layout */
+  --container-site: 1200px;
+  --container-prose: 680px;
+
+  /* Motion */
+  --duration-quick: 150ms; /* hover, focus */
+  --duration-overlay: 250ms; /* menu, overlays */
+  --animate-tag-settle: tag-settle 250ms ease-out both;
+  @keyframes tag-settle {
+    from {
+      opacity: 0;
+      transform: translateY(4px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
+@layer base {
+  html {
+    background: var(--color-neutral);
+    color: var(--color-charcoal);
+  }
+  body {
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-forest);
+    outline-offset: 2px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation: none !important;
+      transition: none !important;
+    }
+  }
+}
+
+/* Section label above a heading: 12px, 600, uppercase, 0.04em, muted */
+@utility kicker {
+  font-size: var(--text-label-sm);
+  line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+@layer base {
+  body {
+    margin: 0;
+  }
+  button,
+  a {
+    touch-action: manipulation;
+  }
+  button {
+    cursor: pointer;
+  }
+}
+@utility site-container {
+  width: 100%;
+  max-width: var(--container-site);
+  margin-inline: auto;
+  padding-inline: 16px;
+  @media (width >= 48rem) {
+    padding-inline: 24px;
+  }
+}
+@utility section-space {
+  padding-block: 24px;
+  @media (width >= 48rem) {
+    padding-block: 40px;
+  }
+}
+@utility dark-focus {
+  &:focus-visible {
+    outline-color: var(--color-surface);
+  }
+}
+
+@layer components {
+  .article-body {
+    font-size: 18px;
+    line-height: 1.75;
+    overflow-wrap: anywhere;
+  }
+  .article-body p {
+    margin-block: 0 1.25em;
+  }
+  .article-body h2 {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    font-size: var(--text-headline-md);
+    line-height: 1.2;
+    color: var(--color-deep);
+    margin-block: 1.5em 0.6em;
+  }
+  .article-body h3 {
+    font-weight: 600;
+    font-size: 20px;
+    margin-block: 1.25em 0.5em;
+  }
+  .article-body a {
+    color: var(--color-forest);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+  .article-body ul,
+  .article-body ol {
+    margin-block: 1em;
+    padding-left: 1.5em;
+  }
+  .article-body ul {
+    list-style: disc;
+  }
+  .article-body ol {
+    list-style: decimal;
+  }
+  .article-body blockquote {
+    padding: 16px 24px;
+    background: var(--color-border);
+    margin-block: 1.5em;
+    font-family: var(--font-serif);
+  }
+  .article-body img {
+    max-width: 100%;
+    height: auto;
+  }
+  .article-body table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 16px;
+  }
+  .article-body td,
+  .article-body th {
+    padding: 12px;
+    border: 1px solid var(--color-border);
+    text-align: left;
+  }
+}

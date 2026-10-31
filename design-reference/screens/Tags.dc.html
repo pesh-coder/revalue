@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Status tag states</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600&amp;family=Source+Sans+3:wght@400;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F5F2E9}
+.rv{font-family:'Source Sans 3',system-ui,-apple-system,'Segoe UI',sans-serif;color:#2B372F;background:#F5F2E9;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.rv *{box-sizing:border-box}
+.rv h1,.rv h2,.rv h3,.rv p,.rv ul{margin:0}
+.rv ul{padding:0;list-style:none}
+.sf{font-family:'Newsreader',Georgia,'Times New Roman',serif;font-weight:600;color:#173B2E;text-wrap:balance}
+.bsm{font-size:14px;line-height:1.55;color:#5A665E}
+.lmd{font-size:14px;line-height:1.2;font-weight:600}
+.kick{font-size:12px;line-height:1.2;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:#5A665E}
+.tag{display:inline-flex;align-items:center;gap:6px;min-height:24px;padding:3px 10px 3px 8px;border-radius:9999px;background:#F3E4D8;color:#8F4E27;font-size:12px;line-height:1.2;font-weight:600;letter-spacing:.04em;white-space:nowrap}
+.tag::before{content:'';width:6px;height:6px;border-radius:9999px;background:#B46A3C;flex:none}
+.tag.x2{font-size:24px;gap:12px;min-height:48px;padding:6px 20px 6px 16px}
+.tag.x2::before{width:12px;height:12px}
+.settle{animation:settle 250ms ease-out 400ms both}
+@keyframes settle{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion: reduce){.settle{animation:none}}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.stack{display:flex;flex-wrap:wrap;gap:12px}
+.tb td,.tb th{padding:14px 16px 14px 0;border-bottom:1px solid #DDD8CB;text-align:left;font-size:16px;vertical-align:middle}
+.tb th{font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:#5A665E;border-bottom:1px solid #173B2E}
+</style>
+</helmet>
+<div class="rv" style="width:1280px;padding:64px 80px 96px;display:flex;flex-direction:column;gap:56px">
+
+<header style="display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;align-items:end;border-bottom:1px solid #173B2E;padding-bottom:32px">
+<div style="grid-column:span 7;display:flex;flex-direction:column;gap:16px">
+<p class="kick">Key component</p>
+<h1 class="sf" style="font-size:56px;line-height:1.05;letter-spacing:-0.02em">Status tag</h1>
+</div>
+<div style="grid-column:8 / span 5;display:flex;flex-direction:column;gap:8px">
+<p class="bsm">A small, quiet pill: a 6px clay mark and the words in clay-text on clay-tint. The words carry the meaning, so it never relies on colour. Screen readers hear "Status:" before the value.</p>
+<p class="bsm">Anatomy: 24px minimum height, 3px 10px 3px 8px padding, 6px gap, label-sm 12px 600 at 0.04em, fully rounded.</p>
+</div>
+</header>
+
+<section style="display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;row-gap:24px">
+<div style="grid-column:span 7;display:flex;flex-direction:column;gap:16px">
+<h2 class="kick">Project values</h2>
+<div class="stack">
+<span class="tag"><span class="vh">Status: </span>Concept</span>
+<span class="tag"><span class="vh">Status: </span>In development</span>
+<span class="tag"><span class="vh">Status: </span>Testing</span>
+<span class="tag"><span class="vh">Status: </span>Pilot</span>
+<span class="tag"><span class="vh">Status: </span>Completed</span>
+<span class="tag"><span class="vh">Status: </span>Published research</span>
+</div>
+</div>
+<div style="grid-column:span 5;display:flex;flex-direction:column;gap:16px">
+<h2 class="kick">Solution values</h2>
+<div class="stack">
+<span class="tag"><span class="vh">Status: </span>Available</span>
+<span class="tag"><span class="vh">Status: </span>In development</span>
+<span class="tag"><span class="vh">Status: </span>Exploring</span>
+</div>
+</div>
+<p class="bsm" style="grid-column:1 / -1;border-top:1px solid #DDD8CB;padding-top:16px">Pilot and Available exist in the system so the component is complete. No page may show either value today.</p>
+</section>
+
+<section style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px">
+<div style="display:flex;flex-direction:column;gap:16px;padding:24px;background:#F5F2E9;border:1px solid #DDD8CB">
+<h2 class="kick">On neutral</h2>
+<div style="display:flex;flex-direction:column;gap:12px;align-items:flex-start"><span class="tag">Concept</span><span class="tag">In development</span><span class="tag">Testing</span><span class="tag">Exploring</span></div>
+<p class="bsm">clay-text 5.14:1 on the tint</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:16px;padding:24px;background:#FFFDF8;border:1px solid #DDD8CB">
+<h2 class="kick">On surface</h2>
+<div style="display:flex;flex-direction:column;gap:12px;align-items:flex-start"><span class="tag">Concept</span><span class="tag">In development</span><span class="tag">Testing</span><span class="tag">Exploring</span></div>
+<p class="bsm">The pill keeps its own fill</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:16px;padding:24px;background:#173B2E">
+<h2 class="kick" style="color:#FFFDF8">On deep</h2>
+<div style="display:flex;flex-direction:column;gap:12px;align-items:flex-start"><span class="tag">Concept</span><span class="tag">In development</span><span class="tag">Testing</span><span class="tag">Exploring</span></div>
+<p style="font-size:14px;line-height:1.55;color:#FFFDF8">Same pill, no outline added</p>
+</div>
+<div style="display:flex;flex-direction:column;gap:16px;padding:24px;background:#F5F2E9;border:1px solid #DDD8CB">
+<h2 class="kick">In a card</h2>
+<article style="background:#FFFDF8;border:1px solid #DDD8CB;border-radius:8px;padding:16px;display:flex;flex-direction:column;gap:10px">
+<span class="tag settle" style="align-self:flex-start">Testing</span>
+<h3 class="sf" style="font-size:22px;line-height:1.2;letter-spacing:-0.01em">Smart segregation prototype</h3>
+<p class="bsm">Project · Started as a final-year project</p>
+</article>
+<p class="bsm">Settles 4px into place, once</p>
+</div>
+</section>
+
+<section style="display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px">
+<div style="grid-column:span 7;display:flex;flex-direction:column;gap:16px">
+<h2 class="kick">In a table</h2>
+<table class="tb" style="width:100%;border-collapse:collapse">
+<thead><tr><th scope="col">Offering</th><th scope="col">Status</th></tr></thead>
+<tbody>
+<tr><td>Waste Discovery Review</td><td><span class="tag">In development</span></td></tr>
+<tr><td>Segregation systems</td><td><span class="tag">In development</span></td></tr>
+<tr><td>Resource recovery</td><td><span class="tag">Exploring</span></td></tr>
+</tbody>
+</table>
+</div>
+<div style="grid-column:span 5;display:flex;flex-direction:column;gap:16px">
+<h2 class="kick">At 200% text size</h2>
+<div style="display:flex;flex-direction:column;gap:16px;align-items:flex-start">
+<span class="tag x2">In development</span>
+<span class="tag x2">Published research</span>
+</div>
+<p class="bsm">Padding, mark and height scale with the text. The pill wraps to its own line rather than truncating.</p>
+</div>
+</section>
+
+<section style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;border-top:1px solid #DDD8CB;padding-top:24px">
+<div style="display:flex;flex-direction:column;gap:8px"><p class="lmd">Do</p><p class="bsm">Place the tag beside the title it describes, before the summary. Pair it with a date where the page has one.</p></div>
+<div style="display:flex;flex-direction:column;gap:8px"><p class="lmd">Do not</p><p class="bsm">Use clay for buttons, links or fills. Make tags clickable. Add icons or check marks inside the pill.</p></div>
+<div style="display:flex;flex-direction:column;gap:8px"><p class="lmd">Motion</p><p class="bsm">Opacity 0 to 1 and 4px rise, 250ms ease-out, the first time a card enters view. Off for reduced motion.</p></div>
+</section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":1700}}'>
+class Component extends DCLogic {
+renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Menu: Resources</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600&amp;family=Source+Sans+3:wght@400;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FFFDF8}
+.rv{font-family:'Source Sans 3',system-ui,-apple-system,'Segoe UI',sans-serif;color:#2B372F;background:#FFFDF8;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.rv *{box-sizing:border-box}
+.rv h1,.rv h2,.rv p,.rv ul{margin:0}
+.rv ul{padding:0;list-style:none}
+.sf{font-family:'Newsreader',Georgia,'Times New Roman',serif;font-weight:600;color:#173B2E}
+.kick{font-size:12px;line-height:1.2;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:#5A665E}
+.rv a:focus-visible{outline:2px solid #1F5D42;outline-offset:2px}
+.ic{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid #7D8379;border-radius:4px;color:#173B2E}
+.mi{display:flex;align-items:center;justify-content:space-between;min-height:56px;border-bottom:1px solid #DDD8CB;text-decoration:none;color:#173B2E;font-size:18px;font-weight:600}
+.mi:hover{text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}
+.tp{display:flex;align-items:center;min-height:44px;color:#1F5D42;text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}
+.panel{animation:in 250ms ease-out both}
+@keyframes in{from{opacity:0;transform:translateX(24px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion: reduce){.panel{animation:none}}
+</style>
+</helmet>
+<div class="rv" role="dialog" aria-modal="true" aria-label="Menu, Resources" style="min-height:844px;display:flex;flex-direction:column">
+<div style="display:flex;align-items:center;gap:12px;min-height:64px;padding:0 16px;border-bottom:1px solid #DDD8CB">
+<a href="Menu.dc.html" style="display:flex;align-items:center;gap:6px;min-height:44px;margin-right:auto;color:#1F5D42;font-weight:600;text-decoration:none"><svg width="20" height="20" viewBox="0 0 256 256" aria-hidden="true"><path d="M160 208l-80-80 80-80" fill="none" stroke="currentColor" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"></path></svg>Menu</a>
+<a class="ic" href="Home.dc.html" aria-label="Close menu"><svg width="22" height="22" viewBox="0 0 256 256" aria-hidden="true"><path d="M200 56L56 200M200 200L56 56" fill="none" stroke="currentColor" stroke-width="16" stroke-linecap="round"></path></svg></a>
+</div>
+<nav class="panel" aria-labelledby="mr-h" style="padding:24px 16px 32px;display:flex;flex-direction:column;gap:24px">
+<h2 id="mr-h" class="sf" style="font-size:40px;line-height:1.05;letter-spacing:-0.02em">Resources</h2>
+<ul style="border-top:1px solid #DDD8CB">
+<li><a class="mi" href="Resources.dc.html">All resources<svg width="20" height="20" viewBox="0 0 256 256" aria-hidden="true"><path d="M40 128h176M144 56l72 72-72 72" fill="none" stroke="#1F5D42" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"></path></svg></a></li>
+<li><a class="mi" href="Blog.dc.html">Blog</a></li>
+<li><a class="mi" href="Resources.dc.html">Guides</a></li>
+<li><a class="mi" href="Tool.dc.html">Tools and templates</a></li>
+<li><a class="mi" href="Projects.dc.html">Projects</a></li>
+</ul>
+<div style="display:flex;flex-direction:column;gap:4px">
+<h3 class="kick" style="margin:0 0 4px">Topics</h3>
+<ul style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:16px">
+<li><a class="tp" href="Blog.dc.html">Understanding waste</a></li>
+<li><a class="tp" href="TopicHub.dc.html">Waste audits</a></li>
+<li><a class="tp" href="Blog.dc.html">Segregation</a></li>
+<li><a class="tp" href="Blog.dc.html">Resource recovery</a></li>
+<li><a class="tp" href="Blog.dc.html">Business waste</a></li>
+<li><a class="tp" href="Blog.dc.html">Technology</a></li>
+<li><a class="tp" href="Blog.dc.html">Waste economics</a></li>
+<li><a class="tp" href="Blog.dc.html">Uganda and Africa</a></li>
+</ul>
+</div>
+</nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

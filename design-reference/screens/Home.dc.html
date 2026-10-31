@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Revalue: Waste has value</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600&amp;family=Source+Sans+3:wght@400;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F5F2E9}
+a{color:#1F5D42}a:hover{color:#184B35}
+.rv{font-family:'Source Sans 3',system-ui,-apple-system,'Segoe UI',sans-serif;color:#2B372F;background:#F5F2E9;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.rv *{box-sizing:border-box}
+.rv h1,.rv h2,.rv h3,.rv p,.rv ul,.rv ol,.rv figure{margin:0}
+.rv ul,.rv ol{padding:0;list-style:none}
+.sf{font-family:'Newsreader',Georgia,'Times New Roman',serif;font-weight:600;color:#173B2E;text-wrap:balance}
+.dxl{font-size:clamp(40px,5.6vw,72px);line-height:1.05;letter-spacing:-0.02em}
+.hlg{font-size:clamp(30px,3.4vw,44px);line-height:1.12;letter-spacing:-0.015em}
+.hmd{font-size:clamp(22px,2.2vw,28px);line-height:1.2;letter-spacing:-0.01em}
+.blg{font-size:18px;line-height:1.65}
+.bsm{font-size:14px;line-height:1.55;color:#5A665E}
+.kick{font-size:12px;line-height:1.2;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:#5A665E}
+.tag{display:inline-flex;align-items:center;gap:6px;min-height:24px;padding:3px 10px 3px 8px;border-radius:9999px;background:#F3E4D8;color:#8F4E27;font-size:12px;line-height:1.2;font-weight:600;letter-spacing:.04em;white-space:nowrap}
+.tag::before{content:'';width:6px;height:6px;border-radius:9999px;background:#B46A3C;flex:none}
+.settle{animation:settle 250ms ease-out 300ms both}
+@keyframes settle{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion: reduce){.settle{animation:none}}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 20px;border-radius:4px;border:0;background:#1F5D42;color:#FFFDF8;font:600 16px/1.2 'Source Sans 3',system-ui,sans-serif;text-decoration:none;cursor:pointer;transition:background-color 150ms}
+.btn:hover{background:#184B35;color:#FFFDF8}
+.btn-inv{background:#FFFDF8;color:#173B2E}.btn-inv:hover{background:#F5F2E9;color:#173B2E}
+.btn-sm{min-height:44px;padding:0 14px;font-size:14px}
+.lnk{color:#1F5D42;font-weight:600;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px;display:inline-flex;align-items:center;min-height:44px}
+.rv a:focus-visible,.rv button:focus-visible{outline:2px solid #1F5D42;outline-offset:2px}
+.wrap{width:100%;max-width:1200px;margin:0 auto;padding-left:16px;padding-right:16px}
+@media(min-width:768px){.wrap{padding-left:24px;padding-right:24px}}
+.sec{padding-top:48px;padding-bottom:48px}
+@media(min-width:768px){.sec{padding-top:96px;padding-bottom:96px}}
+.ph{position:relative;display:block;background-color:#D6CEBB;background-image:repeating-linear-gradient(135deg,rgba(43,55,47,.06) 0 1px,transparent 1px 12px);color:#2B372F;overflow:hidden}
+.ph-l{position:absolute;left:12px;right:12px;bottom:12px;font-size:12px;line-height:1.4;font-weight:600;letter-spacing:.02em;color:#2B372F}
+.dnav{display:none}
+@media(min-width:1024px){.dnav{display:flex;gap:28px}.mnu{display:none!important}}
+.dnav a{color:#2B372F;text-decoration:none}
+.dnav a:hover{color:#1F5D42;text-decoration:underline;text-underline-offset:4px}
+.mnu{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid #7D8379;border-radius:4px;color:#173B2E}
+.ft a{color:#FFFDF8;text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px;display:inline-flex;align-items:center;min-height:44px}
+.row{display:flex;gap:16px;align-items:center;justify-content:space-between;padding:20px 0;border-bottom:1px solid #DDD8CB;text-decoration:none;color:#2B372F}
+.row:hover .sf{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:5px}
+.arw{width:22px;height:22px;flex:none;color:#1F5D42;transition:transform 150ms}
+a:hover .arw{transform:translateX(2px)}
+.hl{color:inherit;text-decoration:none}.hl:hover{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:5px;color:inherit}
+</style>
+</helmet>
+<div class="rv">
+
+<header style="border-bottom:1px solid #DDD8CB;background:#F5F2E9">
+<div class="wrap" style="display:flex;align-items:center;gap:12px;min-height:64px">
+<a href="Home.dc.html" aria-label="Revalue, home" style="display:flex;align-items:center;gap:8px;text-decoration:none;margin-right:auto;min-height:44px"><svg width="28" height="28" viewBox="0 0 48 48" aria-hidden="true"><path d="M37 24A13 13 0 1 1 24 11" fill="none" stroke="#173B2E" stroke-width="8" stroke-linecap="round"></path><circle cx="36.4" cy="11.6" r="4.5" fill="#173B2E"></circle></svg><span class="sf" style="font-size:24px;line-height:1;letter-spacing:-0.02em">Revalue</span></a>
+<nav class="dnav" aria-label="Main"><a href="Solutions.dc.html">Solutions</a><a href="Resources.dc.html">Resources</a><a href="Projects.dc.html">Projects</a><a href="Partners.dc.html">Partners</a><a href="Pricing.dc.html">Pricing</a></nav>
+<a class="btn btn-sm" href="Contact.dc.html">Contact us</a>
+<a class="mnu" href="Menu.dc.html" aria-label="Open menu"><svg width="22" height="22" viewBox="0 0 256 256" aria-hidden="true"><path d="M40 64h176M40 128h176M40 192h176" fill="none" stroke="currentColor" stroke-width="16" stroke-linecap="round"></path></svg></a>
+</div>
+</header>
+
+<main>
+<section aria-labelledby="hero-h" style="position:relative;min-height:600px;display:flex;align-items:flex-end;background-color:#3A4A3F;overflow:hidden">
+<img aria-hidden="true" src="../../public/images/stock-hero-hills.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 60%">
+<div aria-hidden="true" style="position:absolute;inset:0;background:rgba(23,59,46,.62)"></div>
+<div class="wrap" style="position:relative;padding-top:120px;padding-bottom:48px;display:flex;flex-direction:column;gap:20px">
+<h1 id="hero-h" class="sf dxl" style="color:#FFFDF8;max-width:12ch">Waste has value.</h1>
+<p class="blg" style="color:#FFFDF8;max-width:36ch">Revalue helps organisations see what they throw away, separate it better, and find out what can be recovered.</p>
+<div style="display:flex;flex-wrap:wrap;gap:8px 24px;align-items:center;padding-top:8px">
+<a class="btn btn-inv" href="Contact.dc.html">Talk to us about your waste</a>
+<a class="lnk" href="#how" style="color:#FFFDF8">Read how we work</a>
+</div>
+</div>
+</section>
+
+<section aria-label="Where we are" style="background:#FFFDF8;border-bottom:1px solid #DDD8CB">
+<div class="wrap" style="padding-top:20px;padding-bottom:20px;display:flex;flex-wrap:wrap;gap:10px 16px;align-items:flex-start">
+<span class="tag"><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Status: </span>In development</span>
+<p style="flex:1 1 280px">Where we are: we have a working prototype and are preparing a pilot. We publish what we learn, including what has not worked.</p>
+</div>
+</section>
+
+<section class="sec" aria-labelledby="latest-h">
+<div class="wrap" style="display:flex;flex-direction:column;gap:24px">
+<div style="display:flex;align-items:center;justify-content:space-between;border-top:2px solid #173B2E;padding-top:4px">
+<h2 id="latest-h" class="kick" style="color:#173B2E">Latest from Revalue</h2>
+<a class="lnk" href="Blog.dc.html" style="font-size:14px">All articles</a>
+</div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(340px,100%),1fr));gap:32px 48px">
+<article style="display:flex;flex-direction:column;gap:14px">
+<a href="Article.dc.html" class="ph" aria-hidden="true" tabindex="-1" style="aspect-ratio:4 / 3;border-radius:8px"><img src="../../public/images/stock-compost-bays.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center"></a>
+<p class="kick">Waste audits</p>
+<h3 class="sf hlg"><a class="hl" href="Article.dc.html">What is a waste audit?</a></h3>
+<p>A waste audit is a planned look at what a site throws away.</p>
+<p class="bsm">By Patience Sitati · Published 30 October 2026</p>
+</article>
+<ol style="border-top:1px solid #DDD8CB">
+<li style="padding:20px 0;border-bottom:1px solid #DDD8CB;display:flex;flex-direction:column;gap:8px">
+<p class="kick">Segregation</p>
+<h3 class="sf hmd"><a class="hl" href="Article.dc.html">Why labels and bins alone are not enough</a></h3>
+<p class="bsm">By the Revalue team</p>
+</li>
+<li style="padding:20px 0;border-bottom:1px solid #DDD8CB;display:flex;flex-direction:column;gap:8px">
+<p class="kick">Resource recovery</p>
+<h3 class="sf hmd"><a class="hl" href="Article.dc.html">Recyclable versus actually recycled</a></h3>
+<p class="bsm">By the Revalue team</p>
+</li>
+<li style="padding:20px 0;border-bottom:1px solid #DDD8CB;display:flex;flex-direction:column;gap:8px">
+<p class="kick">Understanding waste</p>
+<h3 class="sf hmd"><a class="hl" href="Article.dc.html">What happens after waste collection?</a></h3>
+<p class="bsm">By the Revalue team</p>
+</li>
+</ol>
+</div>
+</div>
+</section>
+
+<section aria-labelledby="who-h" style="padding-bottom:48px">
+<div class="wrap">
+<div style="border-top:2px solid #173B2E;padding-top:4px;min-height:44px;display:flex;align-items:center">
+<h2 id="who-h" class="kick" style="color:#173B2E">Where to start</h2>
+</div>
+<ul>
+<li><a class="row" href="Solutions.dc.html"><span style="display:flex;flex-direction:column;gap:6px"><span class="sf hmd">For organisations</span><span>Understand your waste and agree a first step.</span></span><svg class="arw" viewBox="0 0 256 256" aria-hidden="true"><path d="M40 128h176M144 56l72 72-72 72" fill="none" stroke="currentColor" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"></path></svg></a></li>
+<li><a class="row" href="Partners.dc.html"><span style="display:flex;flex-direction:column;gap:6px"><span class="sf hmd">For recovery partners</span><span>Tell us what you can accept, and on what terms.</span></span><svg class="arw" viewBox="0 0 256 256" aria-hidden="true"><path d="M40 128h176M144 56l72 72-72 72" fill="none" stroke="currentColor" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"></path></svg></a></li>
+<li><a class="row" href="Projects.dc.html"><span style="display:flex;flex-direction:column;gap:6px"><span class="sf hmd">For funders and researchers</span><span>See our methods and progress.</span></span><svg class="arw" viewBox="0 0 256 256" aria-hidden="true"><path d="M40 128h176M144 56l72 72-72 72" fill="none" stroke="currentColor" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"></path></svg></a></li>
+</ul>
+</div>
+</section>
+
+<section id="how" aria-labelledby="how-h" style="background:#173B2E;color:#FFFDF8">
+<div class="wrap sec" style="display:flex;flex-direction:column;gap:32px">
+<h2 id="how-h" class="sf hlg" style="color:#FFFDF8">How we work</h2>
+<ol style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:32px">
+<li style="border-top:1px solid rgba(255,253,248,.32);padding-top:16px;display:flex;flex-direction:column;gap:12px"><span class="sf" aria-hidden="true" style="font-size:64px;line-height:1;color:#FFFDF8">1.</span><p class="sf hmd" style="color:#FFFDF8">Look at what happens today.</p></li>
+<li style="border-top:1px solid rgba(255,253,248,.32);padding-top:16px;display:flex;flex-direction:column;gap:12px"><span class="sf" aria-hidden="true" style="font-size:64px;line-height:1;color:#FFFDF8">2.</span><p class="sf hmd" style="color:#FFFDF8">Measure before promising.</p></li>
+<li style="border-top:1px solid rgba(255,253,248,.32);padding-top:16px;display:flex;flex-direction:column;gap:12px"><span class="sf" aria-hidden="true" style="font-size:64px;line-height:1;color:#FFFDF8">3.</span><p class="sf hmd" style="color:#FFFDF8">Connect separated material to a real next step.</p></li>
+</ol>
+</div>
+</section>
+
+<sc-if value="{{showFeatured}}" hint-placeholder-val="{{ true }}">
+<section class="sec" aria-labelledby="fp-h">
+<div class="wrap">
+<div style="border-top:2px solid #173B2E;padding-top:4px;min-height:44px;display:flex;align-items:center"><p class="kick" style="color:#173B2E">Featured project</p></div>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(360px,100%),1fr));gap:24px 48px;align-items:center;margin-top:16px">
+<figure style="display:flex;flex-direction:column;gap:8px">
+<img src="../../public/images/prototype-bin.jpg" alt="The Revalue prototype bin: a cardboard drum with a small screen and two ultrasonic sensors, on a black slatted frame with exposed wiring and three collection cups below, one labelled DRY" style="display:block;width:100%;aspect-ratio:4 / 5;object-fit:cover;object-position:center 40%;border-radius:8px;background:#D6CEBB">
+<figcaption class="bsm">The working prototype. Unretouched.</figcaption>
+</figure>
+<div style="display:flex;flex-direction:column;gap:16px;align-items:flex-start">
+<span class="tag settle"><span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Status: </span>Testing</span>
+<h2 id="fp-h" class="sf hlg">Smart segregation prototype</h2>
+<p class="blg">A prototype bin that uses a camera and sensors to sort waste into separate compartments.</p>
+<a class="lnk" href="Project.dc.html">Read the project</a>
+</div>
+</div>
+</div>
+</section>
+</sc-if>
+
+<section aria-labelledby="close-h" style="border-top:1px solid #DDD8CB">
+<div class="wrap sec" style="display:flex;flex-direction:column;gap:24px;align-items:flex-start">
+<h2 id="close-h" class="sf hlg" style="max-width:18ch">Have a waste problem you want to understand?</h2>
+<a class="btn" href="Contact.dc.html">Talk to us</a>
+</div>
+</section>
+</main>
+
+<footer class="ft" style="background:#173B2E;color:#FFFDF8">
+<div class="wrap" style="padding-top:48px;padding-bottom:32px;display:flex;flex-direction:column;gap:24px">
+<svg width="36" height="36" viewBox="0 0 48 48" aria-hidden="true"><path d="M37 24A13 13 0 1 1 24 11" fill="none" stroke="#FFFDF8" stroke-width="8" stroke-linecap="round"></path><circle cx="36.4" cy="11.6" r="4.5" fill="#FFFDF8"></circle></svg>
+<p class="sf hlg" style="color:#FFFDF8">Waste has value.</p>
+<nav aria-label="Footer"><ul style="display:flex;flex-wrap:wrap;column-gap:24px"><li><a href="About.dc.html">About</a></li><li><a href="Contact.dc.html">Contact</a></li><li><a href="Terms.dc.html">Terms</a></li><li><a href="Privacy.dc.html">Privacy</a></li></ul></nav>
+<p style="font-size:14px;line-height:1.55;color:#FFFDF8;border-top:1px solid rgba(255,253,248,.24);padding-top:16px">Revalue is operated by Simuverse Limited, Kampala, Uganda.</p>
+</div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"showFeatured":{"editor":"boolean","default":true,"section":"States"},"$preview":{"width":390,"height":4400}}'>
+class Component extends DCLogic {
+renderVals() {
+return { showFeatured: this.props.showFeatured ?? true };
+}
+}
+</script>
+</body>
+</html>

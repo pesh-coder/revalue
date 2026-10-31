@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How pricing works: Revalue</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600&amp;family=Source+Sans+3:wght@400;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F5F2E9}
+a{color:#1F5D42}a:hover{color:#184B35}
+.rv{font-family:'Source Sans 3',system-ui,-apple-system,'Segoe UI',sans-serif;color:#2B372F;background:#F5F2E9;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.rv *{box-sizing:border-box}
+.rv h1,.rv h2,.rv h3,.rv p,.rv ul,.rv ol,.rv figure{margin:0}
+.rv ul,.rv ol{padding:0;list-style:none}
+.sf{font-family:'Newsreader',Georgia,'Times New Roman',serif;font-weight:600;color:#173B2E;text-wrap:balance}
+.dxl{font-size:clamp(40px,5.6vw,72px);line-height:1.05;letter-spacing:-0.02em}
+.hlg{font-size:clamp(30px,3.4vw,44px);line-height:1.12;letter-spacing:-0.015em}
+.hmd{font-size:clamp(22px,2.2vw,28px);line-height:1.2;letter-spacing:-0.01em}
+.blg{font-size:18px;line-height:1.65}
+.bsm{font-size:14px;line-height:1.55;color:#5A665E}
+.kick{font-size:12px;line-height:1.2;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:#5A665E}
+.tag{display:inline-flex;align-items:center;gap:6px;min-height:24px;padding:3px 10px 3px 8px;border-radius:9999px;background:#F3E4D8;color:#8F4E27;font-size:12px;line-height:1.2;font-weight:600;letter-spacing:.04em;white-space:nowrap}
+.tag::before{content:'';width:6px;height:6px;border-radius:9999px;background:#B46A3C;flex:none}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 20px;border-radius:4px;border:0;background:#1F5D42;color:#FFFDF8;font:600 16px/1.2 'Source Sans 3',system-ui,sans-serif;text-decoration:none;cursor:pointer;transition:background-color 150ms}
+.btn:hover{background:#184B35;color:#FFFDF8}
+.btn-sm{min-height:44px;padding:0 14px;font-size:14px}
+.rv a:focus-visible,.rv button:focus-visible{outline:2px solid #1F5D42;outline-offset:2px}
+.wrap{width:100%;max-width:1200px;margin:0 auto;padding-left:16px;padding-right:16px}
+@media(min-width:768px){.wrap{padding-left:24px;padding-right:24px}}
+.dnav{display:none}
+@media(min-width:1024px){.dnav{display:flex;gap:28px}.mnu{display:none!important}}
+.dnav a{color:#2B372F;text-decoration:none}
+.dnav a[aria-current]{color:#173B2E;font-weight:600;text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:2px}
+.mnu{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid #7D8379;border-radius:4px;color:#173B2E}
+.ft a{color:#FFFDF8;text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px;display:inline-flex;align-items:center;min-height:44px}
+.pt{width:100%;border-collapse:collapse}
+.pt th{font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:#5A665E;text-align:left;padding:12px 16px 12px 0;border-bottom:2px solid #173B2E}
+.pt td{padding:16px 16px 16px 0;border-bottom:1px solid #DDD8CB;vertical-align:top}
+.pt .off{font-family:'Newsreader',Georgia,serif;font-weight:600;font-size:22px;line-height:1.2;color:#173B2E}
+@media(max-width:700px){
+.pt thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.pt tr{display:flex;flex-direction:column;gap:10px;padding:20px 0;border-bottom:1px solid #DDD8CB}
+.pt td{display:block;padding:0;border:0}
+.pt td[data-l]::before{content:attr(data-l);display:block;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:#5A665E;margin-bottom:4px}
+.pt tbody{display:block;border-top:2px solid #173B2E}
+}
+</style>
+</helmet>
+<div class="rv">
+
+<header style="border-bottom:1px solid #DDD8CB;background:#F5F2E9">
+<div class="wrap" style="display:flex;align-items:center;gap:12px;min-height:64px">
+<a href="Home.dc.html" aria-label="Revalue, home" style="display:flex;align-items:center;gap:8px;text-decoration:none;margin-right:auto;min-height:44px"><svg width="28" height="28" viewBox="0 0 48 48" aria-hidden="true"><path d="M37 24A13 13 0 1 1 24 11" fill="none" stroke="#173B2E" stroke-width="8" stroke-linecap="round"></path><circle cx="36.4" cy="11.6" r="4.5" fill="#173B2E"></circle></svg><span class="sf" style="font-size:24px;line-height:1;letter-spacing:-0.02em">Revalue</span></a>
+<nav class="dnav" aria-label="Main"><a href="Solutions.dc.html">Solutions</a><a href="Resources.dc.html">Resources</a><a href="Projects.dc.html">Projects</a><a href="Partners.dc.html">Partners</a><a href="Pricing.dc.html" aria-current="page">Pricing</a></nav>
+<a class="btn btn-sm" href="Contact.dc.html">Contact us</a>
+<a class="mnu" href="Menu.dc.html" aria-label="Open menu"><svg width="22" height="22" viewBox="0 0 256 256" aria-hidden="true"><path d="M40 64h176M40 128h176M40 192h176" fill="none" stroke="currentColor" stroke-width="16" stroke-linecap="round"></path></svg></a>
+</div>
+</header>
+
+<main class="wrap" style="padding-top:48px;padding-bottom:64px;display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<p class="kick">Pricing</p>
+<h1 class="sf dxl" style="max-width:12ch">How pricing works</h1>
+<p class="blg" style="max-width:40ch">We do not publish fixed prices yet, because we are still testing what each service involves.</p>
+</div>
+
+<table class="pt">
+<caption class="bsm" style="caption-side:bottom;text-align:left;padding-top:12px">Status as of 30 October 2026.</caption>
+<thead><tr><th scope="col">Offering</th><th scope="col">Status</th><th scope="col">What affects the cost</th></tr></thead>
+<tbody>
+<tr><td class="off">Waste assessment</td><td data-l="Status"><span class="tag">In development</span></td><td data-l="What affects the cost">Site size, number of waste streams, depth of assessment, travel and reporting needs.</td></tr>
+<tr><td class="off">Waste improvement work</td><td data-l="Status"><span class="tag">In development</span></td><td data-l="What affects the cost" style="color:#5A665E">[Cost factors to confirm]</td></tr>
+<tr><td class="off">Reporting or monitoring</td><td data-l="Status"><span class="tag">In development</span></td><td data-l="What affects the cost" style="color:#5A665E">[Cost factors to confirm]</td></tr>
+<tr><td class="off">Technology or equipment</td><td data-l="Status"><span class="tag">In development</span></td><td data-l="What affects the cost" style="color:#5A665E">[Cost factors to confirm]</td></tr>
+<tr><td class="off">Custom work</td><td data-l="Status"><span class="tag">Exploring</span></td><td data-l="What affects the cost" style="color:#5A665E">[Cost factors to confirm]</td></tr>
+</tbody>
+</table>
+
+<div><a class="btn" href="Contact.dc.html">Ask for a quote</a></div>
+</main>
+
+<footer class="ft" style="background:#173B2E;color:#FFFDF8">
+<div class="wrap" style="padding-top:48px;padding-bottom:32px;display:flex;flex-direction:column;gap:24px">
+<svg width="36" height="36" viewBox="0 0 48 48" aria-hidden="true"><path d="M37 24A13 13 0 1 1 24 11" fill="none" stroke="#FFFDF8" stroke-width="8" stroke-linecap="round"></path><circle cx="36.4" cy="11.6" r="4.5" fill="#FFFDF8"></circle></svg>
+<p class="sf hlg" style="color:#FFFDF8">Waste has value.</p>
+<nav aria-label="Footer"><ul style="display:flex;flex-wrap:wrap;column-gap:24px"><li><a href="About.dc.html">About</a></li><li><a href="Contact.dc.html">Contact</a></li><li><a href="Terms.dc.html">Terms</a></li><li><a href="Privacy.dc.html">Privacy</a></li></ul></nav>
+<p style="font-size:14px;line-height:1.55;color:#FFFDF8;border-top:1px solid rgba(255,253,248,.24);padding-top:16px">Revalue is operated by Simuverse Limited, Kampala, Uganda.</p>
+</div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":2500}}'>
+class Component extends DCLogic {
+renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

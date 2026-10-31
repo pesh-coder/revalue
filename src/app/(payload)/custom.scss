@@ -1,0 +1,20 @@
+.revalue-admin-setup {
+  max-width: 680px;
+  margin: 10vh auto;
+  padding: 24px;
+  font-family: system-ui, sans-serif;
+  line-height: 1.6;
+  color: #173b2e;
+}
+.revalue-admin-setup h1 {
+  font-size: 32px;
+  line-height: 1.2;
+}
+.revalue-admin-setup a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: #1f5d42;
+}
+.revalue-seo-preview { max-width: 680px; padding: 20px; border: 1px solid var(--theme-elevation-200); border-radius: 4px; }
+.revalue-seo-preview h3 { color: var(--theme-text); margin: 12px 0 6px; }

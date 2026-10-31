@@ -1,0 +1,287 @@
+{
+  "v": 3,
+  "attachments": {},
+  "boards": {
+    "About.dc.html": {
+      "expand": "fill",
+      "h": 3200,
+      "title": "13 About",
+      "w": 390,
+      "x": 7050,
+      "y": 4120
+    },
+    "Article.dc.html": {
+      "expand": "fill",
+      "h": 3300,
+      "title": "06 Article",
+      "w": 390,
+      "x": 3760,
+      "y": 4120
+    },
+    "Blog.dc.html": {
+      "expand": "fill",
+      "h": 2500,
+      "title": "05 Blog index",
+      "w": 390,
+      "x": 3290,
+      "y": 4120
+    },
+    "Contact.dc.html": {
+      "expand": "fill",
+      "h": 2500,
+      "title": "14 Contact",
+      "w": 390,
+      "x": 7520,
+      "y": 4120
+    },
+    "ContactStates.dc.html": {
+      "expand": "fill",
+      "h": 3100,
+      "title": "14 Contact: form states",
+      "w": 390,
+      "x": 7990,
+      "y": 4120
+    },
+    "Home.dc.html": {
+      "expand": "fill",
+      "h": 4400,
+      "title": "01 Home",
+      "w": 390,
+      "x": 0,
+      "y": 4120
+    },
+    "Logos.dc.html": {
+      "h": 2500,
+      "title": "Logo candidates",
+      "w": 1280,
+      "x": 1360,
+      "y": 0
+    },
+    "Main.dc.html": {
+      "h": 3700,
+      "title": "Token sheet",
+      "w": 1280,
+      "x": 0,
+      "y": 0
+    },
+    "Menu.dc.html": {
+      "expand": "fill",
+      "h": 844,
+      "title": "Global: mobile menu",
+      "w": 390,
+      "x": 470,
+      "y": 4120
+    },
+    "MenuResources.dc.html": {
+      "expand": "fill",
+      "h": 844,
+      "title": "Global: menu, Resources panel",
+      "w": 390,
+      "x": 940,
+      "y": 4120
+    },
+    "NotFound.dc.html": {
+      "expand": "fill",
+      "h": 1300,
+      "title": "15 Not found",
+      "w": 390,
+      "x": 8460,
+      "y": 4120
+    },
+    "Partners.dc.html": {
+      "expand": "fill",
+      "h": 2400,
+      "title": "11 Partners",
+      "w": 390,
+      "x": 6110,
+      "y": 4120
+    },
+    "Pricing.dc.html": {
+      "expand": "fill",
+      "h": 2500,
+      "title": "12 Pricing",
+      "w": 390,
+      "x": 6580,
+      "y": 4120
+    },
+    "Privacy.dc.html": {
+      "expand": "fill",
+      "h": 2400,
+      "title": "17 Privacy",
+      "w": 390,
+      "x": 9400,
+      "y": 4120
+    },
+    "Project.dc.html": {
+      "expand": "fill",
+      "h": 4700,
+      "title": "10 Project detail",
+      "w": 390,
+      "x": 5640,
+      "y": 4120
+    },
+    "Projects.dc.html": {
+      "expand": "fill",
+      "h": 1900,
+      "title": "09 Projects",
+      "w": 390,
+      "x": 5170,
+      "y": 4120
+    },
+    "Resources.dc.html": {
+      "expand": "fill",
+      "h": 3000,
+      "title": "04 Resources hub",
+      "w": 390,
+      "x": 2350,
+      "y": 4120
+    },
+    "ResourcesStates.dc.html": {
+      "expand": "fill",
+      "h": 2400,
+      "title": "04 Resources: search states",
+      "w": 390,
+      "x": 2820,
+      "y": 4120
+    },
+    "SolutionDetail.dc.html": {
+      "expand": "fill",
+      "h": 2500,
+      "title": "03 Solution detail",
+      "w": 390,
+      "x": 1880,
+      "y": 4120
+    },
+    "Solutions.dc.html": {
+      "expand": "fill",
+      "h": 2200,
+      "title": "02 Solutions",
+      "w": 390,
+      "x": 1410,
+      "y": 4120
+    },
+    "Tags.dc.html": {
+      "h": 1700,
+      "title": "Status tag, every state",
+      "w": 1280,
+      "x": 2720,
+      "y": 0
+    },
+    "Terms.dc.html": {
+      "expand": "fill",
+      "h": 1900,
+      "title": "16 Terms",
+      "w": 390,
+      "x": 8930,
+      "y": 4120
+    },
+    "Tool.dc.html": {
+      "expand": "fill",
+      "h": 2600,
+      "title": "08 Tool page",
+      "w": 390,
+      "x": 4700,
+      "y": 4120
+    },
+    "TopicHub.dc.html": {
+      "expand": "fill",
+      "h": 2700,
+      "title": "07 Topic hub",
+      "w": 390,
+      "x": 4230,
+      "y": 4120
+    },
+    "SolutionDetailClassic.dc.html": {
+      "x": 1880,
+      "y": 6740,
+      "w": 390,
+      "h": 2700,
+      "title": "03 Solution detail: classic layout trial",
+      "expand": "fill"
+    }
+  },
+  "createdOnFiles": {
+    "at": "2026-10-30T15:21:00Z",
+    "v": 1
+  },
+  "designSystems": [],
+  "launch": {
+    "view": "canvas"
+  },
+  "noteOrder": [
+    "t1",
+    "t2",
+    "n1",
+    "n2",
+    "n3"
+  ],
+  "notes": {
+    "n1": {
+      "fill": "orange",
+      "text": "PROVISIONAL items (wording kept, styled as final; keep this list in the handoff)\n\n- Status labels on every Solutions row\n- Footer line: Revalue is operated by Simuverse Limited, Kampala, Uganda.\n- Logo spelling: Revalue or ReValue\n- Featured guide: The Practical Guide to Understanding Your Waste (not yet written)\n- Waste audit toolkit release and version date\n- Project: Kyambogo origin line, evidence line (≈ 90%, 60 items, ≈ USD 485), prototype photo (Daisy's consent)\n- About: Daisy's team entry, 'previously called EcoSort', UNDP recognition (no UNDP logo)\n- Contact: email and phone routes\n- Terms and Privacy text (needs review)\n- Every photo slot: real photos replace them before launch\n- Dark theme: not requested",
+      "w": 540,
+      "x": 4080,
+      "y": 0
+    },
+    "n2": {
+      "fill": "gray",
+      "text": "Gaps filled\n\n- The prototype photo (ecosort_gl.jpeg) and the client's reference screenshots did not arrive with the brief. The project slots are labelled placeholders until the photo is uploaded.\n- Home 'Latest' list uses three of the proposed article titles to show the layout. They are ideas, not published work: no dates are shown for them.\n- On dark bands the button flips to surface fill with deep text, so it stays visible. Forest stays the only action colour on light ground.\n- Icons are drawn to Phosphor Regular geometry as stand-ins for the package.\n- Blog, Topic hub and Project related lists reuse the proposed titles, bylined 'the Revalue team'.\n- Pricing: only Waste assessment has cost factors in the brief. Other rows say [Cost factors to confirm]; their status tags are my mapping to the Solutions list, to confirm.\n- Toolkit 'How to use it' steps are drawn from its subtitle. Evidence source, date and method are [bracketed] for the team to fill.\n- Legal pages carry 'Last updated: [date]'.\n- States are Tweaks on the artboard: Home featured project, Solution status, Blog empty topic, Topic hub thin or full, Toolkit file unavailable, Projects empty filter, Article reviewed.",
+      "w": 540,
+      "x": 4080,
+      "y": 760
+    },
+    "t1": {
+      "kind": "title1",
+      "maxW": 4000,
+      "text": "Foundations",
+      "w": 240,
+      "x": 0,
+      "y": -300
+    },
+    "t2": {
+      "kind": "title1",
+      "maxW": 8000,
+      "text": "Screens at 390px",
+      "w": 240,
+      "x": 0,
+      "y": 3820
+    },
+    "n3": {
+      "x": 4080,
+      "y": 1560,
+      "w": 540,
+      "size": "s",
+      "fill": "green",
+      "text": "Photos in the slots (PROVISIONAL)\n\nStock photos from Unsplash, used as stand-ins. The brief bans stock in the final site: replace each with Revalue's own photo before launch.\n\n- Home hero: aerial view of green hills and water, Uganda (photo-1551357141-f73a8402ceb3)\n- Home lead article: wooden compost bays (photo-1716903282677-3a1b5c936b41)\n- Resources featured guide: hands in compost (photo-1584747420644-5c767eebcbe6)\n- Blog lead: buckets of sorted bottles and caps (photo-1582408921715-18e7806365c1)\n- Article: compost, waste and recycle bins (photo-1611284446314-60a58ac0deb9)\n- Topic hub: four colour-coded bins (photo-1532996122724-e3c354a0b15b)\n- Partners: cardboard and paper for recovery (photo-1764529310915-f73129d29c22)\n- About: open water and far shoreline (photo-1700219987725-7cd3a0d69512)\n- Solution detail, classic trial: wheeled bin (photo-1528190336454-13cd56b45b5a)\n\nReal: the prototype photo on Home, Projects and the project page.\nStill empty: the Waste audit toolkit preview, which needs a real screenshot of the workbook."
+    }
+  },
+  "order": [
+    "Main.dc.html",
+    "Logos.dc.html",
+    "Tags.dc.html",
+    "Home.dc.html",
+    "Menu.dc.html",
+    "MenuResources.dc.html",
+    "Solutions.dc.html",
+    "SolutionDetail.dc.html",
+    "Resources.dc.html",
+    "ResourcesStates.dc.html",
+    "Blog.dc.html",
+    "Article.dc.html",
+    "TopicHub.dc.html",
+    "Tool.dc.html",
+    "Projects.dc.html",
+    "Project.dc.html",
+    "Partners.dc.html",
+    "Pricing.dc.html",
+    "About.dc.html",
+    "Contact.dc.html",
+    "ContactStates.dc.html",
+    "NotFound.dc.html",
+    "Terms.dc.html",
+    "Privacy.dc.html",
+    "SolutionDetailClassic.dc.html"
+  ],
+  "pages": [],
+  "title": "Revalue"
+}

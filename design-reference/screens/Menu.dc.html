@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Menu</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600&amp;family=Source+Sans+3:wght@400;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FFFDF8}
+.rv{font-family:'Source Sans 3',system-ui,-apple-system,'Segoe UI',sans-serif;color:#2B372F;background:#FFFDF8;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.rv *{box-sizing:border-box}
+.rv h1,.rv h2,.rv p,.rv ul{margin:0}
+.rv ul{padding:0;list-style:none}
+.sf{font-family:'Newsreader',Georgia,'Times New Roman',serif;font-weight:600;color:#173B2E}
+.kick{font-size:12px;line-height:1.2;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:#5A665E}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 20px;border-radius:4px;border:0;background:#1F5D42;color:#FFFDF8;font:600 16px/1.2 'Source Sans 3',system-ui,sans-serif;text-decoration:none;transition:background-color 150ms}
+.btn:hover{background:#184B35;color:#FFFDF8}
+.rv a:focus-visible{outline:2px solid #1F5D42;outline-offset:2px}
+.ic{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid #7D8379;border-radius:4px;color:#173B2E}
+.mi{display:flex;align-items:center;justify-content:space-between;min-height:64px;border-bottom:1px solid #DDD8CB;text-decoration:none;color:#173B2E}
+.mi:hover .sf{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:5px}
+.sm a{color:#2B372F;display:inline-flex;align-items:center;min-height:44px;text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}
+.panel{animation:in 250ms ease-out both}
+@keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion: reduce){.panel{animation:none}}
+</style>
+</helmet>
+<div class="rv" role="dialog" aria-modal="true" aria-label="Menu" style="min-height:844px;display:flex;flex-direction:column">
+<div style="display:flex;align-items:center;gap:12px;min-height:64px;padding:0 16px;border-bottom:1px solid #DDD8CB">
+<a href="Home.dc.html" aria-label="Revalue, home" style="display:flex;align-items:center;gap:8px;text-decoration:none;margin-right:auto;min-height:44px"><svg width="28" height="28" viewBox="0 0 48 48" aria-hidden="true"><path d="M37 24A13 13 0 1 1 24 11" fill="none" stroke="#173B2E" stroke-width="8" stroke-linecap="round"></path><circle cx="36.4" cy="11.6" r="4.5" fill="#173B2E"></circle></svg><span class="sf" style="font-size:24px;line-height:1;letter-spacing:-0.02em">Revalue</span></a>
+<a class="ic" href="Home.dc.html" aria-label="Close menu"><svg width="22" height="22" viewBox="0 0 256 256" aria-hidden="true"><path d="M200 56L56 200M200 200L56 56" fill="none" stroke="currentColor" stroke-width="16" stroke-linecap="round"></path></svg></a>
+</div>
+<nav class="panel" aria-label="Main" style="flex:1;padding:16px 16px 0;display:flex;flex-direction:column">
+<ul style="border-top:1px solid #DDD8CB">
+<li><a class="mi" href="Solutions.dc.html"><span class="sf" style="font-size:28px;line-height:1.2;letter-spacing:-0.01em">Solutions</span><svg width="22" height="22" viewBox="0 0 256 256" aria-hidden="true"><path d="M96 48l80 80-80 80" fill="none" stroke="#1F5D42" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"></path></svg></a></li>
+<li><a class="mi" href="MenuResources.dc.html" aria-label="Resources, open section"><span class="sf" style="font-size:28px;line-height:1.2;letter-spacing:-0.01em">Resources</span><svg width="22" height="22" viewBox="0 0 256 256" aria-hidden="true"><path d="M96 48l80 80-80 80" fill="none" stroke="#1F5D42" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"></path></svg></a></li>
+<li><a class="mi" href="Projects.dc.html"><span class="sf" style="font-size:28px;line-height:1.2;letter-spacing:-0.01em">Projects</span></a></li>
+<li><a class="mi" href="Partners.dc.html"><span class="sf" style="font-size:28px;line-height:1.2;letter-spacing:-0.01em">Partners</span></a></li>
+<li><a class="mi" href="Pricing.dc.html"><span class="sf" style="font-size:28px;line-height:1.2;letter-spacing:-0.01em">Pricing</span></a></li>
+</ul>
+<div style="margin-top:auto;padding:32px 0 24px;display:flex;flex-direction:column;gap:16px">
+<a class="btn" href="Contact.dc.html" style="width:100%">Contact us</a>
+<ul class="sm" style="display:flex;gap:24px"><li><a href="About.dc.html">About</a></li><li><a href="Terms.dc.html">Terms</a></li><li><a href="Privacy.dc.html">Privacy</a></li></ul>
+<p style="font-family:'Newsreader',Georgia,serif;font-weight:600;font-size:22px;line-height:1.2;color:#173B2E">Waste has value.</p>
+</div>
+</nav>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Revalue tokens</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600&amp;family=Source+Sans+3:wght@400;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F5F2E9}
+a{color:#1F5D42}a:hover{color:#184B35}
+.rv{font-family:'Source Sans 3',system-ui,-apple-system,'Segoe UI',sans-serif;color:#2B372F;background:#F5F2E9;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.rv *{box-sizing:border-box}
+.rv h1,.rv h2,.rv h3,.rv p,.rv ul,.rv figure,.rv dl,.rv dd{margin:0}
+.rv ul{padding:0;list-style:none}
+.sf{font-family:'Newsreader',Georgia,'Times New Roman',serif;font-weight:600;color:#173B2E;text-wrap:balance}
+.bsm{font-size:14px;line-height:1.55;color:#5A665E}
+.lmd{font-size:14px;line-height:1.2;font-weight:600}
+.kick{font-size:12px;line-height:1.2;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:#5A665E}
+.tag{display:inline-flex;align-items:center;gap:6px;min-height:24px;padding:3px 10px 3px 8px;border-radius:9999px;background:#F3E4D8;color:#8F4E27;font-size:12px;line-height:1.2;font-weight:600;letter-spacing:.04em;white-space:nowrap}
+.tag::before{content:'';width:6px;height:6px;border-radius:9999px;background:#B46A3C;flex:none}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 20px;border-radius:4px;border:0;background:#1F5D42;color:#FFFDF8;font:600 16px/1.2 'Source Sans 3',system-ui,sans-serif;text-decoration:none;cursor:pointer;transition:background-color 150ms}
+.btn:hover{background:#184B35;color:#FFFDF8}
+.btn-inv{background:#FFFDF8;color:#173B2E}
+.lnk{color:#1F5D42;font-weight:600;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px}
+.sw{height:80px;border-radius:8px}
+.ct td,.ct th{padding:12px 16px 12px 0;border-bottom:1px solid #DDD8CB;text-align:left;vertical-align:middle;font-size:14px;line-height:1.4}
+.ct th{font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:#5A665E;border-bottom:1px solid #173B2E}
+.chip{display:inline-block;width:28px;height:20px;border-radius:4px;vertical-align:middle;margin-right:4px;border:1px solid rgba(43,55,47,.15)}
+.res{font-weight:600;font-size:12px;letter-spacing:.04em;text-transform:uppercase}
+</style>
+</helmet>
+<div class="rv" style="width:1280px;padding:64px 80px 96px;display:flex;flex-direction:column;gap:80px">
+
+<header style="display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;align-items:end;border-bottom:1px solid #173B2E;padding-bottom:32px">
+<div style="grid-column:span 8;display:flex;flex-direction:column;gap:16px">
+<p class="kick">Revalue design system · Version 0.1 · 30 October 2026</p>
+<h1 class="sf" style="font-size:72px;line-height:1.05;letter-spacing:-0.02em">Tokens</h1>
+</div>
+<p class="bsm" style="grid-column:span 4">Light theme only for this release. Each colour is listed in oklch with its hex, its one job and its contrast. Brand colours come from the playbook. Surface, muted, clay-text, clay-tint, input-border and the semantic colours are added to pass contrast.</p>
+</header>
+
+<section style="display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;align-items:baseline;gap:24px;border-bottom:1px solid #DDD8CB;padding-bottom:16px">
+<span class="kick">01</span><h2 class="sf" style="font-size:44px;line-height:1.12;letter-spacing:-0.015em">Colour</h2>
+<p class="bsm" style="margin-left:auto;max-width:440px">Green means you can act. Clay means labelled. Material names are never shown by colour alone: colour always comes with a word.</p>
+</div>
+<div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:40px 24px">
+
+<div style="display:flex;flex-direction:column;gap:10px"><div class="sw" style="background:#F5F2E9;border:1px solid #DDD8CB"></div><p class="kick">Ground</p><p class="lmd">neutral</p><p style="font-size:15px;line-height:1.3">oklch(0.961 0.012 91.5)</p><p class="bsm">#F5F2E9 · Page background</p></div>
+<div style="display:flex;flex-direction:column;gap:10px"><div class="sw" style="background:#FFFDF8;border:1px solid #DDD8CB"></div><p class="kick">Ground</p><p class="lmd">surface</p><p style="font-size:15px;line-height:1.3">oklch(0.994 0.007 88.6)</p><p class="bsm">#FFFDF8 · Cards, raised content</p></div>
+<div style="display:flex;flex-direction:column;gap:10px"><div class="sw" style="background:#2B372F"></div><p class="kick">Ink</p><p class="lmd">charcoal</p><p style="font-size:15px;line-height:1.3">oklch(0.323 0.021 155.8)</p><p class="bsm">#2B372F · Body text</p></div>
+<div style="display:flex;flex-direction:column;gap:10px"><div class="sw" style="background:#173B2E"></div><p class="kick">Ink</p><p class="lmd">deep</p><p style="font-size:15px;line-height:1.3">oklch(0.321 0.048 167.1)</p><p class="bsm">#173B2E · Headings, dark bands</p></div>
+
+<div style="display:flex;flex-direction:column;gap:10px"><div class="sw" style="background:#5A665E"></div><p class="kick">Ink</p><p class="lmd">muted</p><p style="font-size:15px;line-height:1.3">oklch(0.497 0.019 156.4)</p><p class="bsm">#5A665E · Metadata, helper text</p></div>
+<div style="display:flex;flex-direction:column;gap:10px"><div class="sw" style="background:#1F5D42"></div><p class="kick">Action</p><p class="lmd">forest</p><p style="font-size:15px;line-height:1.3">oklch(0.430 0.078 161.4)</p><p class="bsm">#1F5D42 · Buttons, links, focus ring</p></div>
+<div style="display:flex;flex-direction:column;gap:10px"><div class="sw" style="background:#184B35"></div><p class="kick">Action</p><p class="lmd">forest-hover</p><p style="font-size:15px;line-height:1.3">oklch(0.372 0.067 161.7)</p><p class="bsm">#184B35 · Button and link hover</p></div>
+<div style="display:flex;flex-direction:column;gap:10px"><div class="sw" style="background:#1F5D42;display:flex;align-items:center;padding:0 16px"><span style="color:#FFFDF8;font-weight:600">Aa on forest</span></div><p class="kick">Action</p><p class="lmd">on-forest</p><p style="font-size:15px;line-height:1.3">oklch(0.994 0.007 88.6)</p><p class="bsm">#FFFDF8 · Text on forest</p></div>
+
+<div style="display:flex;flex-direction:column;gap:10px"><div class="sw" style="background:#B46A3C"></div><p class="kick">Label</p><p class="lmd">clay</p><p style="font-size:15px;line-height:1.3">oklch(0.598 0.113 51.0)</p><p class="bsm">#B46A3C · Tag marker, rule, small mark. Never text</p></div>
+<div style="display:flex;flex-direction:column;gap:10px"><div class="sw" style="background:#8F4E27"></div><p class="kick">Label</p><p class="lmd">clay-text</p><p style="font-size:15px;line-height:1.3">oklch(0.494 0.102 49.5)</p><p class="bsm">#8F4E27 · Words inside tags</p></div>
+<div style="display:flex;flex-direction:column;gap:10px"><div class="sw" style="background:#F3E4D8;display:flex;align-items:center;padding:0 16px"><span class="tag">Testing</span></div><p class="kick">Label</p><p class="lmd">clay-tint</p><p style="font-size:15px;line-height:1.3">oklch(0.928 0.023 61.2)</p><p class="bsm">#F3E4D8 · Tag fill</p></div>
+<div style="display:flex;flex-direction:column;gap:10px"><div class="sw" style="background:#DDD8CB"></div><p class="kick">Lines</p><p class="lmd">border</p><p style="font-size:15px;line-height:1.3">oklch(0.883 0.018 89.4)</p><p class="bsm">#DDD8CB · Decorative rules, card edges</p></div>
+
+<div style="display:flex;flex-direction:column;gap:10px"><div class="sw" style="background:#7D8379"></div><p class="kick">Lines</p><p class="lmd">input-border</p><p style="font-size:15px;line-height:1.3">oklch(0.602 0.016 132.6)</p><p class="bsm">#7D8379 · Input and control boundaries</p></div>
+<div style="display:flex;flex-direction:column;gap:10px"><div class="sw" style="background:#A3392A"></div><p class="kick">Semantic</p><p class="lmd">error</p><p style="font-size:15px;line-height:1.3">oklch(0.494 0.143 30.8)</p><p class="bsm">#A3392A · Validation only</p></div>
+<div style="display:flex;flex-direction:column;gap:10px"><div class="sw" style="background:#2E6B4F"></div><p class="kick">Semantic</p><p class="lmd">success</p><p style="font-size:15px;line-height:1.3">oklch(0.479 0.079 161.4)</p><p class="bsm">#2E6B4F · Confirmation only</p></div>
+<div style="display:flex;flex-direction:column;gap:10px"><div class="sw" style="background:#8A5A12"></div><p class="kick">Semantic</p><p class="lmd">warning</p><p style="font-size:15px;line-height:1.3">oklch(0.509 0.103 70.8)</p><p class="bsm">#8A5A12 · Warnings only</p></div>
+</div>
+</section>
+
+<section style="display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;row-gap:24px">
+<div style="grid-column:span 8">
+<h3 class="kick" style="margin-bottom:16px">Contrast, as measured</h3>
+<table class="ct" style="width:100%;border-collapse:collapse">
+<thead><tr><th>Foreground on background</th><th>Ratio</th><th>Used for</th><th>Result</th></tr></thead>
+<tbody>
+<tr><td><span class="chip" style="background:#2B372F"></span> charcoal on neutral</td><td>11.10:1</td><td>Body text</td><td class="res">AAA</td></tr>
+<tr><td><span class="chip" style="background:#2B372F"></span> charcoal on surface</td><td>12.22:1</td><td>Body text in cards</td><td class="res">AAA</td></tr>
+<tr><td><span class="chip" style="background:#173B2E"></span> deep on neutral</td><td>11.03:1</td><td>Headings</td><td class="res">AAA</td></tr>
+<tr><td><span class="chip" style="background:#1F5D42"></span> forest on neutral</td><td>6.94:1</td><td>Links, focus ring</td><td class="res">AA</td></tr>
+<tr><td><span class="chip" style="background:#FFFDF8"></span> on-forest on forest</td><td>7.64:1</td><td>Button label</td><td class="res">AAA</td></tr>
+<tr><td><span class="chip" style="background:#FFFDF8"></span> surface on forest-hover</td><td>9.85:1</td><td>Button label on hover</td><td class="res">AAA</td></tr>
+<tr><td><span class="chip" style="background:#5A665E"></span> muted on neutral</td><td>5.36:1</td><td>Metadata, helper text</td><td class="res">AA</td></tr>
+<tr><td><span class="chip" style="background:#8F4E27"></span> clay-text on neutral</td><td>5.71:1</td><td>Tag words</td><td class="res">AA</td></tr>
+<tr><td><span class="chip" style="background:#8F4E27"></span> clay-text on clay-tint</td><td>5.14:1</td><td>Tag words in the pill</td><td class="res">AA</td></tr>
+<tr><td><span class="chip" style="background:#B46A3C"></span> clay on neutral</td><td>3.70:1</td><td>Tag marker only</td><td class="res">Non-text</td></tr>
+<tr><td><span class="chip" style="background:#7D8379"></span> input-border on neutral</td><td>3.48:1</td><td>Control boundaries</td><td class="res">Non-text</td></tr>
+<tr><td><span class="chip" style="background:#DDD8CB"></span> border on neutral</td><td>1.27:1</td><td>Rules between stories</td><td class="res">Decorative</td></tr>
+<tr><td><span class="chip" style="background:#A3392A"></span> error on neutral</td><td>5.91:1</td><td>Validation messages</td><td class="res">AA</td></tr>
+<tr><td><span class="chip" style="background:#2E6B4F"></span> success on surface</td><td>6.20:1</td><td>Confirmation</td><td class="res">AA</td></tr>
+<tr><td><span class="chip" style="background:#8A5A12"></span> warning on surface</td><td>5.82:1</td><td>Warnings</td><td class="res">AA</td></tr>
+</tbody>
+</table>
+</div>
+<div style="grid-column:span 4;display:flex;flex-direction:column;gap:24px;padding-top:32px">
+<h3 class="kick">Rules</h3>
+<ul style="display:flex;flex-direction:column;border-top:1px solid #DDD8CB">
+<li style="padding:16px 0;border-bottom:1px solid #DDD8CB">Never pure white as a page background. Never pure black as text.</li>
+<li style="padding:16px 0;border-bottom:1px solid #DDD8CB">Forest is reserved for buttons, links and focus. Deep carries large dark bands and headings.</li>
+<li style="padding:16px 0;border-bottom:1px solid #DDD8CB">Clay is only a mark: the tag dot, a short rule. Never on buttons, large fills or body text.</li>
+<li style="padding:16px 0;border-bottom:1px solid #DDD8CB">Text on a photograph sits on a deep overlay of at least 60%, and passes AA at every point it covers.</li>
+<li style="padding:16px 0;border-bottom:1px solid #DDD8CB">On a deep band the button flips to surface fill with deep words, 11.03:1.</li>
+</ul>
+</div>
+</section>
+
+<section style="display:flex;flex-direction:column;gap:0">
+<div style="display:flex;align-items:baseline;gap:24px;border-bottom:1px solid #DDD8CB;padding-bottom:16px">
+<span class="kick">02</span><h2 class="sf" style="font-size:44px;line-height:1.12;letter-spacing:-0.015em">Type</h2>
+<p class="bsm" style="margin-left:auto;max-width:440px">Newsreader 600 for headlines at 22px and above. Source Sans 3 at 400 and 600 for everything else. No text below 12px. Inputs stay at 16px or larger on mobile.</p>
+</div>
+
+<div style="display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;padding:32px 0;border-bottom:1px solid #DDD8CB;align-items:baseline">
+<div style="grid-column:span 3"><p class="lmd">display-xl</p><p class="bsm">Newsreader 600 · 40 to 72px fluid · 1.05 · -0.02em</p></div>
+<p class="sf" style="grid-column:span 9;font-size:72px;line-height:1.05;letter-spacing:-0.02em">Waste has value.</p>
+</div>
+<div style="display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;padding:32px 0;border-bottom:1px solid #DDD8CB;align-items:baseline">
+<div style="grid-column:span 3"><p class="lmd">headline-lg</p><p class="bsm">Newsreader 600 · 30 to 44px fluid · 1.12 · -0.015em</p></div>
+<p class="sf" style="grid-column:span 9;font-size:44px;line-height:1.12;letter-spacing:-0.015em">What we are building and offering</p>
+</div>
+<div style="display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;padding:28px 0;border-bottom:1px solid #DDD8CB;align-items:baseline">
+<div style="grid-column:span 3"><p class="lmd">headline-md</p><p class="bsm">Newsreader 600 · 22 to 28px fluid · 1.2 · -0.01em</p></div>
+<p class="sf" style="grid-column:span 9;font-size:28px;line-height:1.2;letter-spacing:-0.01em">Smart segregation prototype</p>
+</div>
+<div style="display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;padding:24px 0;border-bottom:1px solid #DDD8CB;align-items:baseline">
+<div style="grid-column:span 3"><p class="lmd">headline-sm</p><p class="bsm">Source Sans 3 600 · 18px · 1.35</p></div>
+<p style="grid-column:span 9;font-size:18px;line-height:1.35;font-weight:600;color:#173B2E">For recovery partners</p>
+</div>
+<div style="display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;padding:24px 0;border-bottom:1px solid #DDD8CB;align-items:baseline">
+<div style="grid-column:span 3"><p class="lmd">body-lg, articles</p><p class="bsm">Source Sans 3 400 · 18px · 1.65</p></div>
+<p style="grid-column:span 7;font-size:18px;line-height:1.65">A waste audit is a planned look at what a site throws away. You weigh or estimate each type of waste, note how much is mixed, and follow where it goes after collection.</p>
+</div>
+<div style="display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;padding:24px 0;border-bottom:1px solid #DDD8CB;align-items:baseline">
+<div style="grid-column:span 3"><p class="lmd">body-md</p><p class="bsm">Source Sans 3 400 · 16px · 1.6</p></div>
+<p style="grid-column:span 7;font-size:16px;line-height:1.6">Revalue helps organisations see what they throw away, separate it better, and find out what can be recovered.</p>
+</div>
+<div style="display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;padding:24px 0;border-bottom:1px solid #DDD8CB;align-items:baseline">
+<div style="grid-column:span 3"><p class="lmd">body-sm, metadata only</p><p class="bsm">Source Sans 3 400 · 14px · 1.55</p></div>
+<p class="bsm" style="grid-column:span 9">By Patience Sitati · Published 30 October 2026</p>
+</div>
+<div style="display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;padding:24px 0;border-bottom:1px solid #DDD8CB;align-items:baseline">
+<div style="grid-column:span 3"><p class="lmd">label-md</p><p class="bsm">Source Sans 3 600 · 14px · 1.2</p></div>
+<p class="lmd" style="grid-column:span 9">Send enquiry</p>
+</div>
+<div style="display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;padding:24px 0;border-bottom:1px solid #DDD8CB;align-items:center">
+<div style="grid-column:span 3"><p class="lmd">label-sm, tags</p><p class="bsm">Source Sans 3 600 · 12px · 1.2 · 0.04em</p></div>
+<div style="grid-column:span 9;display:flex;gap:16px;align-items:center"><span class="tag">In development</span><span class="kick">Section label · Waste audits</span></div>
+</div>
+</section>
+
+<section style="display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;row-gap:32px">
+<div style="grid-column:1 / -1;display:flex;align-items:baseline;gap:24px;border-bottom:1px solid #DDD8CB;padding-bottom:16px">
+<span class="kick">03</span><h2 class="sf" style="font-size:44px;line-height:1.12;letter-spacing:-0.015em">Shape, space and motion</h2>
+</div>
+
+<div style="grid-column:span 6;display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<h3 class="kick">Radius</h3>
+<div style="display:flex;gap:24px;align-items:flex-end">
+<div style="display:flex;flex-direction:column;gap:8px"><div style="width:96px;height:48px;background:#1F5D42;border-radius:4px"></div><p class="bsm">4px · buttons, inputs</p></div>
+<div style="display:flex;flex-direction:column;gap:8px"><div style="width:96px;height:72px;background:#D6CEBB;border-radius:8px"></div><p class="bsm">8px · images, cards</p></div>
+<div style="display:flex;flex-direction:column;gap:8px"><div style="width:96px;height:24px;background:#F3E4D8;border-radius:9999px"></div><p class="bsm">9999px · tags</p></div>
+<div style="display:flex;flex-direction:column;gap:8px"><div style="width:96px;height:72px;background:#173B2E"></div><p class="bsm">0 · full-bleed, bands</p></div>
+</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px">
+<h3 class="kick">Spacing scale</h3>
+<div style="display:flex;align-items:center;gap:16px"><span class="bsm" style="width:40px">4</span><div style="height:12px;width:4px;background:#173B2E"></div></div>
+<div style="display:flex;align-items:center;gap:16px"><span class="bsm" style="width:40px">8</span><div style="height:12px;width:8px;background:#173B2E"></div></div>
+<div style="display:flex;align-items:center;gap:16px"><span class="bsm" style="width:40px">16</span><div style="height:12px;width:16px;background:#173B2E"></div></div>
+<div style="display:flex;align-items:center;gap:16px"><span class="bsm" style="width:40px">24</span><div style="height:12px;width:24px;background:#173B2E"></div></div>
+<div style="display:flex;align-items:center;gap:16px"><span class="bsm" style="width:40px">32</span><div style="height:12px;width:32px;background:#173B2E"></div></div>
+<div style="display:flex;align-items:center;gap:16px"><span class="bsm" style="width:40px">48</span><div style="height:12px;width:48px;background:#173B2E"></div><span class="bsm">Section gap, mobile</span></div>
+<div style="display:flex;align-items:center;gap:16px"><span class="bsm" style="width:40px">64</span><div style="height:12px;width:64px;background:#173B2E"></div></div>
+<div style="display:flex;align-items:center;gap:16px"><span class="bsm" style="width:40px">96</span><div style="height:12px;width:96px;background:#173B2E"></div><span class="bsm">Section gap, desktop</span></div>
+<p class="bsm" style="margin-top:8px">Container 1200px. Gutters 24px, 16px on mobile. Article column about 680px.</p>
+</div>
+</div>
+
+<div style="grid-column:span 6;display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;flex-direction:column;gap:16px">
+<h3 class="kick">Shadow</h3>
+<div style="display:flex;gap:24px">
+<div style="flex:1;height:96px;background:#FFFDF8;border:1px solid #DDD8CB;border-radius:8px;padding:12px"><p class="lmd">Resting</p><p class="bsm">none, 1px border</p></div>
+<div style="flex:1;height:96px;background:#FFFDF8;border-radius:8px;padding:12px;box-shadow:0 1px 3px rgb(0 0 0 / 0.06), 0 4px 12px rgb(0 0 0 / 0.05)"><p class="lmd">Raised</p><p class="bsm">0 1 3 / .06, 0 4 12 / .05</p></div>
+<div style="flex:1;height:96px;background:#FFFDF8;border-radius:8px;padding:12px;box-shadow:0 8px 30px rgb(0 0 0 / 0.12)"><p class="lmd">Overlay</p><p class="bsm">0 8 30 / .12</p></div>
+</div>
+</div>
+<div style="display:flex;flex-direction:column;gap:12px">
+<h3 class="kick">Motion</h3>
+<ul style="border-top:1px solid #DDD8CB">
+<li style="display:flex;gap:16px;padding:12px 0;border-bottom:1px solid #DDD8CB"><span class="lmd" style="width:96px;flex:none">150ms</span><span>Hover and focus</span></li>
+<li style="display:flex;gap:16px;padding:12px 0;border-bottom:1px solid #DDD8CB"><span class="lmd" style="width:96px;flex:none">250ms</span><span>Overlays, menu panels</span></li>
+<li style="display:flex;gap:16px;padding:12px 0;border-bottom:1px solid #DDD8CB"><span class="lmd" style="width:96px;flex:none">Properties</span><span>Transform and opacity only. Nothing moves at rest. Reduced motion turns it all off.</span></li>
+<li style="display:flex;gap:16px;padding:12px 0;border-bottom:1px solid #DDD8CB"><span class="lmd" style="width:96px;flex:none">Signature</span><span>A status tag settles 4px into place, once, when its card enters view.</span></li>
+</ul>
+</div>
+<div style="display:flex;gap:24px;align-items:center">
+<div style="width:44px;height:44px;border:1px dashed #7D8379;border-radius:4px;display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 256 256" aria-hidden="true"><path d="M40 64h176M40 128h176M40 192h176" fill="none" stroke="#173B2E" stroke-width="16" stroke-linecap="round"></path></svg></div>
+<p class="bsm">44px minimum touch target on every pointer. Icons: Phosphor, regular weight, used rarely.</p>
+</div>
+</div>
+</section>
+
+<section style="display:flex;flex-direction:column;gap:32px">
+<div style="display:flex;align-items:baseline;gap:24px;border-bottom:1px solid #DDD8CB;padding-bottom:16px">
+<span class="kick">04</span><h2 class="sf" style="font-size:44px;line-height:1.12;letter-spacing:-0.015em">Controls</h2>
+<p class="bsm" style="margin-left:auto;max-width:440px">Base components are shadcn/ui, restyled only through these tokens.</p>
+</div>
+<div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px 24px;align-items:start">
+<div style="display:flex;flex-direction:column;gap:12px"><p class="kick">Button</p><a class="btn" href="#">Talk to us</a><p class="bsm">Forest, 4px, 48px tall</p></div>
+<div style="display:flex;flex-direction:column;gap:12px"><p class="kick">Hover</p><a class="btn" href="#" style="background:#184B35">Talk to us</a><p class="bsm">forest-hover. Colour changes and the arrow, where present, moves 2px</p></div>
+<div style="display:flex;flex-direction:column;gap:12px"><p class="kick">Focus</p><a class="btn" href="#" style="outline:2px solid #1F5D42;outline-offset:2px">Talk to us</a><p class="bsm">2px forest ring, 2px offset</p></div>
+<div style="display:flex;flex-direction:column;gap:12px;background:#173B2E;padding:16px;border-radius:0"><p class="kick" style="color:#FFFDF8">On a deep band</p><a class="btn btn-inv" href="#">Talk to us</a></div>
+
+<div style="display:flex;flex-direction:column;gap:12px"><p class="kick">Link</p><a class="lnk" href="#">Read how we work</a><p class="bsm">Forest, underlined, 600</p></div>
+<div style="display:flex;flex-direction:column;gap:8px"><label for="t-a" class="lmd">Email</label><input id="t-a" type="email" value="" placeholder="" style="height:48px;border:1px solid #7D8379;border-radius:4px;background:#FFFDF8;font:400 16px 'Source Sans 3',sans-serif;padding:0 12px;color:#2B372F"></div>
+<div style="display:flex;flex-direction:column;gap:8px"><label for="t-b" class="lmd">Email, focused</label><input id="t-b" type="email" value="facilities@example.com" style="height:48px;border:1px solid #1F5D42;outline:2px solid #1F5D42;outline-offset:1px;border-radius:4px;background:#FFFDF8;font:400 16px 'Source Sans 3',sans-serif;padding:0 12px;color:#2B372F"></div>
+<div style="display:flex;flex-direction:column;gap:8px"><label for="t-c" class="lmd">Email, error</label><p style="color:#A3392A;font-size:14px;font-weight:600;line-height:1.4">Enter an email address like name@example.com.</p><input id="t-c" type="email" value="facilities@" aria-invalid="true" style="height:48px;border:2px solid #A3392A;border-radius:4px;background:#FFFDF8;font:400 16px 'Source Sans 3',sans-serif;padding:0 12px;color:#2B372F"></div>
+</div>
+</section>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":3700}}'>
+class Component extends DCLogic {
+renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

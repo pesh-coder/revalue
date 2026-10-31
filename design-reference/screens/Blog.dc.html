@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blog: Revalue</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,600&amp;family=Source+Sans+3:wght@400;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F5F2E9}
+a{color:#1F5D42}a:hover{color:#184B35}
+.rv{font-family:'Source Sans 3',system-ui,-apple-system,'Segoe UI',sans-serif;color:#2B372F;background:#F5F2E9;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.rv *{box-sizing:border-box}
+.rv h1,.rv h2,.rv h3,.rv p,.rv ul,.rv ol,.rv figure{margin:0}
+.rv ul,.rv ol{padding:0;list-style:none}
+.sf{font-family:'Newsreader',Georgia,'Times New Roman',serif;font-weight:600;color:#173B2E;text-wrap:balance}
+.dxl{font-size:clamp(40px,5.6vw,72px);line-height:1.05;letter-spacing:-0.02em}
+.hlg{font-size:clamp(30px,3.4vw,44px);line-height:1.12;letter-spacing:-0.015em}
+.hmd{font-size:clamp(22px,2.2vw,28px);line-height:1.2;letter-spacing:-0.01em}
+.blg{font-size:18px;line-height:1.65}
+.bsm{font-size:14px;line-height:1.55;color:#5A665E}
+.kick{font-size:12px;line-height:1.2;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:#5A665E}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 20px;border-radius:4px;border:0;background:#1F5D42;color:#FFFDF8;font:600 16px/1.2 'Source Sans 3',system-ui,sans-serif;text-decoration:none;cursor:pointer;transition:background-color 150ms}
+.btn:hover{background:#184B35;color:#FFFDF8}
+.btn-sm{min-height:44px;padding:0 14px;font-size:14px}
+.rv a:focus-visible,.rv button:focus-visible{outline:2px solid #1F5D42;outline-offset:2px}
+.wrap{width:100%;max-width:1200px;margin:0 auto;padding-left:16px;padding-right:16px}
+@media(min-width:768px){.wrap{padding-left:24px;padding-right:24px}}
+.ph{position:relative;display:block;background-color:#D6CEBB;background-image:repeating-linear-gradient(135deg,rgba(43,55,47,.06) 0 1px,transparent 1px 12px);overflow:hidden}
+.ph-l{position:absolute;left:12px;right:12px;bottom:12px;font-size:12px;line-height:1.4;font-weight:600;letter-spacing:.02em;color:#2B372F}
+.dnav{display:none}
+@media(min-width:1024px){.dnav{display:flex;gap:28px}.mnu{display:none!important}}
+.dnav a{color:#2B372F;text-decoration:none}
+.dnav a[aria-current]{color:#173B2E;font-weight:600;text-decoration:underline;text-underline-offset:6px;text-decoration-thickness:2px}
+.mnu{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid #7D8379;border-radius:4px;color:#173B2E}
+.ft a{color:#FFFDF8;text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px;display:inline-flex;align-items:center;min-height:44px}
+.hl{color:inherit;text-decoration:none}.hl:hover{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:5px;color:inherit}
+.flt{display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border:1px solid #7D8379;border-radius:4px;background:#FFFDF8;color:#173B2E;font:600 14px/1.2 'Source Sans 3',system-ui,sans-serif;white-space:nowrap;cursor:pointer}
+.flt[aria-pressed="true"]{background:#173B2E;border-color:#173B2E;color:#FFFDF8}
+.it{padding:20px 0;border-bottom:1px solid #DDD8CB;display:flex;flex-direction:column;gap:8px}
+.pg{display:inline-flex;align-items:center;justify-content:center;min-width:44px;min-height:44px;padding:0 12px;border-radius:4px;text-decoration:none;font-weight:600;color:#1F5D42}
+.pg[aria-current]{background:#173B2E;color:#FFFDF8}
+</style>
+</helmet>
+<div class="rv">
+
+<header style="border-bottom:1px solid #DDD8CB;background:#F5F2E9">
+<div class="wrap" style="display:flex;align-items:center;gap:12px;min-height:64px">
+<a href="Home.dc.html" aria-label="Revalue, home" style="display:flex;align-items:center;gap:8px;text-decoration:none;margin-right:auto;min-height:44px"><svg width="28" height="28" viewBox="0 0 48 48" aria-hidden="true"><path d="M37 24A13 13 0 1 1 24 11" fill="none" stroke="#173B2E" stroke-width="8" stroke-linecap="round"></path><circle cx="36.4" cy="11.6" r="4.5" fill="#173B2E"></circle></svg><span class="sf" style="font-size:24px;line-height:1;letter-spacing:-0.02em">Revalue</span></a>
+<nav class="dnav" aria-label="Main"><a href="Solutions.dc.html">Solutions</a><a href="Resources.dc.html" aria-current="page">Resources</a><a href="Projects.dc.html">Projects</a><a href="Partners.dc.html">Partners</a><a href="Pricing.dc.html">Pricing</a></nav>
+<a class="btn btn-sm" href="Contact.dc.html">Contact us</a>
+<a class="mnu" href="Menu.dc.html" aria-label="Open menu"><svg width="22" height="22" viewBox="0 0 256 256" aria-hidden="true"><path d="M40 64h176M40 128h176M40 192h176" fill="none" stroke="currentColor" stroke-width="16" stroke-linecap="round"></path></svg></a>
+</div>
+</header>
+
+<main>
+<section class="wrap" style="padding-top:48px;padding-bottom:24px;display:flex;flex-direction:column;gap:12px">
+<p class="kick"><a href="Resources.dc.html" style="color:#1F5D42">Resources</a></p>
+<h1 class="sf dxl">Blog</h1>
+<p class="blg">Explanations, field lessons and practical advice.</p>
+</section>
+
+<div class="wrap" style="padding-bottom:24px">
+<div role="group" aria-label="Filter by topic" style="display:flex;gap:8px;overflow-x:auto;padding:4px 0 8px">
+<button class="flt" type="button" aria-pressed="{{allPressed}}">All topics</button>
+<button class="flt" type="button" aria-pressed="false">Understanding waste</button>
+<button class="flt" type="button" aria-pressed="false">Waste audits</button>
+<button class="flt" type="button" aria-pressed="false">Segregation</button>
+<button class="flt" type="button" aria-pressed="false">Resource recovery</button>
+<button class="flt" type="button" aria-pressed="false">Business waste</button>
+<button class="flt" type="button" aria-pressed="{{techPressed}}">Technology</button>
+<button class="flt" type="button" aria-pressed="false">Waste economics</button>
+<button class="flt" type="button" aria-pressed="false">Uganda and Africa</button>
+</div>
+</div>
+
+<sc-if value="{{isList}}" hint-placeholder-val="{{ true }}">
+<section class="wrap" aria-label="Articles" style="padding-bottom:64px">
+<article style="display:flex;flex-direction:column;gap:12px;padding-bottom:24px;border-bottom:2px solid #173B2E">
+<a href="Article.dc.html" class="ph" aria-hidden="true" tabindex="-1" style="aspect-ratio:16 / 10;border-radius:8px"><img src="../../public/images/stock-sorted-bottles.jpg" alt="" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center"></a>
+<p class="kick">Waste audits</p>
+<h2 class="sf hlg"><a class="hl" href="Article.dc.html">What is a waste audit?</a></h2>
+<p>A waste audit is a planned look at what a site throws away.</p>
+<p class="bsm">By Patience Sitati · Published 30 October 2026</p>
+</article>
+<ol>
+<li class="it"><p class="kick">Segregation</p><h2 class="sf hmd"><a class="hl" href="Article.dc.html">Why labels and bins alone are not enough</a></h2><p class="bsm">By the Revalue team</p></li>
+<li class="it"><p class="kick">Resource recovery</p><h2 class="sf hmd"><a class="hl" href="Article.dc.html">Recyclable versus actually recycled</a></h2><p class="bsm">By the Revalue team</p></li>
+<li class="it"><p class="kick">Understanding waste</p><h2 class="sf hmd"><a class="hl" href="Article.dc.html">What happens after waste collection?</a></h2><p class="bsm">By the Revalue team</p></li>
+<li class="it"><p class="kick">Business waste</p><h2 class="sf hmd"><a class="hl" href="Article.dc.html">Waste management for hotels</a></h2><p class="bsm">By the Revalue team</p></li>
+<li class="it"><p class="kick">Technology</p><h2 class="sf hmd"><a class="hl" href="Article.dc.html">Smart bins and fill-level monitoring</a></h2><p class="bsm">By the Revalue team</p></li>
+</ol>
+<nav aria-label="Pagination" style="display:flex;align-items:center;justify-content:space-between;gap:8px;padding-top:24px">
+<span class="pg" aria-disabled="true" style="color:#5A665E;font-weight:400">Previous</span>
+<div style="display:flex;gap:4px"><a class="pg" href="Blog.dc.html" aria-current="page">1</a><a class="pg" href="Blog.dc.html">2</a></div>
+<a class="pg" href="Blog.dc.html">Next</a>
+</nav>
+</section>
+</sc-if>
+
+<sc-if value="{{isEmpty}}" hint-placeholder-val="{{ false }}">
+<section class="wrap" aria-live="polite" style="padding-bottom:64px">
+<div style="border-top:2px solid #173B2E;padding-top:32px;display:flex;flex-direction:column;gap:20px;align-items:flex-start">
+<p class="sf hmd">No articles on this topic yet.</p>
+<a class="btn" href="Blog.dc.html">See all articles</a>
+</div>
+</section>
+</sc-if>
+</main>
+
+<footer class="ft" style="background:#173B2E;color:#FFFDF8">
+<div class="wrap" style="padding-top:48px;padding-bottom:32px;display:flex;flex-direction:column;gap:24px">
+<svg width="36" height="36" viewBox="0 0 48 48" aria-hidden="true"><path d="M37 24A13 13 0 1 1 24 11" fill="none" stroke="#FFFDF8" stroke-width="8" stroke-linecap="round"></path><circle cx="36.4" cy="11.6" r="4.5" fill="#FFFDF8"></circle></svg>
+<p class="sf hlg" style="color:#FFFDF8">Waste has value.</p>
+<nav aria-label="Footer"><ul style="display:flex;flex-wrap:wrap;column-gap:24px"><li><a href="About.dc.html">About</a></li><li><a href="Contact.dc.html">Contact</a></li><li><a href="Terms.dc.html">Terms</a></li><li><a href="Privacy.dc.html">Privacy</a></li></ul></nav>
+<p style="font-size:14px;line-height:1.55;color:#FFFDF8;border-top:1px solid rgba(255,253,248,.24);padding-top:16px">Revalue is operated by Simuverse Limited, Kampala, Uganda.</p>
+</div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"state":{"editor":"enum","options":["Article list","Empty topic"],"default":"Article list","section":"States"},"$preview":{"width":390,"height":2500}}'>
+class Component extends DCLogic {
+renderVals() {
+const empty = (this.props.state ?? 'Article list') === 'Empty topic';
+return { isList: !empty, isEmpty: empty, allPressed: empty ? 'false' : 'true', techPressed: empty ? 'true' : 'false' };
+}
+}
+</script>
+</body>
+</html>
