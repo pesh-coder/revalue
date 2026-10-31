@@ -9,7 +9,7 @@
   },
   "scripts": {
     "dev": "next dev --hostname 0.0.0.0",
-    "build": "payload generate:importmap && next build",
+    "build": "node scripts/check-build-env.mjs && payload generate:importmap && next build",
     "start": "next start --hostname 0.0.0.0",
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
@@ -24,6 +24,7 @@
     "cms:seed:baseline": "tsx scripts/seed-baseline.ts"
   },
   "dependencies": {
+    "@next/env": "16.4.3",
     "@aws-sdk/client-s3": "3.1161.0",
     "@payloadcms/db-postgres": "3.92.1",
     "@payloadcms/email-resend": "3.92.1",

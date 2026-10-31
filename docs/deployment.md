@@ -15,6 +15,22 @@ The S3 adapter also supports other private S3-compatible providers. Cloudflare R
 
 ## Environment
 
+### Vercel: missing Payload secret during prerendering
+
+If the build reports `missing secret key` while reading site settings, the project is missing `PAYLOAD_SECRET`. In Vercel, open the Revalue project → Settings → Environment Variables and add these for Production:
+
+| Name                   | Value                                                                               |
+| ---------------------- | ----------------------------------------------------------------------------------- |
+| `PAYLOAD_SECRET`       | A newly generated, private random secret; keep it stable across deployments.        |
+| `DATABASE_URL`         | The Neon production database's TLS connection string; never the local database URL. |
+| `SITE_URL`             | `https://revalue-sigma.vercel.app` (update when the final domain is connected).     |
+| `REVALUE_CONTENT_MODE` | `cms`                                                                               |
+| `ENQUIRIES_ENABLED`    | `false` until live email delivery is configured and verified.                       |
+
+Generate the secret in a trusted local terminal with `node -e "console.log(require('node:crypto').randomBytes(32).toString('hex'))"`. Copy the output directly into Vercel; do not put it in source control or chat. It is a private application secret, not a Payload account API key. Use the same value when running the production initialization commands below. Preview deployments should use their own database, secret and correct origin.
+
+Environment changes apply to new deployments. Complete the first-database initialization below, then redeploy. The build now checks for missing settings before compilation; it does not create a database or apply migrations. The Node engine warning in the reported build is separate from the missing-secret failure.
+
 Set `REVALUE_CONTENT_MODE=cms`, `DATABASE_URL`, a strong `PAYLOAD_SECRET` and the correct `SITE_URL`. Use the provider's TLS-enabled database connection string. Set `S3_BUCKET`, `S3_ENDPOINT`, `S3_REGION=auto`, `S3_ACCESS_KEY_ID` and `S3_SECRET_ACCESS_KEY`. The R2 endpoint is the S3 API endpoint shown in the dashboard, not an `r2.dev` public URL. No storage credentials go in browser code.
 
 For direct browser uploads, configure bucket CORS with only the actual site and private-preview origins. Allow PUT, GET and HEAD; allow Content-Type and If-None-Match headers, and expose ETag. The bucket stays private. Payload checks upload authorisation and file policy; its file endpoint checks release approval before returning bytes. The adapter downloads direct uploads for byte validation before accepting new metadata. Verify this against the actual bucket before relying on hosted uploads.
