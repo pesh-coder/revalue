@@ -4,6 +4,8 @@ The local prototype uses real PostgreSQL and Payload. Hosted operations remain a
 
 ## Accounts to prepare
 
+The repository's `vercel.json` explicitly selects the Next.js framework and resets the output directory to the framework default. In Vercel, keep the project root at this repository's root (where `package.json` lives). A completed generic build alone does not verify that Next.js routes and functions were packaged or that the production domain is assigned. If the site returns Vercel's plain `NOT_FOUND` response, compare the deployment's Visit URL with Settings > Domains and confirm that the intended production deployment is Current.
+
 1. GitHub repository: https://github.com/pesh-coder/revalue
 2. Vercel project connected to the repository, with a Node version satisfying `package.json`.
 3. A dedicated Neon production database. Keep preview/test data separate.
