@@ -1,10 +1,10 @@
 """Exercise a running local production build using synthetic records and the local Admin.
 Writes only redacted pass/fail evidence, and removes its own test records afterward.
 """
-import copy,http.cookiejar,json,time,urllib.request,urllib.error,uuid,sys
+import copy,http.cookiejar,json,os,time,urllib.request,urllib.error,uuid,sys
 from pathlib import Path
 root='http://localhost:3000'
-credentials=json.loads(Path('.local/admin-credentials.json').read_text())
+credentials=json.loads(Path(os.environ.get('REVALUE_VERIFY_CREDENTIALS','.local/admin-credentials.json')).read_text())
 client=urllib.request.build_opener(urllib.request.HTTPCookieProcessor(http.cookiejar.CookieJar()))
 public=urllib.request.build_opener(urllib.request.HTTPRedirectHandler())
 checks=[];tag=uuid.uuid4().hex[:8];post_id=None;media_id=None

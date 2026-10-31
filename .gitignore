@@ -7,3 +7,4 @@ media/
 artifacts/
 files/
 .local/
+.neon

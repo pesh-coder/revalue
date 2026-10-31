@@ -30,7 +30,9 @@ try {
       })
   }
   const h = await p.findGlobal({ slug: 'homepage', overrideAccess: true, depth: 0 })
-  if (!h._status)
+  // Payload applies a default draft status even when no global row exists.
+  // Only a persisted ID proves the owner already has settings to preserve.
+  if (!h.id)
     await p.updateGlobal({
       slug: 'homepage',
       overrideAccess: true,
@@ -38,7 +40,7 @@ try {
       data: { copy: defaultHomeCopy, showFeaturedProject: false, _status: 'published' },
     })
   const s = await p.findGlobal({ slug: 'site-settings', overrideAccess: true, depth: 0 })
-  if (!s._status)
+  if (!s.id)
     await p.updateGlobal({
       slug: 'site-settings',
       overrideAccess: true,

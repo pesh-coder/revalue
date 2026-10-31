@@ -13,7 +13,9 @@ export async function proxy(request: NextRequest) {
     const record = await Promise.race([
       query.catch(() => null),
       new Promise<null>((resolve) => {
-        timeout = setTimeout(() => resolve(null), 1500)
+        // Allow a pooled cloud connection to wake/reconnect before falling back.
+        // Keep this bounded so cached pages remain usable during an outage.
+        timeout = setTimeout(() => resolve(null), 3000)
       }),
     ]).finally(() => clearTimeout(timeout))
     if (record?.rows[0]?.gone)

@@ -39,6 +39,10 @@ Set `RESEND_API_KEY`, `EMAIL_FROM` and `EMAIL_TO`. Keep `ENQUIRIES_ENABLED=false
 
 ## Initialise before the first build
 
+Neon CLI setup: `neon init -y --org-id org-rapid-block-69421865 --project-id old-bread-60972090 --branch production --services postgres`, then `neon deploy`. This links the existing project and pulls `DATABASE_URL`, `DATABASE_URL_UNPOOLED` and `NEON_BRANCH` into the ignored local environment file. It does not deploy the Next.js website to Vercel or populate Payload tables. Back up the existing local environment before pulling. Preserve `PAYLOAD_SECRET` and the other application settings; Neon supplies database settings only. The app retains Payload authentication and its PostgreSQL adapter.
+
+`npm run db:migrate` / `pnpm db:migrate` now selects `DATABASE_URL_UNPOOLED` for Neon migrations. Normal application traffic continues to use pooled `DATABASE_URL`. With local PostgreSQL, the migration command falls back to `DATABASE_URL`.
+
 The CMS-backed build expects the initial public page text and globals. From a trusted terminal configured for the intended database:
 
 1. Run `pnpm db:migrate`. Schema push is disabled in every environment.
