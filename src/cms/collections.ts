@@ -4,6 +4,7 @@ import { defaultHomeCopy } from '@/lib/home-copy'
 import { validateUpload, validateCloudUpload } from './upload-validation'
 import { freezePublishedURL, recordPublication, recordDeletion } from './publication'
 import { secureCookiesForOrigin } from '@/lib/request-origin'
+import { siteLocation } from './admin-fields'
 
 const homeCopyLabels: Record<string, string> = {
   heroTitle: 'Banner heading',
@@ -169,6 +170,7 @@ export const Posts: CollectionConfig = {
   access: { read: published, create: team, update: team, delete: admin },
   versions: { drafts: true, maxPerDoc: 20 },
   fields: [
+    siteLocation,
     {
       name: 'title',
       label: 'Title',

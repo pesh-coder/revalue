@@ -1,15 +1,16 @@
-// Revalue admin theme. Colours come from design-reference/tokens.css.
+// Revalue admin theme, laid out like the WordPress admin.
+// Colours come from design-reference/tokens.css; change them here to restyle the whole admin.
 $deep: #173b2e;
+$deep-dark: #10291f;
 $forest: #1f5d42;
 $forest-hover: #184b35;
 $charcoal: #2b372f;
 $muted: #5a665e;
-$clay: #b46a3c;
-$clay-text: #8f4e27;
-$clay-tint: #f3e4d8;
-$warm: #fffdf8;
-$line: #e3e6e1;
-$input-line: #7d8379;
+$canvas: #f3f4f1;
+$line: #c9cec7;
+$line-soft: #e3e6e1;
+$menu-text: #e8eee9;
+$menu-muted: #b9c8bd;
 
 .revalue-admin-setup {
   max-width: 680px;
@@ -30,22 +31,32 @@ $input-line: #7d8379;
   color: $forest;
 }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
 // ---- Global palette ---------------------------------------------------------
 html[data-theme='light'] {
-  --theme-bg: #f6f7f4;
+  --theme-bg: #{$canvas};
   --theme-text: #{$charcoal};
   --theme-elevation-1000: #{$deep};
   --theme-elevation-900: #{$deep};
   --theme-elevation-800: #{$charcoal};
   --theme-input-bg: #ffffff;
   --theme-success-500: #{$forest};
+  --style-radius-s: 3px;
+  --style-radius-m: 3px;
   --font-body: var(--font-revalue), system-ui, -apple-system, 'Segoe UI', sans-serif;
 }
 
 a {
   color: $forest;
 }
-
 :focus-visible {
   outline-color: $forest;
 }
@@ -66,79 +77,86 @@ a {
   color: $muted;
 }
 
-// Document headers and list titles
-.doc-header__title,
-.list-header h1,
-.collection-list h1 {
-  color: $deep;
-}
-
-// ---- Sidebar (WordPress-style dark menu in Revalue deep green) ---------------
+// ---- Sidebar menu ------------------------------------------------------------
 .nav {
-  --theme-text: #ffffff;
-  --theme-elevation-400: rgba(255, 255, 255, 0.6);
+  --theme-text: #{$menu-text};
   --theme-elevation-100: transparent;
   background: $deep;
-  color: #ffffff;
-
-  a {
-    color: #ffffff;
+  color: $menu-text;
+}
+.revalue-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  min-height: 100%;
+}
+.revalue-menu__list,
+.revalue-menu__sub {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.revalue-menu__list {
+  margin-inline: calc(var(--nav-padding-inline-start) * -1) calc(var(--nav-padding-inline-end) * -1);
+}
+.revalue-menu__link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 40px;
+  padding: 0 var(--nav-padding-inline-start);
+  color: $menu-text !important;
+  font-size: 15px;
+  text-decoration: none;
+  &:hover,
+  &:focus-visible {
+    color: #ffffff !important;
+    background: rgba(255, 255, 255, 0.08);
+  }
+  svg {
+    flex-shrink: 0;
+    opacity: 0.85;
   }
 }
-
-.nav-group__toggle {
-  margin-top: 6px;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-}
-
-.nav__link,
-.revalue-nav-top__link {
-  border-radius: 4px;
-  padding-inline: 10px !important;
-  margin-inline: -10px;
-  min-height: 34px;
-}
-.nav a.nav__link:hover,
-.nav a.nav__link:focus-visible,
-.revalue-nav-top__link:hover,
-.revalue-nav-top__link:focus-visible {
-  background: rgba(255, 255, 255, 0.1);
-  text-decoration: none;
-}
-.nav__link:has(.nav__link-indicator),
-.nav__link.active,
-.revalue-nav-top__link--active {
+.revalue-menu__item.is-open > .revalue-menu__link {
+  color: #ffffff !important;
   background: $forest;
   font-weight: 600;
 }
-.nav__link-indicator {
-  inset-inline-start: 0;
-  height: 100%;
-  width: 3px;
-  background: $clay;
+.revalue-menu__sub {
+  padding: 6px 0 8px;
+  background: $deep-dark;
 }
-
-.revalue-nav-top {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  margin-bottom: 18px;
-  padding-bottom: 14px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-}
-.revalue-nav-top__link {
-  display: flex;
-  align-items: center;
-  font-size: 15px;
-  color: #ffffff !important;
+.revalue-menu__sublink {
+  display: block;
+  padding: 6px var(--nav-padding-inline-start) 6px calc(var(--nav-padding-inline-start) + 30px);
+  color: $menu-muted !important;
+  font-size: 14px;
   text-decoration: none;
+  &:hover,
+  &:focus-visible {
+    color: #ffffff !important;
+  }
+  &.is-current {
+    color: #ffffff !important;
+    font-weight: 600;
+  }
 }
-
 .nav__controls {
+  align-items: flex-start;
+  margin-top: auto;
+  padding-top: 16px;
   border-top: 1px solid rgba(255, 255, 255, 0.15);
+  a {
+    color: $menu-text;
+  }
+}
+.revalue-menu__site {
+  font-size: 14px;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
 // ---- Brand graphics ----------------------------------------------------------
@@ -155,7 +173,7 @@ a {
 .revalue-logo {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
   color: $deep;
   .revalue-mark {
     color: $forest;
@@ -163,186 +181,246 @@ a {
 }
 .revalue-logo__name {
   margin: 0;
-  font-size: 30px;
+  font-size: 28px;
   font-weight: 700;
   line-height: 1;
-  letter-spacing: -0.01em;
 }
 .revalue-logo__tag {
   margin: 4px 0 0;
-  color: $clay-text;
+  color: $muted;
   font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
 }
 
-// Login page
+// Login page: plain white box on a light background, like wp-login.php
 .template-minimal {
-  background: $warm;
+  background: $canvas;
 }
 .template-minimal__wrap {
-  padding: 40px;
+  padding: 32px;
   background: #ffffff;
   border: 1px solid $line;
-  border-top: 4px solid $forest;
-  border-radius: 6px;
-  box-shadow: 0 8px 30px rgba(23, 59, 46, 0.08);
 }
 
-// ---- Dashboard ---------------------------------------------------------------
-.revalue-dashboard {
-  padding-block: 32px 64px;
-}
-.revalue-welcome {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  padding: 28px 32px;
-  margin-bottom: 20px;
-  background: $deep;
-  color: #ffffff;
-  border-radius: 6px;
-  border-left: 6px solid $clay;
+// ---- Boxes (WordPress "postbox" style) ---------------------------------------
+.revalue-box {
+  background: #ffffff;
+  border: 1px solid $line;
 
-  h1 {
-    margin: 0 0 6px;
-    color: #ffffff;
-    font-size: 30px;
-  }
-  p {
+  > h2 {
     margin: 0;
-    color: rgba(255, 255, 255, 0.85);
-    font-size: 16px;
+    padding: 10px 14px;
+    color: $deep;
+    font-size: 15px;
+    font-weight: 600;
+    border-bottom: 1px solid $line-soft;
+  }
+  > :not(h2):not(table) {
+    margin-inline: 14px;
   }
 }
-.revalue-welcome__site {
-  padding: 10px 16px;
-  color: #ffffff !important;
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  border-radius: 4px;
-  text-decoration: none;
-  &:hover {
-    background: rgba(255, 255, 255, 0.1);
-  }
-}
-
-.revalue-actions {
+.revalue-box__actions {
   display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 24px;
+  align-items: center;
+  gap: 16px;
+  margin-block: 4px 14px;
 }
-.revalue-action {
+.revalue-button {
   display: inline-flex;
   align-items: center;
-  min-height: 44px;
-  padding: 0 18px;
-  background: #ffffff;
-  color: $forest !important;
-  border: 1px solid $forest;
-  border-radius: 4px;
+  min-height: 34px;
+  padding: 0 14px;
+  color: #ffffff !important;
+  background: $forest;
+  border-radius: 3px;
   font-weight: 600;
   text-decoration: none;
-  &:hover {
-    background: #eef4f0;
-  }
-}
-.revalue-action--primary {
-  background: $forest;
-  color: #ffffff !important;
   &:hover {
     background: $forest-hover;
   }
 }
 
-.revalue-panels {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
+// ---- Dashboard ---------------------------------------------------------------
+.revalue-dashboard {
+  padding-block: 8px 64px;
 }
-.revalue-panel {
-  padding: 22px 24px;
-  background: #ffffff;
-  border: 1px solid $line;
-  border-radius: 6px;
-
-  h2 {
-    margin: 0 0 16px;
-    padding-bottom: 10px;
-    color: $deep;
-    font-size: 18px;
-    border-bottom: 1px solid $line;
+.revalue-dashboard__title {
+  margin: 0 0 6px;
+  color: $deep;
+  font-size: 26px;
+  font-weight: 600;
+}
+.revalue-dashboard__intro {
+  margin: 0 0 20px;
+  color: $muted;
+}
+.revalue-dashboard__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(260px, 1fr);
+  gap: 20px;
+  align-items: start;
+  @media (max-width: 1000px) {
+    grid-template-columns: 1fr;
   }
 }
-.revalue-panel--wide {
-  grid-column: 1 / -1;
+.revalue-dashboard__side {
+  display: grid;
+  gap: 20px;
+}
+.revalue-box--maintenance {
+  margin-top: 20px;
+  padding: 4px 0 14px;
+  h2 {
+    font-size: 15px;
+  }
   .btn {
     margin-inline-end: 10px;
+  }
+}
+
+.revalue-site-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+
+  th {
+    padding: 8px 14px;
+    color: $muted;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: left;
+    border-bottom: 1px solid $line-soft;
+  }
+  td {
+    padding: 10px 14px;
+    vertical-align: top;
+    border-bottom: 1px solid $line-soft;
+  }
+  tbody tr:nth-child(odd) {
+    background: #f9faf8;
+  }
+  tbody tr:last-child td {
+    border-bottom: 0;
+  }
+}
+.revalue-site-table__name {
+  display: block;
+  font-weight: 600;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+.revalue-site-table__detail {
+  display: block;
+  color: $muted;
+  font-size: 13px;
+}
+.revalue-site-table__where {
+  color: $muted;
+  font-family: ui-monospace, 'Cascadia Mono', Consolas, monospace;
+  font-size: 13px;
+  white-space: nowrap;
+}
+.revalue-site-table__actions {
+  white-space: nowrap;
+  text-align: right;
+  a + a {
+    margin-inline-start: 14px;
   }
 }
 
 .revalue-glance {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  margin: 0;
+  gap: 8px 12px;
+  margin-block: 12px;
   padding: 0;
   list-style: none;
-
   a {
-    display: flex;
-    flex-direction: column;
-    padding: 14px;
-    background: #f6f7f4;
-    border-radius: 4px;
+    color: $charcoal;
     text-decoration: none;
     &:hover {
-      background: $clay-tint;
+      color: $forest;
+      text-decoration: underline;
     }
   }
   strong {
     color: $deep;
-    font-size: 28px;
-    line-height: 1.1;
-  }
-  span {
-    color: $muted;
-    font-size: 14px;
   }
 }
 
 .revalue-list {
-  margin: 0 0 12px;
+  margin-block: 6px 10px;
   padding: 0;
   list-style: none;
-
   li {
     display: flex;
-    flex-direction: column;
-    padding: 10px 0;
-    border-bottom: 1px solid $line;
-  }
-  a {
-    font-weight: 600;
-    text-decoration: none;
-    &:hover {
-      text-decoration: underline;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 6px 0;
+    border-bottom: 1px solid $line-soft;
+    &:last-child {
+      border-bottom: 0;
     }
+  }
+  span {
+    flex-shrink: 0;
+    color: $muted;
+    font-size: 13px;
+  }
+}
+.revalue-empty {
+  margin-block: 12px;
+  color: $muted;
+}
+
+// ---- "Where on the site" column and sidebar box -------------------------------
+.revalue-location-cell {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  &:hover strong {
+    text-decoration: underline;
+  }
+  strong {
+    color: $deep;
   }
   span {
     color: $muted;
     font-size: 13px;
   }
 }
-.revalue-empty {
-  color: $muted;
+.revalue-location {
+  margin-bottom: 8px;
+  padding: 12px 14px;
+  background: #ffffff;
+  border: 1px solid $line;
+  p {
+    margin: 0;
+  }
 }
-.revalue-more {
+.revalue-location__label {
+  color: $muted;
+  font-size: 13px;
+}
+.revalue-location__name {
+  color: $deep;
   font-weight: 600;
-  text-decoration: none;
+}
+.revalue-location__path {
+  font-family: ui-monospace, 'Cascadia Mono', Consolas, monospace;
+  font-size: 13px;
+  word-break: break-all;
+}
+.revalue-location__view {
+  display: inline-block;
+  margin-top: 8px;
+  font-weight: 600;
+}
+.revalue-location__note {
+  margin-top: 8px !important;
+  color: $muted;
+  font-size: 13px;
 }
 
 // ---- Existing custom fields --------------------------------------------------
@@ -350,7 +428,6 @@ a {
   max-width: 680px;
   padding: 20px;
   border: 1px solid var(--theme-elevation-200);
-  border-radius: 4px;
 }
 .revalue-seo-preview h3 {
   color: $forest;

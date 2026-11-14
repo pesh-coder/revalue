@@ -1,3 +1,5 @@
+import { SiteLocationField as SiteLocationField_53221201297f0a5ced8b0bac521652bc } from '../../../components/admin/site-location'
+import { SiteLocationCell as SiteLocationCell_53221201297f0a5ced8b0bac521652bc } from '../../../components/admin/site-location'
 import { RscEntryLexicalCell as RscEntryLexicalCell_44fe37237e0ebf4470c9990d8cb7b07e } from '@payloadcms/richtext-lexical/rsc'
 import { RscEntryLexicalField as RscEntryLexicalField_44fe37237e0ebf4470c9990d8cb7b07e } from '@payloadcms/richtext-lexical/rsc'
 import { LexicalDiffComponent as LexicalDiffComponent_44fe37237e0ebf4470c9990d8cb7b07e } from '@payloadcms/richtext-lexical/rsc'
@@ -24,15 +26,18 @@ import { BoldFeatureClient as BoldFeatureClient_e70f5e05f09f93e00b997edb1ef0c864
 import { ItalicFeatureClient as ItalicFeatureClient_e70f5e05f09f93e00b997edb1ef0c864 } from '@payloadcms/richtext-lexical/client'
 import { SEOPreview as SEOPreview_7615b70c9ec479d2f1aaa13a68196618 } from '../../../components/admin/seo-preview'
 import { RetryEnquiry as RetryEnquiry_888e7c0bfe305c92f683cdd7dabf3329 } from '../../../components/admin/retry-enquiry'
+import { AdminNav as AdminNav_ded070bcb8aac73882bb96bf4614925a } from '../../../components/admin/admin-nav'
 import { Icon as Icon_ba261f55023b11e5e8957d2f06d0df20 } from '../../../components/admin/brand'
 import { Logo as Logo_ba261f55023b11e5e8957d2f06d0df20 } from '../../../components/admin/brand'
-import { NavLinks as NavLinks_410c5f26197e774ccfd5847cf59d1ac0 } from '../../../components/admin/nav-links'
+import { OpenMenu as OpenMenu_7b6f60ff042f29ecc031e5abccaa4662 } from '../../../components/admin/open-menu'
 import { Dashboard as Dashboard_4733e5ac8fa40dd9a4126232ff032ea8 } from '../../../components/admin/dashboard'
 import { CollectionCards as CollectionCards_f9c02e79a4aed9a3924487c0cd4cafb1 } from '@payloadcms/next/rsc'
 import { S3ClientUploadHandler as S3ClientUploadHandler_f97aa6c64367fa259c5bc0567239ef24 } from '@payloadcms/storage-s3/client'
 
 /** @type import('payload').ImportMap */
 export const importMap = {
+  "./components/admin/site-location#SiteLocationField": SiteLocationField_53221201297f0a5ced8b0bac521652bc,
+  "./components/admin/site-location#SiteLocationCell": SiteLocationCell_53221201297f0a5ced8b0bac521652bc,
   "@payloadcms/richtext-lexical/rsc#RscEntryLexicalCell": RscEntryLexicalCell_44fe37237e0ebf4470c9990d8cb7b07e,
   "@payloadcms/richtext-lexical/rsc#RscEntryLexicalField": RscEntryLexicalField_44fe37237e0ebf4470c9990d8cb7b07e,
   "@payloadcms/richtext-lexical/rsc#LexicalDiffComponent": LexicalDiffComponent_44fe37237e0ebf4470c9990d8cb7b07e,
@@ -59,9 +64,10 @@ export const importMap = {
   "@payloadcms/richtext-lexical/client#ItalicFeatureClient": ItalicFeatureClient_e70f5e05f09f93e00b997edb1ef0c864,
   "./components/admin/seo-preview#SEOPreview": SEOPreview_7615b70c9ec479d2f1aaa13a68196618,
   "./components/admin/retry-enquiry#RetryEnquiry": RetryEnquiry_888e7c0bfe305c92f683cdd7dabf3329,
+  "./components/admin/admin-nav#AdminNav": AdminNav_ded070bcb8aac73882bb96bf4614925a,
   "./components/admin/brand#Icon": Icon_ba261f55023b11e5e8957d2f06d0df20,
   "./components/admin/brand#Logo": Logo_ba261f55023b11e5e8957d2f06d0df20,
-  "./components/admin/nav-links#NavLinks": NavLinks_410c5f26197e774ccfd5847cf59d1ac0,
+  "./components/admin/open-menu#OpenMenu": OpenMenu_7b6f60ff042f29ecc031e5abccaa4662,
   "./components/admin/dashboard#Dashboard": Dashboard_4733e5ac8fa40dd9a4126232ff032ea8,
   "@payloadcms/next/rsc#CollectionCards": CollectionCards_f9c02e79a4aed9a3924487c0cd4cafb1,
   "@payloadcms/storage-s3/client#S3ClientUploadHandler": S3ClientUploadHandler_f97aa6c64367fa259c5bc0567239ef24

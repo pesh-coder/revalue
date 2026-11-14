@@ -2,7 +2,7 @@ import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { postgresAdapter } from '@payloadcms/db-postgres'
 import { lexicalEditor, BlocksFeature } from '@payloadcms/richtext-lexical'
-import { buildConfig } from 'payload'
+import { buildConfig, type CollectionConfig, type GlobalConfig } from 'payload'
 import sharp from 'sharp'
 import { Users, Media, Posts, Homepage } from './cms/collections'
 import { Projects, Solutions, Topics, Tools, Pages, Files } from './cms/site-content'
@@ -15,6 +15,10 @@ import { PublicationRecords } from './cms/publication'
 import { TableBlock } from './cms/table-block'
 
 const dirname = path.dirname(fileURLToPath(import.meta.url))
+
+// Editors never need the developer "API" tab on edit screens.
+const withoutAPITab = <T extends CollectionConfig | GlobalConfig>(entities: T[]) =>
+  entities.map((entity) => ({ ...entity, admin: { ...entity.admin, hideAPIURL: true } }))
 
 export default buildConfig({
   secret: process.env.PAYLOAD_SECRET || '',
@@ -40,16 +44,21 @@ export default buildConfig({
         Logo: './components/admin/brand#Logo',
         Icon: './components/admin/brand#Icon',
       },
-      beforeNavLinks: ['./components/admin/nav-links#NavLinks'],
+      Nav: './components/admin/admin-nav#AdminNav',
+      providers: ['./components/admin/open-menu#OpenMenu'],
       views: { dashboard: { Component: './components/admin/dashboard#Dashboard' } },
     },
     theme: 'light',
     user: 'users',
     importMap: { baseDir: dirname },
-    meta: { titleSuffix: ' | Revalue Admin', robots: { index: false, follow: false } },
+    meta: {
+      titleSuffix: ' | Revalue Admin',
+      robots: { index: false, follow: false },
+      icons: [{ rel: 'icon', type: 'image/svg+xml', url: '/favicon.svg' }],
+    },
   },
-  // Order sets the sidebar: Posts, Website pages, Media Library, Enquiries, Settings.
-  collections: [
+  // The sidebar menu is defined in components/admin/admin-nav.tsx.
+  collections: withoutAPITab([
     Posts,
     Topics,
     Pages,
@@ -63,8 +72,8 @@ export default buildConfig({
     ContentUpdates,
     EnquiryAttempts,
     PublicationRecords,
-  ],
-  globals: [Homepage, SiteSettings],
+  ]),
+  globals: withoutAPITab([Homepage, SiteSettings]),
   plugins: [
     s3Storage({
       enabled: Boolean(process.env.S3_BUCKET),

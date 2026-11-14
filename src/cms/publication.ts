@@ -5,6 +5,7 @@ import type {
   CollectionBeforeChangeHook,
 } from 'payload'
 import { APIError } from 'payload'
+import { publicPath } from '@/lib/site-paths'
 export const PublicationRecords: CollectionConfig = {
   slug: 'publication-records',
   admin: { hidden: true },
@@ -15,23 +16,7 @@ export const PublicationRecords: CollectionConfig = {
     { name: 'gone', type: 'checkbox', defaultValue: false, required: true },
   ],
 }
-const indexRoutes: Record<string, string> = {
-  'resources-blog': '/resources/blog',
-  'resources-guides': '/resources/guides',
-  'resources-tools': '/resources/tools',
-  'projects-index': '/projects',
-  'solutions-index': '/solutions',
-}
-const route = (collection: string, doc: { slug: string; format?: string }) =>
-  collection === 'posts'
-    ? `/resources/${doc.format === 'Guide' ? 'guides' : 'blog'}/${doc.slug}`
-    : collection === 'topics'
-      ? `/resources/${doc.slug}`
-      : collection === 'tools'
-        ? `/resources/tools/${doc.slug}`
-        : collection === 'pages'
-          ? indexRoutes[doc.slug] || `/${doc.slug}`
-          : `/${collection}/${doc.slug}`
+const route = publicPath
 export const freezePublishedURL: CollectionBeforeChangeHook = async ({
   data,
   originalDoc,

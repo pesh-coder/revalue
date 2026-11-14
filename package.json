@@ -21,7 +21,8 @@
     "cms:seed:local": "tsx scripts/seed-local.ts",
     "test:backend": "tsx scripts/verify-backend.ts",
     "db:migrate": "node scripts/migrate.mjs",
-    "cms:seed:baseline": "tsx scripts/seed-baseline.ts"
+    "cms:seed:baseline": "tsx scripts/seed-baseline.ts",
+    "cms:photos": "tsx scripts/upload-site-photos.ts"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "3.1161.0",

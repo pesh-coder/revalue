@@ -2,6 +2,7 @@ import type { Access, CollectionConfig, Field, FieldAccess } from 'payload'
 import { queueContentChange, queueContentDelete } from './updates'
 import { validateUpload, validateCloudUpload } from './upload-validation'
 import { freezePublishedURL, recordPublication, recordDeletion } from './publication'
+import { siteLocation } from './admin-fields'
 const team: Access = ({ req }) => Boolean(req.user)
 const admin: Access = ({ req }) => req.user?.role === 'admin'
 const published: Access = ({ req }) => (req.user ? true : { _status: { equals: 'published' } })
@@ -66,7 +67,7 @@ const editorial = (slug: string, options: EditorialOptions, fields: Field[]): Co
   },
   access: { read: published, create: team, update: team, delete: admin },
   versions: { drafts: true, maxPerDoc: 20 },
-  fields: [...baseFields(options.slugHint), ...fields],
+  fields: [siteLocation, ...baseFields(options.slugHint), ...fields],
   hooks: {
     beforeChange: [
       ({ data, collection }) => {
@@ -255,6 +256,7 @@ export const Pages = editorial(
     group: 'Website pages',
     description:
       'Fixed website pages such as About, Partners, Pricing and Contact. Fill in only the boxes the page uses.',
+    defaultColumns: ['siteLocation', 'title', '_status', 'updatedAt'],
     slugHint:
       'Must be one of the existing pages: about, partners, pricing, contact, privacy, terms, resources, resources-blog, resources-guides, resources-tools, projects-index or solutions-index.',
   },
