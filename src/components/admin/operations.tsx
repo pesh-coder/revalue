@@ -31,7 +31,7 @@ export function Operations() {
   }
   return (
     <section aria-labelledby="operations-heading">
-      <h2 id="operations-heading">Website operations</h2>
+      <h2 id="operations-heading">Site maintenance</h2>
       <p>
         Refresh published pages and review records that have reached the configured retention
         period.

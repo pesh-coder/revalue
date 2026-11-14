@@ -1,10 +1,23 @@
+// Revalue admin theme. Colours come from design-reference/tokens.css.
+$deep: #173b2e;
+$forest: #1f5d42;
+$forest-hover: #184b35;
+$charcoal: #2b372f;
+$muted: #5a665e;
+$clay: #b46a3c;
+$clay-text: #8f4e27;
+$clay-tint: #f3e4d8;
+$warm: #fffdf8;
+$line: #e3e6e1;
+$input-line: #7d8379;
+
 .revalue-admin-setup {
   max-width: 680px;
   margin: 10vh auto;
   padding: 24px;
   font-family: system-ui, sans-serif;
   line-height: 1.6;
-  color: #173b2e;
+  color: $deep;
 }
 .revalue-admin-setup h1 {
   font-size: 32px;
@@ -14,7 +27,332 @@
   display: inline-flex;
   align-items: center;
   min-height: 44px;
-  color: #1f5d42;
+  color: $forest;
 }
-.revalue-seo-preview { max-width: 680px; padding: 20px; border: 1px solid var(--theme-elevation-200); border-radius: 4px; }
-.revalue-seo-preview h3 { color: var(--theme-text); margin: 12px 0 6px; }
+
+// ---- Global palette ---------------------------------------------------------
+html[data-theme='light'] {
+  --theme-bg: #f6f7f4;
+  --theme-text: #{$charcoal};
+  --theme-elevation-1000: #{$deep};
+  --theme-elevation-900: #{$deep};
+  --theme-elevation-800: #{$charcoal};
+  --theme-input-bg: #ffffff;
+  --theme-success-500: #{$forest};
+  --font-body: var(--font-revalue), system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+a {
+  color: $forest;
+}
+
+:focus-visible {
+  outline-color: $forest;
+}
+
+.btn--style-primary {
+  --bg-color: #{$forest};
+  --hover-bg: #{$forest-hover};
+  --color: #ffffff;
+  --hover-color: #ffffff;
+}
+.btn--style-secondary {
+  --color: #{$forest};
+  --hover-color: #{$forest-hover};
+  --box-shadow: inset 0 0 0 1px #{$forest};
+}
+
+.field-description {
+  color: $muted;
+}
+
+// Document headers and list titles
+.doc-header__title,
+.list-header h1,
+.collection-list h1 {
+  color: $deep;
+}
+
+// ---- Sidebar (WordPress-style dark menu in Revalue deep green) ---------------
+.nav {
+  --theme-text: #ffffff;
+  --theme-elevation-400: rgba(255, 255, 255, 0.6);
+  --theme-elevation-100: transparent;
+  background: $deep;
+  color: #ffffff;
+
+  a {
+    color: #ffffff;
+  }
+}
+
+.nav-group__toggle {
+  margin-top: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.nav__link,
+.revalue-nav-top__link {
+  border-radius: 4px;
+  padding-inline: 10px !important;
+  margin-inline: -10px;
+  min-height: 34px;
+}
+.nav a.nav__link:hover,
+.nav a.nav__link:focus-visible,
+.revalue-nav-top__link:hover,
+.revalue-nav-top__link:focus-visible {
+  background: rgba(255, 255, 255, 0.1);
+  text-decoration: none;
+}
+.nav__link:has(.nav__link-indicator),
+.nav__link.active,
+.revalue-nav-top__link--active {
+  background: $forest;
+  font-weight: 600;
+}
+.nav__link-indicator {
+  inset-inline-start: 0;
+  height: 100%;
+  width: 3px;
+  background: $clay;
+}
+
+.revalue-nav-top {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-bottom: 18px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+.revalue-nav-top__link {
+  display: flex;
+  align-items: center;
+  font-size: 15px;
+  color: #ffffff !important;
+  text-decoration: none;
+}
+
+.nav__controls {
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+// ---- Brand graphics ----------------------------------------------------------
+.revalue-icon {
+  display: inline-flex;
+  width: 100%;
+  height: 100%;
+  color: $forest;
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+}
+.revalue-logo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: $deep;
+  .revalue-mark {
+    color: $forest;
+  }
+}
+.revalue-logo__name {
+  margin: 0;
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+.revalue-logo__tag {
+  margin: 4px 0 0;
+  color: $clay-text;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+// Login page
+.template-minimal {
+  background: $warm;
+}
+.template-minimal__wrap {
+  padding: 40px;
+  background: #ffffff;
+  border: 1px solid $line;
+  border-top: 4px solid $forest;
+  border-radius: 6px;
+  box-shadow: 0 8px 30px rgba(23, 59, 46, 0.08);
+}
+
+// ---- Dashboard ---------------------------------------------------------------
+.revalue-dashboard {
+  padding-block: 32px 64px;
+}
+.revalue-welcome {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 28px 32px;
+  margin-bottom: 20px;
+  background: $deep;
+  color: #ffffff;
+  border-radius: 6px;
+  border-left: 6px solid $clay;
+
+  h1 {
+    margin: 0 0 6px;
+    color: #ffffff;
+    font-size: 30px;
+  }
+  p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 16px;
+  }
+}
+.revalue-welcome__site {
+  padding: 10px 16px;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 4px;
+  text-decoration: none;
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+}
+
+.revalue-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+.revalue-action {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 18px;
+  background: #ffffff;
+  color: $forest !important;
+  border: 1px solid $forest;
+  border-radius: 4px;
+  font-weight: 600;
+  text-decoration: none;
+  &:hover {
+    background: #eef4f0;
+  }
+}
+.revalue-action--primary {
+  background: $forest;
+  color: #ffffff !important;
+  &:hover {
+    background: $forest-hover;
+  }
+}
+
+.revalue-panels {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+.revalue-panel {
+  padding: 22px 24px;
+  background: #ffffff;
+  border: 1px solid $line;
+  border-radius: 6px;
+
+  h2 {
+    margin: 0 0 16px;
+    padding-bottom: 10px;
+    color: $deep;
+    font-size: 18px;
+    border-bottom: 1px solid $line;
+  }
+}
+.revalue-panel--wide {
+  grid-column: 1 / -1;
+  .btn {
+    margin-inline-end: 10px;
+  }
+}
+
+.revalue-glance {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  a {
+    display: flex;
+    flex-direction: column;
+    padding: 14px;
+    background: #f6f7f4;
+    border-radius: 4px;
+    text-decoration: none;
+    &:hover {
+      background: $clay-tint;
+    }
+  }
+  strong {
+    color: $deep;
+    font-size: 28px;
+    line-height: 1.1;
+  }
+  span {
+    color: $muted;
+    font-size: 14px;
+  }
+}
+
+.revalue-list {
+  margin: 0 0 12px;
+  padding: 0;
+  list-style: none;
+
+  li {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 0;
+    border-bottom: 1px solid $line;
+  }
+  a {
+    font-weight: 600;
+    text-decoration: none;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  span {
+    color: $muted;
+    font-size: 13px;
+  }
+}
+.revalue-empty {
+  color: $muted;
+}
+.revalue-more {
+  font-weight: 600;
+  text-decoration: none;
+}
+
+// ---- Existing custom fields --------------------------------------------------
+.revalue-seo-preview {
+  max-width: 680px;
+  padding: 20px;
+  border: 1px solid var(--theme-elevation-200);
+  border-radius: 4px;
+}
+.revalue-seo-preview h3 {
+  color: $forest;
+  margin: 12px 0 6px;
+}

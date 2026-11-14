@@ -67,18 +67,18 @@ export interface Config {
   };
   blocks: {};
   collections: {
-    users: User;
-    media: Media;
-    files: File;
     posts: Post;
+    topics: Topic;
+    pages: Page;
     projects: Project;
     solutions: Solution;
-    topics: Topic;
     tools: Tool;
-    pages: Page;
+    media: Media;
+    files: File;
     enquiries: Enquiry;
-    'enquiry-attempts': EnquiryAttempt;
+    users: User;
     'content-updates': ContentUpdate;
+    'enquiry-attempts': EnquiryAttempt;
     'publication-records': PublicationRecord;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
@@ -87,18 +87,18 @@ export interface Config {
   };
   collectionsJoins: {};
   collectionsSelect: {
-    users: UsersSelect<false> | UsersSelect<true>;
-    media: MediaSelect<false> | MediaSelect<true>;
-    files: FilesSelect<false> | FilesSelect<true>;
     posts: PostsSelect<false> | PostsSelect<true>;
+    topics: TopicsSelect<false> | TopicsSelect<true>;
+    pages: PagesSelect<false> | PagesSelect<true>;
     projects: ProjectsSelect<false> | ProjectsSelect<true>;
     solutions: SolutionsSelect<false> | SolutionsSelect<true>;
-    topics: TopicsSelect<false> | TopicsSelect<true>;
     tools: ToolsSelect<false> | ToolsSelect<true>;
-    pages: PagesSelect<false> | PagesSelect<true>;
+    media: MediaSelect<false> | MediaSelect<true>;
+    files: FilesSelect<false> | FilesSelect<true>;
     enquiries: EnquiriesSelect<false> | EnquiriesSelect<true>;
-    'enquiry-attempts': EnquiryAttemptsSelect<false> | EnquiryAttemptsSelect<true>;
+    users: UsersSelect<false> | UsersSelect<true>;
     'content-updates': ContentUpdatesSelect<false> | ContentUpdatesSelect<true>;
+    'enquiry-attempts': EnquiryAttemptsSelect<false> | EnquiryAttemptsSelect<true>;
     'publication-records': PublicationRecordsSelect<false> | PublicationRecordsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
@@ -146,43 +146,96 @@ export interface UserAuthOperations {
   };
 }
 /**
+ * Articles for the Resources section. Save a draft at any time; press Publish when it is ready to go live.
+ *
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "users".
+ * via the `definition` "posts".
  */
-export interface User {
+export interface Post {
   id: number;
-  name: string;
-  role: 'admin' | 'editor';
+  title: string;
+  /**
+   * The end of the page address, e.g. how-to-run-a-waste-audit. Lowercase words joined by hyphens. It cannot be changed after the post is published.
+   */
+  slug: string;
+  /**
+   * One or two sentences shown on article cards and in search results.
+   */
+  excerpt: string;
+  body: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  metaTitle?: string | null;
+  metaDescription?: string | null;
+  /**
+   * Shown when the post is shared on WhatsApp, LinkedIn or X.
+   */
+  socialImage?: (number | null) | Media;
+  /**
+   * Blog posts appear under Resources › Blog; guides under Resources › Guides.
+   */
+  format: 'Blog' | 'Guide';
+  cover?: (number | null) | Media;
+  authorName: string;
+  /**
+   * Shown as the category label, e.g. Waste audits.
+   */
+  primaryTopic: string;
+  /**
+   * Must match the web address of a topic under Posts › Topics.
+   */
+  primaryTopicSlug: string;
+  /**
+   * Filled in automatically when you first publish.
+   */
+  publishedAt?: string | null;
+  /**
+   * Optional. When the facts were last checked.
+   */
+  reviewedAt?: string | null;
   updatedAt: string;
   createdAt: string;
-  email: string;
-  resetPasswordToken?: string | null;
-  resetPasswordExpiration?: string | null;
-  salt?: string | null;
-  hash?: string | null;
-  resetPasswordRequestedAt?: string | null;
-  loginAttempts?: number | null;
-  lockUntil?: string | null;
-  sessions?:
-    | {
-        id: string;
-        createdAt?: string | null;
-        expiresAt: string;
-      }[]
-    | null;
-  password?: string | null;
-  collection: 'users';
+  _status?: ('draft' | 'published') | null;
 }
 /**
+ * Photos used on the website. JPG, PNG or WebP, up to 15 MB. An image only appears publicly once an admin approves it.
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "media".
  */
 export interface Media {
   id: number;
+  /**
+   * Describe what is in the image for people using screen readers, e.g. "Sorted plastic bottles in a sack".
+   */
   alt: string;
+  /**
+   * Optional. Shown under the image on the website.
+   */
   caption?: string | null;
+  /**
+   * Optional. Who took the photo, e.g. "Photo: Revalue".
+   */
   credit?: string | null;
+  /**
+   * Admins only. Leave unticked until you have permission to publish this image. Unapproved images never appear on the website.
+   */
   publicApproved?: boolean | null;
+  /**
+   * Admins only. Who gave permission to use this image, and when.
+   */
   permissionNote?: string | null;
   prefix?: string | null;
   _objectKey?: string | null;
@@ -209,153 +262,38 @@ export interface Media {
   };
 }
 /**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "files".
- */
-export interface File {
-  id: number;
-  title: string;
-  publicApproved?: boolean | null;
-  prefix?: string | null;
-  _objectKey?: string | null;
-  updatedAt: string;
-  createdAt: string;
-  url?: string | null;
-  thumbnailURL?: string | null;
-  filename?: string | null;
-  mimeType?: string | null;
-  filesize?: number | null;
-  width?: number | null;
-  height?: number | null;
-  focalX?: number | null;
-  focalY?: number | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "posts".
- */
-export interface Post {
-  id: number;
-  title: string;
-  slug: string;
-  excerpt: string;
-  primaryTopic: string;
-  primaryTopicSlug: string;
-  format: 'Blog' | 'Guide';
-  authorName: string;
-  cover?: (number | null) | Media;
-  body: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
-  publishedAt?: string | null;
-  reviewedAt?: string | null;
-  metaTitle?: string | null;
-  metaDescription?: string | null;
-  socialImage?: (number | null) | Media;
-  updatedAt: string;
-  createdAt: string;
-  _status?: ('draft' | 'published') | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "projects".
- */
-export interface Project {
-  id: number;
-  title: string;
-  slug: string;
-  excerpt: string;
-  stage: 'Concept' | 'In development' | 'Testing' | 'Pilot' | 'Completed' | 'Published research';
-  image?: (number | null) | Media;
-  sections?:
-    | {
-        title: string;
-        text: string;
-        id?: string | null;
-      }[]
-    | null;
-  updatedAt: string;
-  createdAt: string;
-  _status?: ('draft' | 'published') | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "solutions".
- */
-export interface Solution {
-  id: number;
-  title: string;
-  slug: string;
-  excerpt: string;
-  availability: 'Available' | 'In development' | 'Exploring';
-  audience: string;
-  sections?:
-    | {
-        title: string;
-        text: string;
-        id?: string | null;
-      }[]
-    | null;
-  updatedAt: string;
-  createdAt: string;
-  _status?: ('draft' | 'published') | null;
-}
-/**
+ * Categories that group posts, guides and tools, e.g. Waste audits.
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "topics".
  */
 export interface Topic {
   id: number;
   title: string;
+  /**
+   * The end of the address, e.g. /resources/waste-audits. "blog", "guides" and "tools" are reserved. Lowercase words joined by hyphens. It cannot be changed after the page is published.
+   */
   slug: string;
+  /**
+   * Shown at the top of the topic page.
+   */
   introduction: string;
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
 }
 /**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "tools".
- */
-export interface Tool {
-  id: number;
-  title: string;
-  slug: string;
-  excerpt: string;
-  audience: string;
-  format: string;
-  publicReleaseApproved?: boolean | null;
-  file?: (number | null) | File;
-  versionDate?: string | null;
-  instructions?:
-    | {
-        step: string;
-        id?: string | null;
-      }[]
-    | null;
-  updatedAt: string;
-  createdAt: string;
-  _status?: ('draft' | 'published') | null;
-}
-/**
+ * Fixed website pages such as About, Partners, Pricing and Contact. Fill in only the boxes the page uses.
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "pages".
  */
 export interface Page {
   id: number;
   title: string;
+  /**
+   * Must be one of the existing pages: about, partners, pricing, contact, privacy, terms, resources, resources-blog, resources-guides, resources-tools, projects-index or solutions-index.
+   */
   slug: string;
   introduction?: string | null;
   body?: {
@@ -387,6 +325,9 @@ export interface Page {
     | {
         name: string;
         role: string;
+        /**
+         * Shown in place of a photo, e.g. PS.
+         */
         initials: string;
         id?: string | null;
       }[]
@@ -404,6 +345,9 @@ export interface Page {
         id?: string | null;
       }[]
     | null;
+  /**
+   * Each section is a heading with a paragraph of text underneath.
+   */
   sections?:
     | {
         title: string;
@@ -416,6 +360,148 @@ export interface Page {
   _status?: ('draft' | 'published') | null;
 }
 /**
+ * Revalue projects shown under /projects. Only admins can change a project stage.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "projects".
+ */
+export interface Project {
+  id: number;
+  title: string;
+  /**
+   * The end of the address, e.g. /projects/smart-bin. Lowercase words joined by hyphens. It cannot be changed after the page is published.
+   */
+  slug: string;
+  /**
+   * One or two sentences shown on cards and in search results.
+   */
+  excerpt: string;
+  /**
+   * Admins only. Never mark a stage the project has not actually reached.
+   */
+  stage: 'Concept' | 'In development' | 'Testing' | 'Pilot' | 'Completed' | 'Published research';
+  image?: (number | null) | Media;
+  /**
+   * Each section is a heading with a paragraph of text underneath.
+   */
+  sections?:
+    | {
+        title: string;
+        text: string;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * Services shown under /solutions. Only admins can change availability.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "solutions".
+ */
+export interface Solution {
+  id: number;
+  title: string;
+  /**
+   * The end of the address, e.g. /solutions/waste-audits. Lowercase words joined by hyphens. It cannot be changed after the page is published.
+   */
+  slug: string;
+  /**
+   * One or two sentences shown on cards and in search results.
+   */
+  excerpt: string;
+  /**
+   * Admins only.
+   */
+  availability: 'Available' | 'In development' | 'Exploring';
+  audience: string;
+  /**
+   * Each section is a heading with a paragraph of text underneath.
+   */
+  sections?:
+    | {
+        title: string;
+        text: string;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * Downloadable tools and templates under /resources/tools. A tool only goes public once an admin approves its release.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "tools".
+ */
+export interface Tool {
+  id: number;
+  title: string;
+  /**
+   * The end of the address, e.g. /resources/tools/waste-audit-sheet. Lowercase words joined by hyphens. It cannot be changed after the page is published.
+   */
+  slug: string;
+  /**
+   * One or two sentences shown on cards and in search results.
+   */
+  excerpt: string;
+  audience: string;
+  /**
+   * e.g. Spreadsheet, PDF checklist.
+   */
+  format: string;
+  /**
+   * Admins only. The tool stays hidden from the website until this is ticked.
+   */
+  publicReleaseApproved?: boolean | null;
+  /**
+   * Upload it under Media Library › Documents.
+   */
+  file?: (number | null) | File;
+  versionDate?: string | null;
+  instructions?:
+    | {
+        step: string;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+  _status?: ('draft' | 'published') | null;
+}
+/**
+ * Downloadable files: PDF, Excel (.xlsx) or CSV, up to 15 MB. A document is only downloadable once an admin approves it.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "files".
+ */
+export interface File {
+  id: number;
+  title: string;
+  /**
+   * Admins only. Unapproved documents cannot be downloaded from the website.
+   */
+  publicApproved?: boolean | null;
+  prefix?: string | null;
+  _objectKey?: string | null;
+  updatedAt: string;
+  createdAt: string;
+  url?: string | null;
+  thumbnailURL?: string | null;
+  filename?: string | null;
+  mimeType?: string | null;
+  filesize?: number | null;
+  width?: number | null;
+  height?: number | null;
+  focalX?: number | null;
+  focalY?: number | null;
+}
+/**
+ * Messages sent through the website contact form. They are read-only; reply to the sender by email.
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "enquiries".
  */
@@ -427,14 +513,64 @@ export interface Enquiry {
   phone?: string | null;
   type: 'Waste discovery or assessment' | 'Partnership or recovery' | 'Funding or research' | 'Media' | 'General';
   message: string;
+  /**
+   * Whether the team was emailed about this message.
+   */
+  deliveryState?: ('pending' | 'sent' | 'failed') | null;
   submissionId: string;
   messageHash: string;
-  deliveryState?: ('pending' | 'sent' | 'failed') | null;
   deliveryAttempts?: number | null;
   lastAttemptAt?: string | null;
   firstAttemptAt?: string | null;
   providerReference?: string | null;
   deliveryError?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * People who can sign in to this admin. Admins can do everything; editors can write and edit.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "users".
+ */
+export interface User {
+  id: number;
+  name: string;
+  /**
+   * Only admins can change roles.
+   */
+  role: 'admin' | 'editor';
+  updatedAt: string;
+  createdAt: string;
+  email: string;
+  resetPasswordToken?: string | null;
+  resetPasswordExpiration?: string | null;
+  salt?: string | null;
+  hash?: string | null;
+  resetPasswordRequestedAt?: string | null;
+  loginAttempts?: number | null;
+  lockUntil?: string | null;
+  sessions?:
+    | {
+        id: string;
+        createdAt?: string | null;
+        expiresAt: string;
+      }[]
+    | null;
+  password?: string | null;
+  collection: 'users';
+}
+/**
+ * Admins only. A record of each time saved content was sent to the live website. Failed rows are retried from the Dashboard.
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "content-updates".
+ */
+export interface ContentUpdate {
+  id: number;
+  source: string;
+  state: 'pending' | 'complete' | 'failed';
+  error?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -445,18 +581,6 @@ export interface Enquiry {
 export interface EnquiryAttempt {
   id: number;
   ipHash: string;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "content-updates".
- */
-export interface ContentUpdate {
-  id: number;
-  source: string;
-  state: 'pending' | 'complete' | 'failed';
-  error?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -497,20 +621,16 @@ export interface PayloadLockedDocument {
   id: number;
   document?:
     | ({
-        relationTo: 'users';
-        value: number | User;
-      } | null)
-    | ({
-        relationTo: 'media';
-        value: number | Media;
-      } | null)
-    | ({
-        relationTo: 'files';
-        value: number | File;
-      } | null)
-    | ({
         relationTo: 'posts';
         value: number | Post;
+      } | null)
+    | ({
+        relationTo: 'topics';
+        value: number | Topic;
+      } | null)
+    | ({
+        relationTo: 'pages';
+        value: number | Page;
       } | null)
     | ({
         relationTo: 'projects';
@@ -521,28 +641,32 @@ export interface PayloadLockedDocument {
         value: number | Solution;
       } | null)
     | ({
-        relationTo: 'topics';
-        value: number | Topic;
-      } | null)
-    | ({
         relationTo: 'tools';
         value: number | Tool;
       } | null)
     | ({
-        relationTo: 'pages';
-        value: number | Page;
+        relationTo: 'media';
+        value: number | Media;
+      } | null)
+    | ({
+        relationTo: 'files';
+        value: number | File;
       } | null)
     | ({
         relationTo: 'enquiries';
         value: number | Enquiry;
       } | null)
     | ({
-        relationTo: 'enquiry-attempts';
-        value: number | EnquiryAttempt;
+        relationTo: 'users';
+        value: number | User;
       } | null)
     | ({
         relationTo: 'content-updates';
         value: number | ContentUpdate;
+      } | null)
+    | ({
+        relationTo: 'enquiry-attempts';
+        value: number | EnquiryAttempt;
       } | null)
     | ({
         relationTo: 'publication-records';
@@ -592,28 +716,154 @@ export interface PayloadMigration {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "users_select".
+ * via the `definition` "posts_select".
  */
-export interface UsersSelect<T extends boolean = true> {
-  name?: T;
-  role?: T;
+export interface PostsSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  excerpt?: T;
+  body?: T;
+  metaTitle?: T;
+  metaDescription?: T;
+  socialImage?: T;
+  format?: T;
+  cover?: T;
+  authorName?: T;
+  primaryTopic?: T;
+  primaryTopicSlug?: T;
+  publishedAt?: T;
+  reviewedAt?: T;
   updatedAt?: T;
   createdAt?: T;
-  email?: T;
-  resetPasswordToken?: T;
-  resetPasswordExpiration?: T;
-  salt?: T;
-  hash?: T;
-  resetPasswordRequestedAt?: T;
-  loginAttempts?: T;
-  lockUntil?: T;
-  sessions?:
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "topics_select".
+ */
+export interface TopicsSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  introduction?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "pages_select".
+ */
+export interface PagesSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  introduction?: T;
+  body?: T;
+  image?: T;
+  principlesHeading?: T;
+  principles?:
     | T
     | {
+        text?: T;
         id?: T;
-        createdAt?: T;
-        expiresAt?: T;
       };
+  teamHeading?: T;
+  teamIntroduction?: T;
+  people?:
+    | T
+    | {
+        name?: T;
+        role?: T;
+        initials?: T;
+        id?: T;
+      };
+  audiences?:
+    | T
+    | {
+        text?: T;
+        id?: T;
+      };
+  pricingRows?:
+    | T
+    | {
+        offering?: T;
+        factors?: T;
+        id?: T;
+      };
+  sections?:
+    | T
+    | {
+        title?: T;
+        text?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "projects_select".
+ */
+export interface ProjectsSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  excerpt?: T;
+  stage?: T;
+  image?: T;
+  sections?:
+    | T
+    | {
+        title?: T;
+        text?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "solutions_select".
+ */
+export interface SolutionsSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  excerpt?: T;
+  availability?: T;
+  audience?: T;
+  sections?:
+    | T
+    | {
+        title?: T;
+        text?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "tools_select".
+ */
+export interface ToolsSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  excerpt?: T;
+  audience?: T;
+  format?: T;
+  publicReleaseApproved?: T;
+  file?: T;
+  versionDate?: T;
+  instructions?:
+    | T
+    | {
+        step?: T;
+        id?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  _status?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -676,157 +926,6 @@ export interface FilesSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "posts_select".
- */
-export interface PostsSelect<T extends boolean = true> {
-  title?: T;
-  slug?: T;
-  excerpt?: T;
-  primaryTopic?: T;
-  primaryTopicSlug?: T;
-  format?: T;
-  authorName?: T;
-  cover?: T;
-  body?: T;
-  publishedAt?: T;
-  reviewedAt?: T;
-  metaTitle?: T;
-  metaDescription?: T;
-  socialImage?: T;
-  updatedAt?: T;
-  createdAt?: T;
-  _status?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "projects_select".
- */
-export interface ProjectsSelect<T extends boolean = true> {
-  title?: T;
-  slug?: T;
-  excerpt?: T;
-  stage?: T;
-  image?: T;
-  sections?:
-    | T
-    | {
-        title?: T;
-        text?: T;
-        id?: T;
-      };
-  updatedAt?: T;
-  createdAt?: T;
-  _status?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "solutions_select".
- */
-export interface SolutionsSelect<T extends boolean = true> {
-  title?: T;
-  slug?: T;
-  excerpt?: T;
-  availability?: T;
-  audience?: T;
-  sections?:
-    | T
-    | {
-        title?: T;
-        text?: T;
-        id?: T;
-      };
-  updatedAt?: T;
-  createdAt?: T;
-  _status?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "topics_select".
- */
-export interface TopicsSelect<T extends boolean = true> {
-  title?: T;
-  slug?: T;
-  introduction?: T;
-  updatedAt?: T;
-  createdAt?: T;
-  _status?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "tools_select".
- */
-export interface ToolsSelect<T extends boolean = true> {
-  title?: T;
-  slug?: T;
-  excerpt?: T;
-  audience?: T;
-  format?: T;
-  publicReleaseApproved?: T;
-  file?: T;
-  versionDate?: T;
-  instructions?:
-    | T
-    | {
-        step?: T;
-        id?: T;
-      };
-  updatedAt?: T;
-  createdAt?: T;
-  _status?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "pages_select".
- */
-export interface PagesSelect<T extends boolean = true> {
-  title?: T;
-  slug?: T;
-  introduction?: T;
-  body?: T;
-  image?: T;
-  principlesHeading?: T;
-  principles?:
-    | T
-    | {
-        text?: T;
-        id?: T;
-      };
-  teamHeading?: T;
-  teamIntroduction?: T;
-  people?:
-    | T
-    | {
-        name?: T;
-        role?: T;
-        initials?: T;
-        id?: T;
-      };
-  audiences?:
-    | T
-    | {
-        text?: T;
-        id?: T;
-      };
-  pricingRows?:
-    | T
-    | {
-        offering?: T;
-        factors?: T;
-        id?: T;
-      };
-  sections?:
-    | T
-    | {
-        title?: T;
-        text?: T;
-        id?: T;
-      };
-  updatedAt?: T;
-  createdAt?: T;
-  _status?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "enquiries_select".
  */
 export interface EnquiriesSelect<T extends boolean = true> {
@@ -836,9 +935,9 @@ export interface EnquiriesSelect<T extends boolean = true> {
   phone?: T;
   type?: T;
   message?: T;
+  deliveryState?: T;
   submissionId?: T;
   messageHash?: T;
-  deliveryState?: T;
   deliveryAttempts?: T;
   lastAttemptAt?: T;
   firstAttemptAt?: T;
@@ -849,12 +948,28 @@ export interface EnquiriesSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "enquiry-attempts_select".
+ * via the `definition` "users_select".
  */
-export interface EnquiryAttemptsSelect<T extends boolean = true> {
-  ipHash?: T;
+export interface UsersSelect<T extends boolean = true> {
+  name?: T;
+  role?: T;
   updatedAt?: T;
   createdAt?: T;
+  email?: T;
+  resetPasswordToken?: T;
+  resetPasswordExpiration?: T;
+  salt?: T;
+  hash?: T;
+  resetPasswordRequestedAt?: T;
+  loginAttempts?: T;
+  lockUntil?: T;
+  sessions?:
+    | T
+    | {
+        id?: T;
+        createdAt?: T;
+        expiresAt?: T;
+      };
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -864,6 +979,15 @@ export interface ContentUpdatesSelect<T extends boolean = true> {
   source?: T;
   state?: T;
   error?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "enquiry-attempts_select".
+ */
+export interface EnquiryAttemptsSelect<T extends boolean = true> {
+  ipHash?: T;
   updatedAt?: T;
   createdAt?: T;
 }
@@ -919,14 +1043,26 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   createdAt?: T;
 }
 /**
+ * The front page of the website. Save a draft to try changes, then Publish.
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "homepage".
  */
 export interface Homepage {
   id: number;
+  /**
+   * The large photo at the top of the homepage.
+   */
   heroImage?: (number | null) | Media;
-  featuredProject?: (number | null) | Project;
+  /**
+   * Choose up to 4 posts for the "Latest from Revalue" section.
+   */
   featuredArticles?: (number | Post)[] | null;
+  featuredProject?: (number | null) | Project;
+  /**
+   * Admins only. Tick to show the featured project on the homepage.
+   */
+  showFeaturedProject?: boolean | null;
   copy: {
     heroTitle: string;
     heroText: string;
@@ -950,6 +1086,9 @@ export interface Homepage {
       | {
           title: string;
           description: string;
+          /**
+           * A page on this site, e.g. /solutions
+           */
           href: string;
           id?: string | null;
         }[]
@@ -961,24 +1100,34 @@ export interface Homepage {
         }[]
       | null;
   };
-  showFeaturedProject?: boolean | null;
   _status?: ('draft' | 'published') | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
 /**
+ * The main menu at the top of every page, the footer links, and the contact details. Save a draft, then Publish.
+ *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "site-settings".
  */
 export interface SiteSetting {
   id: number;
+  /**
+   * Up to 7 items. Drag to reorder.
+   */
   navigation?:
     | {
         label: string;
+        /**
+         * A page on this site, starting with /, e.g. /about
+         */
         href: string;
         children?:
           | {
               label: string;
+              /**
+               * A page on this site, starting with /, e.g. /about
+               */
               href: string;
               id?: string | null;
             }[]
@@ -989,11 +1138,17 @@ export interface SiteSetting {
   footerLinks?:
     | {
         label: string;
+        /**
+         * A page on this site, starting with /, e.g. /about
+         */
         href: string;
         id?: string | null;
       }[]
     | null;
   tagline: string;
+  /**
+   * The company line shown in the footer.
+   */
   operator: string;
   contactLabel: string;
   contactEmail?: string | null;
@@ -1007,8 +1162,9 @@ export interface SiteSetting {
  */
 export interface HomepageSelect<T extends boolean = true> {
   heroImage?: T;
-  featuredProject?: T;
   featuredArticles?: T;
+  featuredProject?: T;
+  showFeaturedProject?: T;
   copy?:
     | T
     | {
@@ -1045,7 +1201,6 @@ export interface HomepageSelect<T extends boolean = true> {
               id?: T;
             };
       };
-  showFeaturedProject?: T;
   _status?: T;
   updatedAt?: T;
   createdAt?: T;

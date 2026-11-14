@@ -9,10 +9,13 @@ import { after } from 'next/server'
 import { revalidatePath, revalidateTag } from 'next/cache'
 export const ContentUpdates: CollectionConfig = {
   slug: 'content-updates',
+  labels: { singular: 'Refresh record', plural: 'Site refresh log' },
   admin: {
-    group: 'Administration',
+    group: 'Settings',
     useAsTitle: 'source',
     defaultColumns: ['source', 'state', 'createdAt', 'error'],
+    description:
+      'Admins only. A record of each time saved content was sent to the live website. Failed rows are retried from the Dashboard.',
   },
   access: {
     read: ({ req }) => req.user?.role === 'admin',
@@ -21,15 +24,16 @@ export const ContentUpdates: CollectionConfig = {
     delete: ({ req }) => req.user?.role === 'admin',
   },
   fields: [
-    { name: 'source', type: 'text', required: true },
+    { name: 'source', label: 'What changed', type: 'text', required: true },
     {
       name: 'state',
+      label: 'Status',
       type: 'select',
       options: ['pending', 'complete', 'failed'],
       defaultValue: 'pending',
       required: true,
     },
-    { name: 'error', type: 'text' },
+    { name: 'error', label: 'Error', type: 'text' },
   ],
 }
 export async function flushContentUpdates(payload: Payload) {

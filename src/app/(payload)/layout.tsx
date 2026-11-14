@@ -6,9 +6,16 @@ import type { ServerFunctionClient } from 'payload'
 import { handleServerFunctions, RootLayout } from '@payloadcms/next/layouts'
 import React from 'react'
 import Link from 'next/link'
+import { Source_Sans_3 } from 'next/font/google'
 
 import { importMap } from './admin/importMap.js'
 import './custom.scss'
+
+const sans = Source_Sans_3({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-revalue',
+})
 
 type Args = {
   children: React.ReactNode
@@ -42,7 +49,12 @@ const Layout = ({ children }: Args) =>
       </body>
     </html>
   ) : (
-    <RootLayout config={config} importMap={importMap} serverFunction={serverFunction}>
+    <RootLayout
+      config={config}
+      htmlProps={{ className: sans.variable }}
+      importMap={importMap}
+      serverFunction={serverFunction}
+    >
       {children}
     </RootLayout>
   )
