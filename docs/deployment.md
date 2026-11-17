@@ -39,6 +39,14 @@ For direct browser uploads, configure bucket CORS with only the actual site and 
 
 Set `RESEND_API_KEY`, `EMAIL_FROM` and `EMAIL_TO`. Keep `ENQUIRIES_ENABLED=false` until a synthetic browser enquiry is stored and delivered, then force a failure and verify retry without duplicate storage. Configure `CONTACT_TRUSTED_IP_HEADER` only after proving the deployed proxy overwrites that header with the real client IP. An arbitrary browser-supplied IP header must not be trusted. Password reset also uses the configured Resend adapter.
 
+### Migrations on deploy
+
+Vercel production builds run `scripts/migrate-on-deploy.mjs` before compiling, which applies pending Payload migrations using `DATABASE_URL_UNPOOLED`. A failed migration fails the build, so the previous deployment keeps serving. Preview and local builds skip it. Take a database backup before deploying a change that adds a migration.
+
+### Launch switches
+
+`SITE_INDEXING=true` lets search engines index the site and publishes a sitemap in `robots.txt`. `ANALYTICS_ENABLED=true` adds Vercel Web Analytics, which counts visits without cookies; enable Web Analytics in the Vercel project and update the Privacy page wording first. Both need a redeploy because public pages are prebuilt.
+
 ## Initialise before the first build
 
 Neon CLI setup: `neon init -y --org-id org-rapid-block-69421865 --project-id old-bread-60972090 --branch production --services postgres`, then `neon deploy`. This links the existing project and pulls `DATABASE_URL`, `DATABASE_URL_UNPOOLED` and `NEON_BRANCH` into the ignored local environment file. It does not deploy the Next.js website to Vercel or populate Payload tables. Back up the existing local environment before pulling. Preserve `PAYLOAD_SECRET` and the other application settings; Neon supplies database settings only. The app retains Payload authentication and its PostgreSQL adapter.

@@ -4,6 +4,8 @@ import { SiteHeader } from '@/components/site/header'
 import { SiteFooter } from '@/components/site/footer'
 import './globals.css'
 import { getSiteSettings } from '@/lib/site-settings'
+import { Analytics } from '@vercel/analytics/next'
+import { analyticsEnabled, siteIndexing, siteURL } from '@/lib/launch'
 
 const newsreader = Newsreader({
   subsets: ['latin'],
@@ -18,13 +20,19 @@ const sourceSans = Source_Sans_3({
   display: 'swap',
 })
 
+const description =
+  'Revalue helps organisations see what they throw away, separate it better, and find out what can be recovered.'
+
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.SITE_URL || 'http://localhost:3000'),
+  metadataBase: new URL(siteURL),
   title: { default: 'Revalue: Waste has value', template: '%s | Revalue' },
-  description:
-    'Revalue helps organisations see what they throw away, separate it better, and find out what can be recovered.',
-  robots: { index: false, follow: false },
+  description,
+  // Search engines are kept out until launch; see lib/launch.ts.
+  robots: siteIndexing ? { index: true, follow: true } : { index: false, follow: false },
   icons: { icon: '/favicon.svg' },
+  // The share image comes from opengraph-image.tsx; posts with their own image override it.
+  openGraph: { type: 'website', siteName: 'Revalue', locale: 'en_GB', description },
+  twitter: { card: 'summary_large_image' },
 }
 
 export default async function SiteLayout({ children }: { children: React.ReactNode }) {
@@ -41,6 +49,7 @@ export default async function SiteLayout({ children }: { children: React.ReactNo
         <SiteHeader settings={settings} />
         {children}
         <SiteFooter settings={settings} />
+        {analyticsEnabled && <Analytics />}
       </body>
     </html>
   )
