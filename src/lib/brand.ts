@@ -1,7 +1,7 @@
 export const brand = {
-  name: 'Revalue',
+  name: 'ReValue',
   tagline: 'Waste has value.',
-  operator: 'Revalue is operated by Simuverse Limited, Kampala, Uganda.',
+  operator: 'ReValue is operated by Simuverse Limited, Kampala, Uganda.',
 } as const
 
 export const navigation = [

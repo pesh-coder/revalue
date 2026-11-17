@@ -28,12 +28,12 @@ export default buildConfig({
       ? resendAdapter({
           apiKey: process.env.RESEND_API_KEY,
           defaultFromAddress: process.env.EMAIL_FROM,
-          defaultFromName: 'Revalue',
+          defaultFromName: 'ReValue',
         })
       : () => ({
           name: 'disabled',
           defaultFromAddress: 'disabled@example.invalid',
-          defaultFromName: 'Revalue',
+          defaultFromName: 'ReValue',
           sendEmail: async () => {
             throw new Error('Email delivery is not configured.')
           },
@@ -52,7 +52,7 @@ export default buildConfig({
     user: 'users',
     importMap: { baseDir: dirname },
     meta: {
-      titleSuffix: ' | Revalue Admin',
+      titleSuffix: ' | ReValue Admin',
       robots: { index: false, follow: false },
       icons: [{ rel: 'icon', type: 'image/svg+xml', url: '/favicon.svg' }],
     },

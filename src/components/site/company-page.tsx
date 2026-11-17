@@ -15,7 +15,7 @@ export async function CompanyPage({ slug }: { slug: string }) {
   if (slug === 'terms' || slug === 'privacy')
     return (
       <main id="main">
-        <PageIntro label="Revalue" title={page.title} />
+        <PageIntro label="ReValue" title={page.title} />
         <div className="site-container pb-10">
           <div className="max-w-prose">
             <p className="mb-5 text-body-sm text-muted">
@@ -23,7 +23,7 @@ export async function CompanyPage({ slug }: { slug: string }) {
             </p>
             {page.body && <BodyContent body={page.body} />}
             <Link href="/contact" className={editorialLink}>
-              Contact Revalue
+              Contact ReValue
             </Link>
           </div>
         </div>
@@ -32,7 +32,7 @@ export async function CompanyPage({ slug }: { slug: string }) {
   if (slug === 'contact') {
     return (
       <main id="main">
-        <PageIntro label="Contact Revalue" title={page.title}>
+        <PageIntro label="Contact ReValue" title={page.title}>
           {page.introduction}
         </PageIntro>
         <div className="site-container grid items-start gap-8 pb-10 lg:grid-cols-[minmax(0,2fr)_minmax(240px,1fr)] lg:gap-12">
@@ -123,7 +123,7 @@ export async function CompanyPage({ slug }: { slug: string }) {
     <main id="main">
       <div className="site-container grid items-center gap-7 pt-8 pb-8 lg:grid-cols-2">
         <header>
-          <p className="kicker text-forest">{isAbout ? 'About Revalue' : 'Partnerships'}</p>
+          <p className="kicker text-forest">{isAbout ? 'About ReValue' : 'Partnerships'}</p>
           <h1 className="mt-3 font-serif text-headline-lg text-deep">{page.title}</h1>
           <p className="mt-4 max-w-prose text-body-lg text-muted">{page.introduction}</p>
           <Link

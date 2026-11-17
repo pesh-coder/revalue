@@ -122,7 +122,7 @@ export const Media: CollectionConfig = {
       name: 'credit',
       label: 'Photo credit',
       type: 'text',
-      admin: { description: 'Optional. Who took the photo, e.g. "Photo: Revalue".' },
+      admin: { description: 'Optional. Who took the photo, e.g. "Photo: ReValue".' },
     },
     {
       name: 'publicApproved',
@@ -332,7 +332,7 @@ export const Homepage: GlobalConfig = {
               relationTo: 'posts',
               hasMany: true,
               maxRows: 4,
-              admin: { description: 'Choose up to 4 posts for the "Latest from Revalue" section.' },
+              admin: { description: 'Choose up to 4 posts for the "Latest from ReValue" section.' },
             },
             {
               name: 'featuredProject',

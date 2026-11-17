@@ -48,7 +48,7 @@ test('Resend request uses separate sender, reply-to and stable idempotency key',
   }
   const result = await sendResendNotification(
     { ...valid, id: 42 },
-    { apiKey: 'synthetic-key', from: 'Revalue <test@example.com>', to: 'team@example.com' },
+    { apiKey: 'synthetic-key', from: 'ReValue <test@example.com>', to: 'team@example.com' },
     fake,
   )
   assert.equal(result.ok, true)
@@ -56,7 +56,7 @@ test('Resend request uses separate sender, reply-to and stable idempotency key',
   assert.equal(h['Idempotency-Key'], 'revalue-enquiry-42')
   const body = JSON.parse(observed?.body as string)
   assert.equal(body.reply_to, valid.email)
-  assert.equal(body.from, 'Revalue <test@example.com>')
+  assert.equal(body.from, 'ReValue <test@example.com>')
   assert.ok(!('html' in body))
 })
 test('provider rejection is a failure, and missing settings never call the network', async () => {

@@ -10,7 +10,7 @@ The repository's `vercel.json` explicitly selects the Next.js framework and rese
 2. Vercel project connected to the repository, with a Node version satisfying `package.json`.
 3. A dedicated Neon production database. Keep preview/test data separate.
 4. A private Cloudflare R2 Standard bucket, for example `revalue-media`. Leave the public development URL and custom-domain access disabled. Use a bucket-scoped Object Read and Write S3 credential, stored only in environment settings.
-5. The existing Resend account, a verified sending domain, a separate sending-only Revalue API key and a receiving team inbox.
+5. The existing Resend account, a verified sending domain, a separate sending-only ReValue API key and a receiving team inbox.
 6. Website domain and DNS access.
 
 The S3 adapter also supports other private S3-compatible providers. Cloudflare R2's free usage allowance is metered, not unlimited. Check the hosting plan's permitted business use and current provider quotas before public launch.
@@ -19,7 +19,7 @@ The S3 adapter also supports other private S3-compatible providers. Cloudflare R
 
 ### Vercel: missing Payload secret during prerendering
 
-If the build reports `missing secret key` while reading site settings, the project is missing `PAYLOAD_SECRET`. In Vercel, open the Revalue project → Settings → Environment Variables and add these for Production:
+If the build reports `missing secret key` while reading site settings, the project is missing `PAYLOAD_SECRET`. In Vercel, open the ReValue project → Settings → Environment Variables and add these for Production:
 
 | Name                   | Value                                                                               |
 | ---------------------- | ----------------------------------------------------------------------------------- |

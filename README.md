@@ -1,4 +1,4 @@
-# Revalue
+# ReValue
 
 Next.js App Router, TypeScript, Tailwind v4 and Payload CMS. The public UI follows `docs/design-brief.md` and `design-reference/screens/`; content/backend requirements follow the reconciled PRD.
 

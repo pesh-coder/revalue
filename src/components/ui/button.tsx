@@ -3,7 +3,7 @@ import { Slot } from 'radix-ui'
 import { cva, type VariantProps } from 'class-variance-authority'
 import { cn } from '@/lib/utils'
 
-// shadcn Button structure with Revalue tokens and dimensions.
+// shadcn Button structure with ReValue tokens and dimensions.
 export const buttonVariants = cva(
   'inline-flex shrink-0 items-center justify-center gap-2 rounded-control font-semibold disabled:pointer-events-none disabled:opacity-50',
   {

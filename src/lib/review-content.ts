@@ -182,7 +182,7 @@ export const reviewCatalog: Catalog = {
   pages: [
     {
       slug: 'about',
-      title: 'Why Revalue exists',
+      title: 'Why ReValue exists',
       introduction:
         'Most waste is mixed long before anyone asks what it could become. We want to make the next useful step clearer, without promising value that has not been shown.',
     },
@@ -219,7 +219,7 @@ export const reviewCatalog: Catalog = {
       body: paragraphs([
         'What we collect: your name, organisation, email, phone number if you give it, the subject you choose and your message.',
         'Why: to reply to you. Where: in our website system and our team email when enquiry delivery is enabled. How long: proposed retention is 24 months, subject to policy review.',
-        'Who sees it: the Revalue team and the service providers that run the website and email. We do not sell it.',
+        'Who sees it: the ReValue team and the service providers that run the website and email. We do not sell it.',
         'Your rights: ask us to see, correct or delete your data. Questions or complaints: contact us, or the Personal Data Protection Office of Uganda.',
         'This local review uses sample content. Analytics and live enquiry delivery are not enabled. The final privacy policy will reflect the actual providers and data-handling configuration before public release.',
       ]),

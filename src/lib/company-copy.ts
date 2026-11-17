@@ -10,9 +10,9 @@ export const companyCopy: Record<string, Partial<CompanyPage>> = {
       'Learn openly.',
       'Connect segregation to recovery.',
     ].map((text) => ({ text })),
-    teamHeading: 'The people behind Revalue',
+    teamHeading: 'The people behind ReValue',
     teamIntroduction:
-      'Revalue brings software, hardware and environmental engineering together around a practical question: what can separated materials become?',
+      'ReValue brings software, hardware and environmental engineering together around a practical question: what can separated materials become?',
     people: [
       { name: 'Patience Sitati', role: 'Co-founder, software and business', initials: 'PS' },
       { name: 'Daisy Nyaburu', role: 'Hardware Lead', initials: 'DN' },

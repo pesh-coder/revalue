@@ -72,7 +72,7 @@ try {
   const [hero, cover, projectImage, aboutImage, partnerImage] = await Promise.all([
     image('stock-hero-hills.jpg', 'Green hills and cultivated land.'),
     image('stock-compost-bays.jpg', 'Separated organic material in compost bays.'),
-    image('prototype-bin.jpg', 'Revalue sorting prototype.'),
+    image('prototype-bin.jpg', 'ReValue sorting prototype.'),
     image(
       'stock-open-water.jpg',
       'Calm open water under a blue sky, a far shoreline on the horizon.',

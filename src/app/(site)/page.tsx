@@ -158,7 +158,7 @@ export default async function Home() {
           )}
 
           <aside
-            aria-label="Explore Revalue"
+            aria-label="Explore ReValue"
             className={`flex min-w-0 flex-col gap-6 md:col-span-2 md:grid md:grid-cols-2 ${lead && showFeaturedProject ? 'lg:col-span-3 lg:flex' : lead ? 'lg:col-span-6' : showFeaturedProject ? 'lg:col-span-4 lg:flex' : 'lg:col-span-12'}`}
           >
             <section aria-labelledby="focus-heading">

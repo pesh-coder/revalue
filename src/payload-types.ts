@@ -226,7 +226,7 @@ export interface Media {
    */
   caption?: string | null;
   /**
-   * Optional. Who took the photo, e.g. "Photo: Revalue".
+   * Optional. Who took the photo, e.g. "Photo: ReValue".
    */
   credit?: string | null;
   /**
@@ -271,7 +271,7 @@ export interface Topic {
   id: number;
   title: string;
   /**
-   * The end of the address, e.g. /resources/waste-audits. "blog", "guides" and "tools" are reserved. Lowercase words joined by hyphens. It cannot be changed after the page is published.
+   * The end of the address, e.g. /resources/waste-audits. "blog", "guides", "tools" and "search" are reserved. Lowercase words joined by hyphens. It cannot be changed after the page is published.
    */
   slug: string;
   /**
@@ -360,7 +360,7 @@ export interface Page {
   _status?: ('draft' | 'published') | null;
 }
 /**
- * Revalue projects shown under /projects. Only admins can change a project stage.
+ * ReValue projects shown under /projects. Only admins can change a project stage.
  *
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "projects".
@@ -1055,7 +1055,7 @@ export interface Homepage {
    */
   heroImage?: (number | null) | Media;
   /**
-   * Choose up to 4 posts for the "Latest from Revalue" section.
+   * Choose up to 4 posts for the "Latest from ReValue" section.
    */
   featuredArticles?: (number | Post)[] | null;
   featuredProject?: (number | null) | Project;

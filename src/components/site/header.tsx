@@ -84,8 +84,8 @@ export function SiteHeader({ settings }: { settings: SiteSettings }) {
             <DialogTitle className="sr-only">Menu</DialogTitle>
             <div className="flex min-h-16 shrink-0 items-center justify-between border-b border-border px-4 md:px-6">
               <DialogClose asChild>
-                <Link href="/" aria-label="Revalue, home">
-                  <span className="font-serif text-2xl font-semibold text-deep">Revalue</span>
+                <Link href="/" aria-label="ReValue, home">
+                  <span className="font-serif text-2xl font-semibold text-deep">ReValue</span>
                 </Link>
               </DialogClose>
               <DialogClose asChild>

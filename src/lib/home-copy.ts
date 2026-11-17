@@ -1,11 +1,11 @@
 export const defaultHomeCopy = {
   heroTitle: 'Waste has value.',
   heroText:
-    'Revalue helps organisations see what they throw away, separate it better, and find out what can be recovered.',
+    'ReValue helps organisations see what they throw away, separate it better, and find out what can be recovered.',
   heroAction: 'Talk to us about your waste',
   heroSecondary: 'Read how we work',
-  latestHeading: 'Latest from Revalue',
-  emptyHeading: 'Explore Revalue',
+  latestHeading: 'Latest from ReValue',
+  emptyHeading: 'Explore ReValue',
   articlesLabel: 'All articles',
   focusLabel: 'Our focus',
   focusTitle: 'Keeping value in circulation.',

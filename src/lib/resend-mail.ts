@@ -29,7 +29,7 @@ export async function sendResendNotification(
           .map((s) => s.trim())
           .filter(Boolean),
         reply_to: input.email,
-        subject: `Revalue enquiry: ${input.type}`,
+        subject: `ReValue enquiry: ${input.type}`,
         text: [
           `Name: ${input.name}`,
           `Organisation: ${input.organisation}`,

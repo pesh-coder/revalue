@@ -55,7 +55,7 @@ export default async function Solution({ params }: Props) {
               }
               alt={
                 slug === 'technology-and-monitoring'
-                  ? 'The Revalue sorting prototype.'
+                  ? 'The ReValue sorting prototype.'
                   : 'Bins arranged for separating waste materials.'
               }
               className="aspect-4/3 rounded-none"
@@ -64,7 +64,7 @@ export default async function Solution({ params }: Props) {
             />
             <figcaption className="mt-2 text-body-sm text-muted">
               {slug === 'technology-and-monitoring'
-                ? 'Smart segregation prototype, Revalue.'
+                ? 'Smart segregation prototype, ReValue.'
                 : 'Illustrative photograph.'}
             </figcaption>
           </figure>

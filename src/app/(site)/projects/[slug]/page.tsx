@@ -59,13 +59,13 @@ export default async function Project({ params }: Props) {
             <figure>
               <Photo
                 src={p.image}
-                alt="The Revalue smart segregation prototype, showing its cardboard housing, screen, sensors, exposed wiring and collection compartments."
+                alt="The ReValue smart segregation prototype, showing its cardboard housing, screen, sensors, exposed wiring and collection compartments."
                 className="aspect-3/4 rounded-none"
                 sizes="(min-width:1200px) 440px, (min-width:1024px) 40vw, 100vw"
                 priority
               />
               <figcaption className="mt-2 text-body-sm text-muted">
-                Smart segregation prototype, Revalue.
+                Smart segregation prototype, ReValue.
               </figcaption>
             </figure>
           )}

@@ -35,7 +35,7 @@ const Layout = ({ children }: Args) =>
     <html lang="en">
       <body>
         <main className="revalue-admin-setup">
-          <h1>Connect the Revalue CMS</h1>
+          <h1>Connect the ReValue CMS</h1>
           <p>
             The admin portal needs a PostgreSQL connection before you can sign in, edit content or
             upload files.

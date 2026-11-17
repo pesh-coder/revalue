@@ -1,8 +1,8 @@
 import { ImageResponse } from 'next/og'
 
-// Default image shown when a Revalue page is shared (WhatsApp, LinkedIn, X).
+// Default image shown when a ReValue page is shared (WhatsApp, LinkedIn, X).
 // Posts with their own social or cover image use that instead.
-export const alt = 'Revalue: Waste has value'
+export const alt = 'ReValue: Waste has value'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
@@ -35,7 +35,7 @@ export default function Image() {
           />
           <circle cx="36.4" cy="11.6" r="4.5" fill={warm} />
         </svg>
-        <div style={{ fontSize: 76, fontWeight: 600, letterSpacing: -1 }}>Revalue</div>
+        <div style={{ fontSize: 76, fontWeight: 600, letterSpacing: -1 }}>ReValue</div>
       </div>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
         <div style={{ fontSize: 64, fontWeight: 600, lineHeight: 1.1 }}>Waste has value.</div>

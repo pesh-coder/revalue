@@ -25,7 +25,7 @@ export function Logo() {
     <div className="revalue-logo">
       <Mark size={56} />
       <div>
-        <p className="revalue-logo__name">Revalue</p>
+        <p className="revalue-logo__name">ReValue</p>
         <p className="revalue-logo__tag">Website admin</p>
       </div>
     </div>
@@ -34,7 +34,7 @@ export function Logo() {
 
 export function Icon() {
   return (
-    <span className="revalue-icon" aria-label="Revalue">
+    <span className="revalue-icon" aria-label="ReValue">
       <Mark size={26} />
     </span>
   )

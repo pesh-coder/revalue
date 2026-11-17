@@ -110,7 +110,7 @@ export const Projects = editorial(
   {
     labels: { singular: 'Project', plural: 'Projects' },
     group: 'Website pages',
-    description: 'Revalue projects shown under /projects. Only admins can change a project stage.',
+    description: 'ReValue projects shown under /projects. Only admins can change a project stage.',
     slugHint: `The end of the address, e.g. /projects/smart-bin. ${frozenSlug}`,
     defaultColumns: ['title', 'stage', '_status', 'updatedAt'],
   },

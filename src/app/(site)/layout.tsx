@@ -21,17 +21,17 @@ const sourceSans = Source_Sans_3({
 })
 
 const description =
-  'Revalue helps organisations see what they throw away, separate it better, and find out what can be recovered.'
+  'ReValue helps organisations see what they throw away, separate it better, and find out what can be recovered.'
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteURL),
-  title: { default: 'Revalue: Waste has value', template: '%s | Revalue' },
+  title: { default: 'ReValue: Waste has value', template: '%s | ReValue' },
   description,
   // Search engines are kept out until launch; see lib/launch.ts.
   robots: siteIndexing ? { index: true, follow: true } : { index: false, follow: false },
   icons: { icon: '/favicon.svg' },
   // The share image comes from opengraph-image.tsx; posts with their own image override it.
-  openGraph: { type: 'website', siteName: 'Revalue', locale: 'en_GB', description },
+  openGraph: { type: 'website', siteName: 'ReValue', locale: 'en_GB', description },
   twitter: { card: 'summary_large_image' },
 }
 

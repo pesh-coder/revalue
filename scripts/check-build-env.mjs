@@ -19,12 +19,12 @@ if (process.env.VERCEL && !process.env.SITE_URL?.trim()) {
 
 if (problems.length) {
   console.error(
-    `Revalue build configuration is incomplete:\n${problems.map((p) => `- ${p}`).join('\n')}`,
+    `ReValue build configuration is incomplete:\n${problems.map((p) => `- ${p}`).join('\n')}`,
   )
   console.error(
     'Set hosting environment variables before redeploying. For the first CMS deployment, also migrate the database, bootstrap an administrator and seed baseline content. See docs/deployment.md.',
   )
   process.exitCode = 1
 } else {
-  console.log(`Revalue build configuration checked (${mode} mode).`)
+  console.log(`ReValue build configuration checked (${mode} mode).`)
 }

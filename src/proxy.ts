@@ -20,7 +20,7 @@ export async function proxy(request: NextRequest) {
     ]).finally(() => clearTimeout(timeout))
     if (record?.rows[0]?.gone)
       return new Response(
-        `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex"><title>Page unavailable | Revalue</title><link rel="stylesheet" href="/gone.css"></head><body><header><a href="/">Revalue</a></header><main><p>Page unavailable</p><h1>This page is no longer available.</h1><p>Browse our latest resources or contact the Revalue team.</p><nav aria-label="Next steps"><a href="/resources">Browse resources</a><a href="/contact">Contact us</a></nav></main></body></html>`,
+        `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex"><title>Page unavailable | ReValue</title><link rel="stylesheet" href="/gone.css"></head><body><header><a href="/">ReValue</a></header><main><p>Page unavailable</p><h1>This page is no longer available.</h1><p>Browse our latest resources or contact the ReValue team.</p><nav aria-label="Next steps"><a href="/resources">Browse resources</a><a href="/contact">Contact us</a></nav></main></body></html>`,
         {
           status: 410,
           headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store' },

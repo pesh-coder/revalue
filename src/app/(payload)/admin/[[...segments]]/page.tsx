@@ -18,7 +18,7 @@ type Args = {
 export const generateMetadata = ({ params, searchParams }: Args): Promise<Metadata> =>
   process.env.DATABASE_URL
     ? generatePageMetadata({ config, params, searchParams })
-    : Promise.resolve({ title: 'Revalue CMS setup', robots: { index: false, follow: false } })
+    : Promise.resolve({ title: 'ReValue CMS setup', robots: { index: false, follow: false } })
 
 const Page = ({ params, searchParams }: Args) =>
   process.env.DATABASE_URL ? RootPage({ config, params, searchParams, importMap }) : null
