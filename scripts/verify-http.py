@@ -53,7 +53,7 @@ try:
  status,raw,_=call('/preview?slug='+body['slug'],authenticated=False);check('Anonymous preview reaches login without private copy',b'Private revision' not in raw and b'Login' in raw)
  status,_,_=call('/api/posts/'+str(post_id),'PATCH',{'_status':'draft'})
  status,raw,_=call(path,authenticated=False);check('An unpublished formerly public article returns HTTP 410',status==410 and b'no longer available' in raw)
- status,raw,_=call('/resources?q='+tag,authenticated=False);check('Unpublished article disappears from application search',body['title'].encode() not in raw)
+ status,raw,_=call('/resources/search?q='+tag,authenticated=False);check('Unpublished article disappears from application search',body['title'].encode() not in raw)
  status,_,_=call('/api/posts/'+str(post_id),'PATCH',{'title':body['title'],'_status':'published'})
  check('Republishing restores the public page',wait_text(path,body['title'])<60)
  status,_,_=call('/api/posts/'+str(post_id),'DELETE');check('Admin can delete its synthetic test article',status==200)

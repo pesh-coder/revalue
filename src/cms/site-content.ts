@@ -71,7 +71,10 @@ const editorial = (slug: string, options: EditorialOptions, fields: Field[]): Co
   hooks: {
     beforeChange: [
       ({ data, collection }) => {
-        if (collection.slug === 'topics' && ['blog', 'guides', 'tools'].includes(data.slug))
+        if (
+          collection.slug === 'topics' &&
+          ['blog', 'guides', 'tools', 'search'].includes(data.slug)
+        )
           throw new Error('That URL is reserved. Use a different topic slug.')
         if (
           collection.slug === 'pages' &&
@@ -118,14 +121,7 @@ export const Projects = editorial(
       label: 'Project stage',
       type: 'select',
       required: true,
-      options: [
-        'Concept',
-        'In development',
-        'Testing',
-        'Pilot',
-        'Completed',
-        'Published research',
-      ],
+      options: ['Concept', 'In development', 'Testing', 'Pilot', 'Completed', 'Published research'],
       defaultValue: 'Concept',
       access: adminOnly,
       admin: {
@@ -179,7 +175,7 @@ export const Topics = editorial(
     labels: { singular: 'Topic', plural: 'Topics' },
     group: 'Posts',
     description: 'Categories that group posts, guides and tools, e.g. Waste audits.',
-    slugHint: `The end of the address, e.g. /resources/waste-audits. "blog", "guides" and "tools" are reserved. ${frozenSlug}`,
+    slugHint: `The end of the address, e.g. /resources/waste-audits. "blog", "guides", "tools" and "search" are reserved. ${frozenSlug}`,
   },
   [
     {

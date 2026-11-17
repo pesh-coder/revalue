@@ -8,7 +8,7 @@ export function AdminNav({ payload, permissions, visibleEntities }: ServerProps)
   const canRead = (type: 'collections' | 'globals', slug: string) =>
     Boolean(
       permissions?.[type]?.[slug]?.read &&
-        (visibleEntities?.[type] as string[] | undefined)?.includes(slug),
+      (visibleEntities?.[type] as string[] | undefined)?.includes(slug),
     )
   const list = (slug: string) => `${admin}/collections/${slug}`
   const globalPage = (slug: string) => `${admin}/globals/${slug}`
@@ -47,10 +47,25 @@ export function AdminNav({ payload, permissions, visibleEntities }: ServerProps)
         { label: 'Homepage', href: globalPage('homepage'), show: canRead('globals', 'homepage') },
       ],
     },
-    { label: 'Projects', icon: 'projects', href: list('projects'), show: canRead('collections', 'projects') },
-    { label: 'Solutions', icon: 'solutions', href: list('solutions'), show: canRead('collections', 'solutions') },
+    {
+      label: 'Projects',
+      icon: 'projects',
+      href: list('projects'),
+      show: canRead('collections', 'projects'),
+    },
+    {
+      label: 'Solutions',
+      icon: 'solutions',
+      href: list('solutions'),
+      show: canRead('collections', 'solutions'),
+    },
     { label: 'Tools', icon: 'tools', href: list('tools'), show: canRead('collections', 'tools') },
-    { label: 'Enquiries', icon: 'enquiries', href: list('enquiries'), show: canRead('collections', 'enquiries') },
+    {
+      label: 'Enquiries',
+      icon: 'enquiries',
+      href: list('enquiries'),
+      show: canRead('collections', 'enquiries'),
+    },
     {
       label: 'Appearance',
       icon: 'appearance',

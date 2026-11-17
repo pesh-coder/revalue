@@ -1,6 +1,7 @@
 'use client'
 import Link from 'next/link'
-import { useEffect, useRef, useState, useSyncExternalStore } from 'react'
+import { Suspense, useEffect, useRef, useState, useSyncExternalStore } from 'react'
+import { useSearchParams } from 'next/navigation'
 import { Button } from '@/components/ui/button'
 import { enquiryTypes } from '@/lib/content-types'
 import { validateEnquiry, type EnquiryInput, type EnquiryErrors } from '@/lib/enquiry-validation'
@@ -261,5 +262,19 @@ export function ContactForm({
         {state === 'sending' ? 'Sending' : 'Send enquiry'}
       </Button>
     </form>
+  )
+}
+
+// The contact page is cached as a static page, so a link such as /contact?type=… is read
+// in the browser. The cached HTML shows the form with no type selected.
+function ContactFormWithType({ enabled }: { enabled: boolean }) {
+  const type = useSearchParams().get('type') || ''
+  return <ContactForm key={type} initialType={type} enabled={enabled} />
+}
+export function ContactFormFromAddress({ enabled = false }: { enabled?: boolean }) {
+  return (
+    <Suspense fallback={<ContactForm enabled={enabled} />}>
+      <ContactFormWithType enabled={enabled} />
+    </Suspense>
   )
 }

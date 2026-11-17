@@ -9,7 +9,14 @@ const day = (value: string) =>
 
 const daysAgo = (days: number) => new Date(Date.now() - days * 24 * 60 * 60 * 1000).toISOString()
 
-type SiteRow = { name: string; detail?: string; where: string; view?: string; edit: string; action: string }
+type SiteRow = {
+  name: string
+  detail?: string
+  where: string
+  view?: string
+  edit: string
+  action: string
+}
 
 export async function Dashboard({ initPageResult }: AdminViewServerProps) {
   const { req, permissions } = initPageResult

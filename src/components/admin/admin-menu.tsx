@@ -34,7 +34,9 @@ type MenuLink = { label: string; href: string; exact?: boolean; show?: boolean }
 export type MenuSection = MenuLink & { icon: string; show: boolean; children?: MenuLink[] }
 
 const matches = (pathname: string, link: MenuLink) =>
-  link.exact ? pathname === link.href : pathname === link.href || pathname.startsWith(`${link.href}/`)
+  link.exact
+    ? pathname === link.href
+    : pathname === link.href || pathname.startsWith(`${link.href}/`)
 
 export function AdminMenu({ sections }: { sections: MenuSection[] }) {
   const pathname = usePathname()

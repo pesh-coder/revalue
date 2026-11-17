@@ -11,6 +11,10 @@ import {
   editorialLink,
 } from '@/components/site/content-ui'
 type Props = { params: Promise<{ topic: string }> }
+// Built once and served from cache; anything published later is built on its first visit.
+export async function generateStaticParams() {
+  return (await getCatalog()).topics.map((item) => ({ topic: item.slug }))
+}
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { topic } = await params
   const c = await getCatalog()

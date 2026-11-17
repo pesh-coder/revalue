@@ -3,21 +3,17 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { PageIntro } from '@/components/site/editorial'
 import { Photo } from '@/components/site/photo'
-import { EmptyState, FilterLinks, editorialLink } from '@/components/site/content-ui'
-import { getCatalog, first } from '@/lib/content'
+import { EmptyState, editorialLink } from '@/components/site/content-ui'
+import { QueryFilterLinks, QueryList } from '@/components/site/query-list'
+import { getCatalog } from '@/lib/content'
 import { projectStatuses } from '@/lib/content-types'
 export const metadata: Metadata = {
   title: 'Projects',
   description: 'Work and lessons, labelled by stage.',
 }
-export default async function Projects({
-  searchParams,
-}: {
-  searchParams: Promise<Record<string, string | string[] | undefined>>
-}) {
-  const status = first((await searchParams).status)
+// Static page: the ?status= filter is applied in the browser by QueryList.
+export default async function Projects() {
   const c = await getCatalog()
-  const projects = c.projects.filter((p) => !status || p.status === status)
   const copy = indexCopy(c, 'projects-index')
   return (
     <main id="main">
@@ -25,23 +21,32 @@ export default async function Projects({
         {copy.introduction}
       </PageIntro>
       <div className="site-container pb-10">
-        <FilterLinks
+        <QueryFilterLinks
+          basePath="/projects"
+          param="status"
           label="Filter projects by stage"
-          selected={status}
           options={[
             { label: 'All stages', value: '' },
             ...projectStatuses.map((s) => ({ label: s, value: s })),
           ]}
-          href={(s) => (s ? `/projects?status=${encodeURIComponent(s)}` : '/projects')}
         />
         <div className="mt-6">
-          {projects.length ? (
-            <div className="grid gap-8 md:grid-cols-2">
-              {projects.map((p) => (
-                <article
-                  key={p.slug}
-                  className="grid items-start gap-5 sm:grid-cols-[160px_minmax(0,1fr)]"
-                >
+          <QueryList
+            basePath="/projects"
+            param="status"
+            className="grid gap-8 md:grid-cols-2"
+            empty={
+              <EmptyState
+                title="No projects with this status yet."
+                href="/projects"
+                label="See all projects"
+              />
+            }
+            items={c.projects.map((p) => ({
+              key: p.slug,
+              value: p.status,
+              node: (
+                <article className="grid items-start gap-5 sm:grid-cols-[160px_minmax(0,1fr)]">
                   {p.image && (
                     <Link href={`/projects/${p.slug}`} aria-hidden="true" tabIndex={-1}>
                       <Photo
@@ -65,15 +70,9 @@ export default async function Projects({
                     </Link>
                   </div>
                 </article>
-              ))}
-            </div>
-          ) : (
-            <EmptyState
-              title="No projects with this status yet."
-              href="/projects"
-              label="See all projects"
-            />
-          )}
+              ),
+            }))}
+          />
         </div>
       </div>
     </main>

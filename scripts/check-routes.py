@@ -1,7 +1,7 @@
 import urllib.request,urllib.error,json,re,html,sys
 from pathlib import Path
 root='http://localhost:3000'
-paths=['/','/resources','/resources/blog','/resources/blog/what-is-a-waste-audit','/resources/blog?topic=resource-recovery','/resources?q=audit','/resources?q=zzzz-no-result','/resources?format=Guide','/resources/waste-audits','/resources/tools','/resources/tools/waste-audit-toolkit','/resources/guides','/projects','/projects?status=Completed','/projects/smart-segregation-prototype','/solutions','/solutions/waste-discovery-review','/solutions/segregation-systems','/solutions/technology-and-monitoring','/solutions/resource-recovery','/solutions/institutional-waste-management','/about','/partners','/pricing','/contact','/privacy','/terms','/preview']
+paths=['/','/resources','/resources/blog','/resources/blog/what-is-a-waste-audit','/resources/blog?topic=resource-recovery','/resources/search?q=audit','/resources/search?q=zzzz-no-result','/resources/search?format=Guide','/resources?q=audit','/resources/waste-audits','/resources/tools','/resources/tools/waste-audit-toolkit','/resources/guides','/projects','/projects?status=Completed','/projects/smart-segregation-prototype','/solutions','/solutions/waste-discovery-review','/solutions/segregation-systems','/solutions/technology-and-monitoring','/solutions/resource-recovery','/solutions/institutional-waste-management','/about','/partners','/pricing','/contact','/privacy','/terms','/preview']
 cms='--cms' in sys.argv
 if cms: paths=[p for p in paths if p not in ['/preview','/resources/tools/waste-audit-toolkit']]
 results=[]
@@ -11,7 +11,7 @@ for path in paths:
    text=response.read().decode();heads=re.findall(r'<h1\b[^>]*>(.*?)</h1>',text,re.S);head=html.unescape(re.sub('<[^>]+>','',heads[0])) if heads else ''
    result={'path':path,'status':response.status,'h1':head,'h1Count':len(heads)}
    assert response.status==200 and len(heads)==1,result
-   if path.endswith('topic=resource-recovery'):assert 'No articles on this topic yet.' in text
+   # ?topic= and ?status= filters are applied in the browser (static pages); see query-list.tsx.
    if path.endswith('zzzz-no-result'):assert 'Nothing found for this search.' in text
    if path=='/resources/tools/waste-audit-toolkit':assert 'This file is not available right now.' in text and '>Download the toolkit</a>' not in text
    if path=='/resources/blog/what-is-a-waste-audit':assert 'Reviewed 12 December' not in text and 'You weigh or estimate' in text

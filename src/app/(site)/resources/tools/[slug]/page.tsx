@@ -6,6 +6,10 @@ import { PageIntro } from '@/components/site/editorial'
 import { Breadcrumbs, editorialLink } from '@/components/site/content-ui'
 import { buttonVariants } from '@/components/ui/button'
 type Props = { params: Promise<{ slug: string }> }
+// Built once and served from cache; anything published later is built on its first visit.
+export async function generateStaticParams() {
+  return (await getCatalog()).tools.map((item) => ({ slug: item.slug }))
+}
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
   const c = await getCatalog()

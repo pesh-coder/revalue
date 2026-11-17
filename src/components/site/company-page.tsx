@@ -1,20 +1,14 @@
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { getCatalog, first } from '@/lib/content'
+import { getCatalog } from '@/lib/content'
 import { PageIntro } from './editorial'
 import { BodyContent, ContactCallout, editorialLink } from './content-ui'
-import { ContactForm } from './contact-form'
+import { ContactFormFromAddress } from './contact-form'
 import { Photo } from './photo'
 import { getSiteSettings } from '@/lib/site-settings'
 import { buttonVariants } from '@/components/ui/button'
 
-export async function CompanyPage({
-  slug,
-  searchParams,
-}: {
-  slug: string
-  searchParams?: Promise<Record<string, string | string[] | undefined>>
-}) {
+export async function CompanyPage({ slug }: { slug: string }) {
   const [c, settings] = await Promise.all([getCatalog(), getSiteSettings()])
   const page = c.pages.find((p) => p.slug === slug)
   if (!page) notFound()
@@ -36,15 +30,13 @@ export async function CompanyPage({
       </main>
     )
   if (slug === 'contact') {
-    const params = searchParams ? await searchParams : {}
     return (
       <main id="main">
         <PageIntro label="Contact Revalue" title={page.title}>
           {page.introduction}
         </PageIntro>
         <div className="site-container grid items-start gap-8 pb-10 lg:grid-cols-[minmax(0,2fr)_minmax(240px,1fr)] lg:gap-12">
-          <ContactForm
-            initialType={first(params.type)}
+          <ContactFormFromAddress
             enabled={process.env.ENQUIRIES_ENABLED === 'true' && Boolean(process.env.DATABASE_URL)}
           />
           <aside>

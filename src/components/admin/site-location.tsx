@@ -11,7 +11,12 @@ const describe = (collection: string, slug: string, format?: string | null) => (
 
 // List column: "About page · /about"
 // When it is the first column it doubles as the link into the editor, like the default title cell.
-export function SiteLocationCell({ rowData, collectionSlug, link, linkURL }: DefaultCellComponentProps) {
+export function SiteLocationCell({
+  rowData,
+  collectionSlug,
+  link,
+  linkURL,
+}: DefaultCellComponentProps) {
   const {
     config: {
       routes: { admin },
@@ -47,13 +52,16 @@ export function SiteLocationField() {
     <div className="revalue-location">
       <p className="revalue-location__label">Where on the website</p>
       {name && <p className="revalue-location__name">{name}</p>}
-      <p className="revalue-location__path">{path || 'Add a web address to see where this appears.'}</p>
+      <p className="revalue-location__path">
+        {path || 'Add a web address to see where this appears.'}
+      </p>
       {id && path && published ? (
         <a href={path} target="_blank" rel="noreferrer" className="revalue-location__view">
           View on website ↗
         </a>
       ) : (
-        id && path && <p className="revalue-location__note">Visible on the website after you publish.</p>
+        id &&
+        path && <p className="revalue-location__note">Visible on the website after you publish.</p>
       )}
     </div>
   )

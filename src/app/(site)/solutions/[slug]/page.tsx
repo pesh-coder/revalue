@@ -5,6 +5,10 @@ import { getCatalog } from '@/lib/content'
 import { Breadcrumbs, ContactCallout, editorialLink } from '@/components/site/content-ui'
 import { Photo } from '@/components/site/photo'
 type Props = { params: Promise<{ slug: string }> }
+// Built once and served from cache; anything published later is built on its first visit.
+export async function generateStaticParams() {
+  return (await getCatalog()).solutions.map((item) => ({ slug: item.slug }))
+}
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params
   const { solutions } = await getCatalog()

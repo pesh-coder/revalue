@@ -1,12 +1,11 @@
 import { indexCopy } from '@/lib/index-copy'
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { getCatalog, first, pageNumber, slugify } from '@/lib/content'
+import { getCatalog, slugify } from '@/lib/content'
+import { QueryFilterLinks, QueryList } from '@/components/site/query-list'
 import { PageIntro } from '@/components/site/editorial'
 import {
   ArticleCard,
-  FilterLinks,
-  Pagination,
   EmptyState,
   ContactCallout,
   editorialLink,
@@ -15,25 +14,11 @@ export const metadata: Metadata = {
   title: 'Blog',
   description: 'Explanations, field lessons and practical advice.',
 }
-export default async function Blog({
-  searchParams,
-}: {
-  searchParams: Promise<Record<string, string | string[] | undefined>>
-}) {
-  const params = await searchParams
-  const topic = first(params.topic)
-  const current = pageNumber(first(params.page))
+// Static page: the ?topic= filter and ?page= paging are applied in the browser by QueryList.
+export default async function Blog() {
   const c = await getCatalog()
   const { articles, topics } = c
-  const posts = articles.filter((a) => a.format === 'Blog' && (!topic || a.topicSlug === topic))
-  const total = Math.ceil(posts.length / 12)
-  const shown = posts.slice((current - 1) * 12, current * 12)
-  const href = (p: number, t = topic) => {
-    const q = new URLSearchParams()
-    if (t) q.set('topic', t)
-    if (p > 1) q.set('page', String(p))
-    return `/resources/blog${q.size ? '?' + q : ''}`
-  }
+  const posts = articles.filter((a) => a.format === 'Blog')
   const copy = indexCopy(c, 'resources-blog')
   return (
     <main id="main">
@@ -41,33 +26,37 @@ export default async function Blog({
         {copy.introduction}
       </PageIntro>
       <div className="site-container pb-10">
-        <FilterLinks
+        <QueryFilterLinks
+          basePath="/resources/blog"
+          param="topic"
           label="Filter articles by topic"
-          selected={topic}
           options={[
             { label: 'All topics', value: '' },
             ...topics.map((t) => ({ label: t.title, value: t.slug })),
             { label: 'Segregation', value: slugify('waste-segregation') },
             { label: 'Resource recovery', value: 'resource-recovery' },
           ]}
-          href={(value) => href(1, value)}
         />
         <div className="mt-6 grid items-start gap-8 lg:grid-cols-[minmax(0,2fr)_minmax(240px,1fr)]">
           <section aria-label="Blog articles">
-            {shown.length ? (
-              <div className="grid gap-8">
-                {shown.map((article) => (
-                  <ArticleCard key={article.slug} article={article} featured />
-                ))}
-              </div>
-            ) : (
-              <EmptyState
-                title="No articles on this topic yet."
-                href="/resources/blog"
-                label="See all articles"
-              />
-            )}
-            <Pagination current={current} total={total} href={href} />
+            <QueryList
+              basePath="/resources/blog"
+              param="topic"
+              pageSize={12}
+              className="grid gap-8"
+              empty={
+                <EmptyState
+                  title="No articles on this topic yet."
+                  href="/resources/blog"
+                  label="See all articles"
+                />
+              }
+              items={posts.map((article) => ({
+                key: article.slug,
+                value: article.topicSlug,
+                node: <ArticleCard article={article} featured />,
+              }))}
+            />
           </section>
           <aside className="flex flex-col gap-6">
             <div>
