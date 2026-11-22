@@ -1,4 +1,5 @@
 import { ImageResponse } from 'next/og'
+import { sunriseStops } from '@/components/brand-mark'
 
 // Default image shown when a ReValue page is shared (WhatsApp, LinkedIn, X).
 // Posts with their own social or cover image use that instead.
@@ -9,6 +10,15 @@ export const contentType = 'image/png'
 const deep = '#173B2E'
 const warm = '#FFFDF8'
 const clay = '#B46A3C'
+
+// The sunrise mark on a white rounded tile, so its deep-green end stays visible on the dark card.
+const tileLogo = `data:image/svg+xml,${encodeURIComponent(
+  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><defs><radialGradient id="g" gradientUnits="userSpaceOnUse" cx="16" cy="52" r="52">${sunriseStops
+    .map(([offset, color]) => `<stop offset="${offset}" stop-color="${color}"/>`)
+    .join(
+      '',
+    )}</radialGradient></defs><rect width="64" height="64" rx="14" fill="#fff"/><path d="M45 32A13 13 0 1 1 32 19" fill="none" stroke="url(#g)" stroke-width="8" stroke-linecap="round"/><circle cx="44.4" cy="19.6" r="4.5" fill="url(#g)"/></svg>`,
+)}`
 
 export default function Image() {
   return new ImageResponse(
@@ -25,16 +35,8 @@ export default function Image() {
       }}
     >
       <div style={{ display: 'flex', alignItems: 'center', gap: 28 }}>
-        <svg width="96" height="96" viewBox="0 0 48 48">
-          <path
-            d="M37 24A13 13 0 1 1 24 11"
-            fill="none"
-            stroke={warm}
-            strokeWidth="8"
-            strokeLinecap="round"
-          />
-          <circle cx="36.4" cy="11.6" r="4.5" fill={warm} />
-        </svg>
+        {/* eslint-disable-next-line @next/next/no-img-element -- ImageResponse renders plain img */}
+        <img src={tileLogo} width={104} height={104} alt="" />
         <div style={{ fontSize: 76, fontWeight: 600, letterSpacing: -1 }}>ReValue</div>
       </div>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>

@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   description,
   // Search engines are kept out until launch; see lib/launch.ts.
   robots: siteIndexing ? { index: true, follow: true } : { index: false, follow: false },
-  icons: { icon: '/favicon.svg' },
+  icons: { icon: '/favicon.svg', apple: '/apple-touch-icon.png' },
   // The share image comes from opengraph-image.tsx; posts with their own image override it.
   openGraph: { type: 'website', siteName: 'ReValue', locale: 'en_GB', description },
   twitter: { card: 'summary_large_image' },

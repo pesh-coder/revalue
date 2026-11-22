@@ -1,24 +1,10 @@
 import Link from 'next/link'
 import { brand } from '@/lib/brand'
 import { cn } from '@/lib/utils'
+import { SunriseMark } from '@/components/brand-mark'
 
-export function BrandMark({ className }: { className?: string }) {
-  return (
-    <svg
-      className={cn('size-7 shrink-0', className)}
-      viewBox="0 0 48 48"
-      fill="none"
-      aria-hidden="true"
-    >
-      <path
-        d="M37 24A13 13 0 1 1 24 11"
-        stroke="currentColor"
-        strokeWidth="8"
-        strokeLinecap="round"
-      />
-      <circle cx="36.4" cy="11.6" r="4.5" fill="currentColor" />
-    </svg>
-  )
+export function BrandMark({ className, tile }: { className?: string; tile?: boolean }) {
+  return <SunriseMark className={cn('size-7 shrink-0', className)} tile={tile} />
 }
 
 export function Brand() {

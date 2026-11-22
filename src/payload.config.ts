@@ -54,7 +54,10 @@ export default buildConfig({
     meta: {
       titleSuffix: ' | ReValue Admin',
       robots: { index: false, follow: false },
-      icons: [{ rel: 'icon', type: 'image/svg+xml', url: '/favicon.svg' }],
+      icons: [
+        { rel: 'icon', type: 'image/svg+xml', url: '/favicon.svg' },
+        { rel: 'apple-touch-icon', url: '/apple-touch-icon.png' },
+      ],
     },
   },
   // The sidebar menu is defined in components/admin/admin-nav.tsx.
