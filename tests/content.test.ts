@@ -2,7 +2,8 @@ import test from 'node:test'
 import assert from 'node:assert/strict'
 import { reviewCatalog } from '../src/lib/review-content'
 import { validateEnquiry, type EnquiryInput } from '../src/lib/enquiry-validation'
-import { sendResendNotification } from '../src/lib/resend-mail'
+import { sendEnquiryConfirmation, sendResendNotification } from '../src/lib/resend-mail'
+import { enquiryConfirmationEmail, enquiryNotificationEmail } from '../src/lib/email/enquiry'
 const valid: EnquiryInput = {
   name: 'Test Person',
   organisation: 'Example Organisation',
@@ -57,7 +58,60 @@ test('Resend request uses separate sender, reply-to and stable idempotency key',
   const body = JSON.parse(observed?.body as string)
   assert.equal(body.reply_to, valid.email)
   assert.equal(body.from, 'ReValue <test@example.com>')
-  assert.ok(!('html' in body))
+  assert.match(body.html, /New enquiry from Test Person/)
+  assert.match(body.text, /A synthetic test enquiry\./)
+})
+test('sender always shows the ReValue name, whatever EMAIL_FROM says', async () => {
+  let observed: RequestInit | undefined
+  const fake: typeof fetch = async (_url, init) => {
+    observed = init
+    return Response.json({ id: 'synthetic-email-id' })
+  }
+  await sendResendNotification(
+    { ...valid, id: 7 },
+    { apiKey: 'k', from: 'Revalue <hello@example.com>', to: 'team@example.com' },
+    fake,
+  )
+  assert.equal(JSON.parse(observed?.body as string).from, 'ReValue <hello@example.com>')
+})
+test('visitor input is escaped in the team notification', () => {
+  const email = enquiryNotificationEmail({
+    ...valid,
+    id: 3,
+    name: '<img src=x onerror=alert(1)>',
+    message: '<a href="https://spam.example">click</a>',
+  })
+  assert.ok(!email.html.includes('<img src=x'))
+  assert.ok(!email.html.includes('<a href="https://spam.example">'))
+  assert.match(email.html, /&lt;a href=&quot;https:\/\/spam\.example&quot;&gt;/)
+})
+test('confirmation never repeats the message and only greets plausible names', async () => {
+  const spam = enquiryConfirmationEmail({
+    name: 'Buy cheap pills at spam.example',
+    type: 'General',
+  })
+  assert.ok(!spam.html.includes('spam.example'))
+  assert.match(spam.text, /^Hello,/)
+  const real = enquiryConfirmationEmail({ name: "Ann-Marie O'Neill", type: 'General' })
+  assert.match(real.text, /^Hello Ann-Marie,/)
+  let observed: RequestInit | undefined
+  const fake: typeof fetch = async (_url, init) => {
+    observed = init
+    return Response.json({ id: 'confirmation-id' })
+  }
+  await sendEnquiryConfirmation(
+    { ...valid, id: 9 },
+    { apiKey: 'k', from: 'ReValue <hello@example.com>' },
+    fake,
+  )
+  const body = JSON.parse(observed?.body as string)
+  assert.deepEqual(body.to, [valid.email])
+  assert.equal(body.reply_to, 'hello@example.com')
+  assert.ok(!body.html.includes(valid.message) && !body.text.includes(valid.message))
+  assert.equal(
+    (observed?.headers as Record<string, string>)['Idempotency-Key'],
+    'revalue-enquiry-confirmation-9',
+  )
 })
 test('provider rejection is a failure, and missing settings never call the network', async () => {
   let called = false

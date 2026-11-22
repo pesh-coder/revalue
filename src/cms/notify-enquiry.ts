@@ -1,5 +1,5 @@
 import type { Payload } from 'payload'
-import { sendResendNotification } from '@/lib/resend-mail'
+import { sendEnquiryConfirmation, sendResendNotification } from '@/lib/resend-mail'
 export async function notifyEnquiry(payload: Payload, id: number, confirmedUndelivered = false) {
   const client = await payload.db.pool.connect()
   try {
@@ -52,6 +52,16 @@ export async function notifyEnquiry(payload: Payload, id: number, confirmedUndel
         ? { deliveryState: 'sent', providerReference: result.id, deliveryError: null }
         : { deliveryState: 'failed', deliveryError: result.error },
     })
+    // Thank the sender once, when the team notification first goes out. Its outcome does not
+    // change the enquiry's delivery state; the provider's idempotency key prevents duplicates.
+    if (result.ok) {
+      const confirmation = await sendEnquiryConfirmation(
+        { ...enquiry, id },
+        { apiKey: process.env.RESEND_API_KEY || '', from: process.env.EMAIL_FROM || '' },
+      )
+      if (!confirmation.ok)
+        payload.logger.warn(`Enquiry ${id}: confirmation email not sent. ${confirmation.error}`)
+    }
     return result
   } finally {
     await client.query('ROLLBACK').catch(() => {})
